@@ -1363,37 +1363,31 @@ body[data-theme="light"] .nav__theme-icon--moon {
 .contact__map-wrapper {
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
   aspect-ratio: 4/3;
+  background: var(--bg-secondary);
 }
 
 .contact__map-wrapper iframe {
   display: block;
   width: 100%;
   height: 100%;
-  filter: grayscale(1) invert(1) contrast(0.85) brightness(0.7);
+  border: 0;
+  /* Removed aggressive dark invert filter so location pin, roads, and map controls are 100% visible & legible */
 }
 
 .contact__map-action {
-  margin-top: var(--sp-3);
-  text-align: right;
+  margin-top: var(--sp-4);
+  display: flex;
+  justify-content: flex-start;
 }
 
-.contact__map-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: gap var(--duration-sm) var(--ease-out);
-}
-
-.contact__map-link:hover {
-  gap: var(--sp-3);
+.btn--map {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.875rem;
+  padding: var(--sp-4) var(--sp-6);
 }
 
 /* ─── Careers Application ───────────────────────────── */
