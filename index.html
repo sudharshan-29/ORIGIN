@@ -30,11 +30,12 @@
     <div class="nav__inner">
       <a href="#hero" class="nav__logo" aria-label="ORIGIN — Home">
         <span class="nav__logo-text">ORIGIN</span>
+        <span class="nav__logo-tagline">FITNESS</span>
       </a>
 
       <nav class="nav__menu" id="navMenu" aria-label="Main navigation">
         <ul class="nav__list">
-          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#about" class="nav__link">About Us</a></li>
           <li><a href="#facilities" class="nav__link">Facilities</a></li>
           <li><a href="#programs" class="nav__link">Programs</a></li>
           <li><a href="#membership" class="nav__link">Membership</a></li>
@@ -45,6 +46,15 @@
 
       <div class="nav__actions">
         <a href="#membership" class="nav__cta">Join Now</a>
+        <button class="nav__theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+          <svg class="nav__theme-icon nav__theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+          <svg class="nav__theme-icon nav__theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>
+          </svg>
+        </button>
         <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="nav__toggle-line"></span>
           <span class="nav__toggle-line"></span>
@@ -702,6 +712,14 @@
             <a href="tel:+919642076707" class="btn btn--outline">
               Call Us
             </a>
+            <a href="https://www.instagram.com/origin_strengthandperformance/" class="btn btn--instagram" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+              </svg>
+              Follow on Instagram
+            </a>
           </div>
         </div>
 
@@ -726,6 +744,52 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- WORK WITH US                                    -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="section careers" id="work-with-us">
+    <div class="container">
+      <div class="careers__grid">
+        <div class="careers__intro anim-reveal">
+          <span class="section-label">Join the ORIGIN team</span>
+          <h2 class="section-title">Work <span class="text-accent">With Us.</span></h2>
+          <p class="section-desc">Are you a coach or trainer who helps people get stronger? Tell us about yourself and apply to join our team.</p>
+        </div>
+
+        <form class="careers__form anim-reveal" id="careersForm">
+          <div class="careers__field">
+            <label for="applicantName">Full name</label>
+            <input id="applicantName" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="careers__field">
+            <label for="applicantEmail">Email address</label>
+            <input id="applicantEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="careers__field">
+            <label for="applicantPhone">Phone number <span>(optional)</span></label>
+            <input id="applicantPhone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="careers__field">
+            <label for="applicantRole">I'm interested in</label>
+            <select id="applicantRole" name="role" required>
+              <option value="" selected disabled>Choose a coaching role</option>
+              <option>Personal training</option>
+              <option>Strength and conditioning coaching</option>
+              <option>Group fitness instruction</option>
+              <option>Other coaching role</option>
+            </select>
+          </div>
+          <div class="careers__field careers__field--full">
+            <label for="applicantExperience">Qualifications and experience</label>
+            <textarea id="applicantExperience" name="experience" rows="5" maxlength="2000" placeholder="Share your coaching experience, qualifications, and what you'd bring to ORIGIN." required></textarea>
+          </div>
+          <button class="btn btn--primary careers__submit" type="submit">Continue to Email Application</button>
+          <p class="careers__note">Your email app will open with your application ready to send. This site does not store your details.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -763,6 +827,7 @@
             <li><a href="#membership">Membership</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#work-with-us">Work With Us</a></li>
           </ul>
         </div>
 

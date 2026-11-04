@@ -9,6 +9,7 @@
   // ─── DOM References ──────────────────────────────────
   const nav           = document.getElementById('nav');
   const navToggle     = document.getElementById('navToggle');
+  const themeToggle   = document.getElementById('themeToggle');
   const mobileNav     = document.getElementById('mobileNav');
   const lightbox      = document.getElementById('lightbox');
   const lightboxImg   = lightbox.querySelector('.lightbox__img');
@@ -34,7 +35,45 @@
   window.addEventListener('scroll', handleNavScroll, { passive: true });
   handleNavScroll(); // Initial check
 
-  // ─── Active Nav Link Highlighting ────────────────────
+  // ─── Colour Theme Toggle ────────────────────────────
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.dataset.theme !== 'light';
+    if (isLight) {
+      document.body.dataset.theme = 'light';
+    } else {
+      delete document.body.dataset.theme;
+    }
+
+    themeToggle.setAttribute(
+      'aria-label',
+      isLight ? 'Switch to dark theme' : 'Switch to light theme'
+    );
+    document.querySelector('meta[name="theme-color"]').content =
+      isLight ? '#f3f1e9' : '#101010';
+  });
+
+    // ─── Coaching Application ────────────────────────────
+    const careersForm = document.getElementById('careersForm');
+
+    careersForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const application = new FormData(careersForm);
+      const body = [
+        `Name: ${application.get('name')}`,
+        `Email: ${application.get('email')}`,
+        `Phone: ${application.get('phone') || 'Not provided'}`,
+        `Role: ${application.get('role')}`,
+        '',
+        'Qualifications and experience:',
+        application.get('experience'),
+      ].join('\n');
+
+      window.location.href =
+        `mailto:info@originfitnessclub.com?subject=${encodeURIComponent('ORIGIN Coaching Application')}&body=${encodeURIComponent(body)}`;
+    });
+
+    // ─── Active Nav Link Highlighting ────────────────────
   const sections = document.querySelectorAll('.section[id]');
   const navLinks = document.querySelectorAll('.nav__link');
 
@@ -307,4 +346,3 @@
   });
 
 })();
-
