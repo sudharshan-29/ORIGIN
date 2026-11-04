@@ -226,5 +226,85 @@
     }
   });
 
+  // ─── Membership Category Tabs ────────────────────────
+  const membershipTabs    = document.querySelectorAll('.membership__tab');
+  const membershipSubnote = document.getElementById('membershipSubnote');
+  const planCards         = document.querySelectorAll('.membership__grid .plan');
+
+  const pricingData = {
+    individual: {
+      subnote: 'Standard individual access to all 3 floors.',
+      categoryLabel: 'Basic Access',
+      prices: {
+        monthly: '2,997',
+        quarterly: '7,997',
+        halfyearly: '9,997',
+        yearly: '12,997',
+      },
+    },
+    couple: {
+      subnote: 'Special couple pricing applied per person when joining together.',
+      categoryLabel: 'Couple Offer',
+      prices: {
+        monthly: '2,697',
+        quarterly: '7,197',
+        halfyearly: '8,997',
+        yearly: '11,697',
+      },
+    },
+    buddy: {
+      subnote: 'Special buddy discount applied per person when joining with a friend.',
+      categoryLabel: 'Buddy Offer',
+      prices: {
+        monthly: '2,697',
+        quarterly: '7,197',
+        halfyearly: '8,497',
+        yearly: '11,047',
+      },
+    },
+  };
+
+  membershipTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const category = tab.dataset.category;
+      if (!category || !pricingData[category]) return;
+
+      membershipTabs.forEach((t) => {
+        t.classList.remove('membership__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('membership__tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      if (membershipSubnote) {
+        membershipSubnote.textContent = pricingData[category].subnote;
+      }
+
+      const categoryLabel = pricingData[category].categoryLabel;
+
+      planCards.forEach((card) => {
+        const planKey = card.dataset.plan;
+        const priceEl = card.querySelector('[data-price]');
+        const ctaEl = card.querySelector('.plan__cta');
+        const planName = card.querySelector('.plan__name')?.textContent.trim() || '';
+
+        if (priceEl && planKey && pricingData[category].prices[planKey]) {
+          priceEl.style.opacity = '0';
+          setTimeout(() => {
+            priceEl.textContent = pricingData[category].prices[planKey];
+            priceEl.style.opacity = '1';
+          }, 150);
+        }
+
+        if (ctaEl) {
+          const text = encodeURIComponent(
+            `Hi ORIGIN, I'd like to enquire about the ${planName} Membership (${categoryLabel}) plan.`
+          );
+          ctaEl.href = `https://wa.me/919642076707?text=${text}`;
+        }
+      });
+    });
+  });
+
 })();
 

@@ -1,6 +1,6 @@
-# ORIGIN — Premium Gym Portfolio
+# ORIGIN Strength & Performance — Gym Portfolio
 
-A modern, high-performance gym portfolio website designed for ORIGIN. Built with zero dependencies, clean typography, responsive layouts, and smooth micro-interactions.
+A modern, high-performance gym portfolio website designed for **ORIGIN Strength & Performance** located at Trios Tower, Ambattur, Chennai. Built with zero dependencies, clean typography, responsive layouts, and smooth micro-interactions.
 
 ## 🚀 Live Preview / Running Locally
 
@@ -20,7 +20,7 @@ Visit `http://localhost:8000` in your browser.
 
 - **HTML5:** Semantic architecture, accessible landmarks, SEO metadata
 - **CSS3:** Custom properties (design tokens), CSS Grid & Flexbox, responsive clamp typography, noise overlay texture
-- **JavaScript (ES6+):** Vanilla JavaScript, `IntersectionObserver` scroll reveals, interactive lightbox, mobile navigation
+- **JavaScript (ES6+):** Vanilla JavaScript, `IntersectionObserver` scroll reveals, interactive pricing tab switcher, interactive lightbox, mobile navigation
 - **Typography:** Space Grotesk & Inter via Google Fonts
 - **Assets:** Inline SVGs, SVG Favicon, Unsplash CDN photography
 
@@ -28,21 +28,25 @@ Visit `http://localhost:8000` in your browser.
 
 ```
 origin/
-├── index.html          # Main HTML structure
+├── index.html          # Main HTML structure with updated client details
 ├── css/
 │   └── style.css       # Complete design system and styling
 ├── js/
-│   └── main.js         # Navigation, animations, and lightbox logic
+│   └── main.js         # Navigation, animations, tabs, and lightbox logic
 ├── assets/
-│   └── favicon.svg     # Brand favicon
+│   ├── favicon.svg     # Brand favicon
+│   └── images/
+│       └── logo.png    # Brand logo asset
 └── README.md
 ```
 
-## 📝 Configuration & Placeholders
+## 📍 Client Information
 
-Search for `[` in `index.html` to update:
-- Gym contact details (address, phone, email, hours)
-- Membership pricing & currency
-- WhatsApp enquiry phone number
-- Google Maps embed URL
-- Social media links
+- **Brand:** ORIGIN Strength & Performance
+- **Address:** 110A Trios Tower, Menambedu, Ambattur, Chennai 600053
+- **Contact:** +91 96420 76707 / +91 93443 76707
+- **Operating Hours:**
+  - Mon – Sat: 5:30 AM – 10:00 PM
+  - Sunday: 5:30 AM – 2:00 PM
+- **Instagram:** [@origin_strengthandperformance](https://www.instagram.com/origin_strengthandperformance/)
+- **YouTube:** [@OriginStrengthandPerformance](https://www.youtube.com/@OriginStrengthandPerformance)

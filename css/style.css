@@ -952,6 +952,48 @@ button {
   background: var(--bg-primary);
 }
 
+.membership__tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.membership__tab {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all var(--duration-sm) var(--ease-out);
+  cursor: pointer;
+}
+
+.membership__tab:hover {
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.membership__tab--active {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
+.membership__subnote {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-12);
+  letter-spacing: 0.02em;
+}
+
 .membership__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1026,12 +1068,20 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
+.plan__currency {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
 .plan__amount {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--text-muted);
+  color: var(--text-primary);
+  transition: opacity var(--duration-sm) var(--ease-out);
 }
 
 .plan__period {
@@ -1267,6 +1317,28 @@ button {
   filter: grayscale(1) invert(1) contrast(0.85) brightness(0.7);
 }
 
+.contact__map-action {
+  margin-top: var(--sp-3);
+  text-align: right;
+}
+
+.contact__map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: gap var(--duration-sm) var(--ease-out);
+}
+
+.contact__map-link:hover {
+  gap: var(--sp-3);
+}
+
 
 /* ═══════════════════════════════════════════════════════
    FOOTER
@@ -1471,8 +1543,14 @@ button {
 
   /* Membership */
   .membership__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-6);
+  }
+
+  /* Membership */
+  .membership__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
   }
 
   /* Gallery */
@@ -1526,6 +1604,12 @@ button {
 
   .facility-card--wide {
     grid-column: span 2;
+  }
+
+  /* Membership */
+  .membership__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
   }
 
   /* Gallery */
