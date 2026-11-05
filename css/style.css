@@ -5,13 +5,13 @@
 
 /* ─── Design Tokens ──────────────────────────────────── */
 :root {
-  /* Colour Palette — Clean White & Superior Electric Blue (Official ORIGIN Aesthetic) */
-  --bg-primary:    #FFFFFF;
-  --bg-secondary:  #F4F8FD;
+  /* Colour Palette — Light Bluish Canvas & Superior Electric Blue (Official ORIGIN Aesthetic) */
+  --bg-primary:    #EDF3FA;
+  --bg-secondary:  #E2EDF9;
   --bg-elevated:   #FFFFFF;
   --text-primary:  #0A1128;
-  --text-secondary:#334155;
-  --text-muted:    #64748B;
+  --text-secondary:#2C3E5A;
+  --text-muted:    #5C718E;
   --accent:        #0066FF;
   --accent-dim:    #004ECC;
   --accent-bright: #0088FF;
@@ -19,9 +19,9 @@
   --accent-glow:   rgba(0, 102, 255, 0.28);
   --accent-soft:   rgba(0, 102, 255, 0.08);
   --accent-border: rgba(0, 102, 255, 0.24);
-  --border:        #E2E8F0;
-  --border-light:  #CBD5E1;
-  --card-shadow:   0 4px 24px rgba(0, 40, 130, 0.07);
+  --border:        #D2E0F0;
+  --border-light:  #C0D2E8;
+  --card-shadow:   0 4px 24px rgba(0, 48, 140, 0.07);
   --card-shadow-hover: 0 16px 40px rgba(0, 80, 220, 0.16);
 
   /* Typography */
@@ -243,16 +243,16 @@ button {
 }
 
 .btn--outline {
-  background: #FFFFFF;
+  background: var(--bg-elevated);
   color: var(--text-primary);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 2px 8px rgba(0, 32, 96, 0.04);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.05);
 }
 
 .btn--outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(0, 102, 255, 0.05);
+  background: var(--accent-soft);
   box-shadow: 0 4px 16px rgba(0, 102, 255, 0.12);
 }
 
@@ -274,10 +274,10 @@ button {
 }
 
 .btn--instagram {
-  background: #FFFFFF;
+  background: var(--bg-elevated);
   color: var(--text-primary);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 2px 8px rgba(0, 32, 96, 0.04);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.05);
 }
 
 .btn--instagram:hover {
@@ -322,9 +322,9 @@ button {
 }
 
 .nav--scrolled {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(237, 243, 250, 0.94);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0, 32, 96, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 48, 140, 0.06);
 }
 
 .nav--scrolled .nav__link {
@@ -870,7 +870,7 @@ body[data-theme="dark"] .hero__overlay {
    FACILITIES
    ═══════════════════════════════════════════════════════ */
 .facilities {
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, var(--bg-primary) 100%);
 }
 
 .facilities__grid {
@@ -1054,7 +1054,7 @@ body[data-theme="dark"] .hero__overlay {
    ═══════════════════════════════════════════════════════ */
 .brand-statement {
   padding: var(--sp-24) 0;
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-secondary) 50%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1096,7 +1096,7 @@ body[data-theme="dark"] .hero__overlay {
    WHY CHOOSE US
    ═══════════════════════════════════════════════════════ */
 .why {
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, var(--bg-primary) 100%);
 }
 
 .why__grid {
@@ -1227,7 +1227,7 @@ body[data-theme="dark"] .hero__overlay {
 
 .plan--featured {
   border: 2px solid var(--accent);
-  background: linear-gradient(180deg, rgba(0, 102, 255, 0.05) 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, rgba(0, 102, 255, 0.08) 0%, var(--bg-elevated) 100%);
   box-shadow: 0 10px 40px rgba(0, 102, 255, 0.16);
 }
 
@@ -1330,7 +1330,7 @@ body[data-theme="dark"] .hero__overlay {
    GALLERY
    ═══════════════════════════════════════════════════════ */
 .gallery {
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 15%, var(--bg-secondary) 85%, var(--bg-primary) 100%);
 }
 
 .gallery__grid {
@@ -1570,9 +1570,6 @@ body[data-theme="dark"] .hero__overlay {
   color: #ffffff;
   box-shadow: 0 8px 30px rgba(0, 102, 255, 0.45);
 }
-  color: var(--accent);
-  background: var(--bg-elevated);
-}
 
 /* ─── Careers Application ───────────────────────────── */
 .careers {
@@ -1638,7 +1635,7 @@ body[data-theme="dark"] .hero__overlay {
 .careers__field textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: #FFFFFF;
+  background: var(--bg-elevated);
   box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
 }
 
@@ -1731,7 +1728,7 @@ body[data-theme="dark"] .hero__overlay {
   height: 40px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: #FFFFFF;
+  background: var(--bg-elevated);
   color: var(--text-secondary);
   transition:
     color var(--duration-sm) var(--ease-out),
@@ -2030,7 +2027,7 @@ body[data-theme="dark"] .hero__overlay {
 
   .nav {
     height: var(--nav-height);
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(237, 243, 250, 0.95);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     box-shadow: 0 1px 0 var(--border);

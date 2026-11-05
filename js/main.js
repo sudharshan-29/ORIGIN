@@ -53,7 +53,7 @@
     );
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) {
-      themeMeta.content = isDark ? '#0A0D14' : '#FFFFFF';
+      themeMeta.content = isDark ? '#0A0D14' : '#EDF3FA';
     }
   });
 
