@@ -36,20 +36,25 @@
   handleNavScroll(); // Initial check
 
   // ─── Colour Theme Toggle ────────────────────────────
+  const footerLogo = document.getElementById('footerLogo');
   themeToggle.addEventListener('click', () => {
     const isLight = document.body.dataset.theme !== 'light';
     if (isLight) {
       document.body.dataset.theme = 'light';
+      if (footerLogo) footerLogo.src = 'assets/images/logo.png';
     } else {
       delete document.body.dataset.theme;
+      if (footerLogo) footerLogo.src = 'assets/images/logo-dark.png';
     }
 
     themeToggle.setAttribute(
       'aria-label',
       isLight ? 'Switch to dark theme' : 'Switch to light theme'
     );
-    document.querySelector('meta[name="theme-color"]').content =
-      isLight ? '#f3f1e9' : '#101010';
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.content = isLight ? '#F8FAFC' : '#0a0d14';
+    }
   });
 
     // ─── Coaching Application ────────────────────────────
