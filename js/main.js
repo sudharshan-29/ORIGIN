@@ -38,22 +38,22 @@
   // ─── Colour Theme Toggle ────────────────────────────
   const footerLogo = document.getElementById('footerLogo');
   themeToggle.addEventListener('click', () => {
-    const isLight = document.body.dataset.theme !== 'light';
-    if (isLight) {
-      document.body.dataset.theme = 'light';
-      if (footerLogo) footerLogo.src = 'assets/images/logo.png';
+    const isDark = document.body.dataset.theme !== 'dark';
+    if (isDark) {
+      document.body.dataset.theme = 'dark';
+      if (footerLogo) footerLogo.src = 'assets/images/logo-dark.png';
     } else {
       delete document.body.dataset.theme;
-      if (footerLogo) footerLogo.src = 'assets/images/logo-dark.png';
+      if (footerLogo) footerLogo.src = 'assets/images/logo.png';
     }
 
     themeToggle.setAttribute(
       'aria-label',
-      isLight ? 'Switch to dark theme' : 'Switch to light theme'
+      isDark ? 'Switch to light theme' : 'Switch to dark theme'
     );
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) {
-      themeMeta.content = isLight ? '#F8FAFC' : '#0a0d14';
+      themeMeta.content = isDark ? '#0A0D14' : '#FFFFFF';
     }
   });
 
