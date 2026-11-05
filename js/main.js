@@ -159,6 +159,9 @@
   if (!prefersReducedMotion) {
     const revealElements = document.querySelectorAll('.anim-reveal');
 
+    // Add js-ready class so CSS only animates when JS is ready
+    document.documentElement.classList.add('js-ready');
+
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -169,12 +172,19 @@
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px',
+        threshold: 0,
+        rootMargin: '250px 0px 100px 0px',
       }
     );
 
-    revealElements.forEach((el) => revealObserver.observe(el));
+    revealElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 250) {
+        el.classList.add('anim-reveal--visible');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
   } else {
     // If reduced motion, show everything immediately
     document.querySelectorAll('.anim-reveal').forEach((el) => {
