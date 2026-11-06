@@ -706,7 +706,7 @@ body[data-theme="dark"] .hero__overlay {
   z-index: 3;
   text-align: center;
   padding: var(--sp-6);
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 .hero__label {
@@ -747,13 +747,17 @@ body[data-theme="dark"] .hero__overlay {
 }
 
 .hero__subtitle {
-  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  font-size: clamp(0.75rem, 1.1vw, 0.875rem);
   color: #E2E8F0;
-  max-width: 620px;
+  max-width: 1040px;
   margin: 0 auto var(--sp-10);
-  line-height: 1.8;
-  letter-spacing: 0.04em;
+  line-height: 2;
+  letter-spacing: 0.035em;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+.hero__subtitle-line {
+  display: block;
 }
 
 .hero .btn--outline {
@@ -2993,7 +2997,8 @@ body[data-theme="dark"] .hero__overlay {
   }
 
   .hero__subtitle {
-    font-size: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.7;
     margin-bottom: var(--sp-8);
   }
 
