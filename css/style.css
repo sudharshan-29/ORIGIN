@@ -394,47 +394,33 @@ body[data-theme="dark"] .nav--scrolled {
 .nav__logo {
   display: flex;
   align-items: center;
+  gap: var(--sp-3);
   z-index: 1001;
-  text-decoration: none;
 }
 
 .nav__logo-img {
-  height: 44px;
-  width: auto;
-  max-width: none;
-  display: block;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  transition: transform var(--duration-sm) var(--ease-out), opacity var(--duration-sm) var(--ease-out);
+  filter: drop-shadow(0 0 10px rgba(0, 122, 255, 0.5));
+  transition: transform var(--duration-sm) var(--ease-out);
 }
 
 .nav__logo:hover .nav__logo-img {
-  transform: scale(1.03);
+  transform: rotate(12deg) scale(1.08);
 }
 
-.nav__logo-img--light {
+.nav__logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.nav__logo-tagline {
   display: none;
-}
-
-.nav__logo-img--dark {
-  display: block;
-}
-
-.nav--scrolled .nav__logo-img--light {
-  display: block;
-}
-
-.nav--scrolled .nav__logo-img--dark {
-  display: none;
-}
-
-body[data-theme="dark"] .nav .nav__logo-img--light,
-body[data-theme="dark"] .nav--scrolled .nav__logo-img--light {
-  display: none !important;
-}
-
-body[data-theme="dark"] .nav .nav__logo-img--dark,
-body[data-theme="dark"] .nav--scrolled .nav__logo-img--dark {
-  display: block !important;
 }
 
 .nav__menu {
@@ -2821,27 +2807,23 @@ body[data-theme="dark"] .hero__overlay {
   .nav__logo {
     grid-column: 1;
     grid-row: 1;
+    gap: 8px;
     min-width: 0;
   }
 
-  .nav .nav__logo-img {
-    height: 38px;
+  .nav__logo-text {
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
   }
 
-  .nav .nav__logo-img--light {
-    display: block;
-  }
-
-  .nav .nav__logo-img--dark {
-    display: none;
-  }
-
-  body[data-theme="dark"] .nav .nav__logo-img--light {
-    display: none !important;
-  }
-
-  body[data-theme="dark"] .nav .nav__logo-img--dark {
-    display: block !important;
+  .nav__logo-tagline {
+    display: inline-block;
+    padding-left: 8px;
+    border-left: 1px solid var(--border-light);
+    font-family: var(--font-heading);
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    color: var(--text-secondary);
   }
 
   .nav__menu {
