@@ -41,7 +41,7 @@
     const isDark = document.body.dataset.theme !== 'dark';
     if (isDark) {
       document.body.dataset.theme = 'dark';
-      if (footerLogo) footerLogo.src = 'assets/images/logo-dark.png';
+      if (footerLogo) footerLogo.src = 'assets/images/logo-white.png';
     } else {
       delete document.body.dataset.theme;
       if (footerLogo) footerLogo.src = 'assets/images/logo.png';
