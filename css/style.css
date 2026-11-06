@@ -731,9 +731,9 @@ body[data-theme="dark"] .hero__overlay {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 6.8vw, 5.2rem);
+  font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 0.98;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
@@ -3086,7 +3086,7 @@ body[data-theme="dark"] .hero__overlay {
   }
 
   .hero__title {
-    font-size: clamp(1.6rem, 7vw, 2.75rem);
+    font-size: clamp(1.85rem, 8vw, 3.2rem);
     margin-bottom: var(--sp-6);
   }
 
@@ -3261,7 +3261,7 @@ body[data-theme="dark"] .hero__overlay {
 /* ─── Small Mobile (max 480px) ───────────────────────── */
 @media (max-width: 480px) {
   .hero__title {
-    font-size: clamp(1.15rem, 5.8vw, 1.65rem);
+    font-size: clamp(1.6rem, 7.4vw, 2.2rem);
   }
 
   .trainers__stats {
