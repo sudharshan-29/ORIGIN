@@ -1418,6 +1418,55 @@ body[data-theme="dark"] .hero__overlay {
   aspect-ratio: 4 / 4.4;
   overflow: hidden;
   background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trainer-card__photo-placeholder {
+  width: calc(100% - var(--sp-6));
+  height: calc(100% - var(--sp-6));
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  background: radial-gradient(circle at center, var(--accent-soft) 0%, transparent 75%);
+  transition: border-color var(--duration-md) var(--ease-out), background var(--duration-md) var(--ease-out);
+}
+
+.trainer-card:hover .trainer-card__photo-placeholder {
+  border-color: var(--accent);
+  background: radial-gradient(circle at center, rgba(0, 102, 255, 0.16) 0%, transparent 80%);
+}
+
+.trainer-card__placeholder-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.12);
+  transition: transform var(--duration-md) var(--ease-out);
+}
+
+.trainer-card:hover .trainer-card__placeholder-icon {
+  transform: scale(1.1);
+}
+
+.trainer-card__placeholder-text {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .trainer-card__img {
