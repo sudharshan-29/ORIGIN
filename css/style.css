@@ -666,10 +666,10 @@ body[data-theme="dark"] .nav__theme-icon--sun {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 36%;
   z-index: 1;
-  opacity: 0.58;
-  filter: contrast(1.08) brightness(0.92);
+  opacity: 1;
+  filter: brightness(0.96) contrast(1.12) saturate(1.2);
 }
 
 .hero--loaded .hero__bg-img {
@@ -681,23 +681,23 @@ body[data-theme="dark"] .nav__theme-icon--sun {
   inset: 0;
   z-index: 2;
   background:
-    radial-gradient(circle at 50% 30%, rgba(0, 102, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 45%, rgba(10, 17, 40, 0.15) 0%, rgba(10, 17, 40, 0.52) 100%),
     linear-gradient(180deg,
-      rgba(10, 13, 20, 0.55) 0%,
-      rgba(10, 13, 20, 0.35) 40%,
-      rgba(10, 13, 20, 0.7) 70%,
-      rgba(10, 13, 20, 0.96) 100%
+      rgba(10, 13, 20, 0.42) 0%,
+      rgba(10, 13, 20, 0.12) 30%,
+      rgba(10, 13, 20, 0.22) 60%,
+      rgba(10, 13, 20, 0.78) 100%
     );
 }
 
 body[data-theme="dark"] .hero__overlay {
   background:
-    radial-gradient(circle at 50% 30%, rgba(0, 122, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 45%, rgba(10, 17, 40, 0.2) 0%, rgba(10, 17, 40, 0.6) 100%),
     linear-gradient(180deg,
-      rgba(10, 13, 20, 0.55) 0%,
-      rgba(10, 13, 20, 0.35) 40%,
-      rgba(10, 13, 20, 0.7) 70%,
-      rgba(10, 13, 20, 0.96) 100%
+      rgba(10, 13, 20, 0.48) 0%,
+      rgba(10, 13, 20, 0.15) 30%,
+      rgba(10, 13, 20, 0.26) 60%,
+      rgba(10, 13, 20, 0.85) 100%
     );
 }
 
@@ -717,15 +717,16 @@ body[data-theme="dark"] .hero__overlay {
   text-transform: uppercase;
   color: var(--accent-bright);
   margin-bottom: var(--sp-6);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
 }
 
 .hero .text-accent {
-  color: var(--accent);
+  color: #0088FF;
   background: none;
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   filter: none;
-  text-shadow: 0 0 35px rgba(0, 102, 255, 0.45);
+  text-shadow: 0 0 30px rgba(0, 136, 255, 0.7), 0 4px 20px rgba(0, 0, 0, 0.95);
 }
 
 .hero__title {
@@ -737,7 +738,7 @@ body[data-theme="dark"] .hero__overlay {
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: var(--sp-8);
-  text-shadow: none;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
 .hero__title-line {
@@ -747,12 +748,12 @@ body[data-theme="dark"] .hero__overlay {
 
 .hero__subtitle {
   font-size: clamp(0.85rem, 1.4vw, 1rem);
-  color: #CBD5E1;
+  color: #E2E8F0;
   max-width: 620px;
   margin: 0 auto var(--sp-10);
   line-height: 1.8;
   letter-spacing: 0.04em;
-  text-shadow: none;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
 .hero .btn--outline {

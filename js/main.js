@@ -360,6 +360,17 @@
     });
   });
 
+  // ─── Ambient Video Autoplay Guarantee ────────────────
+  const ambientVideos = document.querySelectorAll('video[autoplay]');
+  ambientVideos.forEach((vid) => {
+    vid.muted = true;
+    vid.setAttribute('playsinline', '');
+    const p = vid.play();
+    if (p !== undefined) {
+      p.catch(() => {});
+    }
+  });
+
   // ─── Video Reel Modal ────────────────────────────────
   const videoModal = document.getElementById('videoModal');
   const modalPlayer = document.getElementById('modalVideoPlayer');
