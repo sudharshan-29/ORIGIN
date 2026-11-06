@@ -838,6 +838,16 @@ body[data-theme="dark"] .hero__overlay {
   border: 1px solid var(--border);
   box-shadow: 0 16px 45px rgba(0, 48, 140, 0.1);
   background: #0A1128;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--duration-md) var(--ease-out), box-shadow var(--duration-md) var(--ease-out), transform var(--duration-md) var(--ease-out);
+}
+
+.about__img-wrapper:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(0, 102, 255, 0.22);
+  transform: translateY(-2px);
 }
 
 .about__img,

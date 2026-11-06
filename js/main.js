@@ -432,11 +432,15 @@
     }
   }
 
+  const INSTAGRAM_REEL_URL = 'https://www.instagram.com/reel/DfSZTyDyZ9I/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ==';
+
   if (openReelBtns.length > 0) {
     openReelBtns.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openVideoModal();
+        if (!btn.hasAttribute('href')) {
+          e.preventDefault();
+          window.open(INSTAGRAM_REEL_URL, '_blank', 'noopener,noreferrer');
+        }
       });
     });
   }
