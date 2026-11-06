@@ -165,8 +165,9 @@ button {
 }
 
 .section {
-  padding: var(--sp-24) 0;
+  padding: var(--sp-10) 0 var(--sp-16) 0;
   position: relative;
+  scroll-margin-top: var(--nav-height);
 }
 
 .section-label {
@@ -197,7 +198,7 @@ button {
 }
 
 .section-header {
-  margin-bottom: var(--sp-16);
+  margin-bottom: var(--sp-12);
 }
 
 /* ─── Buttons ────────────────────────────────────────── */
@@ -785,7 +786,7 @@ body[data-theme="dark"] .hero__overlay {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--sp-16);
-  align-items: center;
+  align-items: start;
 }
 
 .about__visual {
@@ -1065,7 +1066,7 @@ body[data-theme="dark"] .hero__overlay {
    BRAND STATEMENT
    ═══════════════════════════════════════════════════════ */
 .brand-statement {
-  padding: var(--sp-24) 0;
+  padding: var(--sp-14, 56px) 0;
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
   position: relative;
   overflow: hidden;
@@ -1862,7 +1863,7 @@ body[data-theme="dark"] .hero__overlay {
   }
 
   .section {
-    padding: var(--sp-32) 0;
+    padding: var(--sp-12) 0 var(--sp-20) 0;
   }
 
   /* About */
@@ -2155,7 +2156,7 @@ body[data-theme="dark"] .hero__overlay {
   }
 
   .section {
-    padding: var(--sp-16) 0;
+    padding: var(--sp-8) 0 var(--sp-12) 0;
   }
 
   .section-header {
