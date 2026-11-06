@@ -1292,6 +1292,104 @@ body[data-theme="dark"] .hero__overlay {
   gap: var(--sp-16);
 }
 
+.why__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.why__visual {
+  position: relative;
+  margin-top: var(--sp-8);
+  width: 100%;
+}
+
+.why__img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 45px rgba(0, 48, 140, 0.12);
+  background: #0A1128;
+  display: block;
+}
+
+.why__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  transition: transform var(--duration-lg) var(--ease-out);
+}
+
+.why__visual:hover .why__img {
+  transform: scale(1.03);
+}
+
+.why__img-accent {
+  position: absolute;
+  top: 10px;
+  right: -8px;
+  bottom: -8px;
+  left: 10px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-md);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+  transition: opacity var(--duration-md) var(--ease-out), transform var(--duration-md) var(--ease-out);
+}
+
+.why__visual:hover .why__img-accent {
+  opacity: 0.7;
+  transform: translate(2px, 2px);
+}
+
+.why__badge {
+  position: absolute;
+  bottom: var(--sp-4);
+  left: var(--sp-4);
+  z-index: 2;
+  background: rgba(10, 17, 40, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.why__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00D2FF;
+  box-shadow: 0 0 10px #00D2FF;
+  animation: livePulse 1.8s infinite;
+}
+
+@media (min-width: 768px) {
+  .why__img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .why__img-accent {
+    top: 14px;
+    right: -14px;
+    bottom: -14px;
+    left: 14px;
+  }
+}
+
 .why__right {
   display: flex;
   flex-direction: column;
