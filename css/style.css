@@ -3,6 +3,15 @@
    Design System & Stylesheet
    ═══════════════════════════════════════════════════════ */
 
+/* ─── Brand Font Definition ───────────────────────────── */
+@font-face {
+  font-family: 'Forega Sport';
+  src: url('../assets/fonts/ForegaSportDEMO-Regular.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── Design Tokens ──────────────────────────────────── */
 :root {
   /* Colour Palette — Light Bluish Canvas & Superior Electric Blue (Official ORIGIN Aesthetic) */
@@ -25,8 +34,8 @@
   --card-shadow-hover: 0 16px 40px rgba(0, 80, 220, 0.16);
 
   /* Typography */
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-heading: 'Forega Sport', 'Space Grotesk', sans-serif;
+  --font-body:    'Forega Sport', 'Inter', sans-serif;
 
   /* Spacing scale (4px base) */
   --sp-1:  4px;   --sp-2:  8px;   --sp-3:  12px;
@@ -85,8 +94,9 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
@@ -175,7 +185,7 @@ button {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   margin-bottom: var(--sp-5);
 }
 
@@ -685,7 +695,7 @@ body[data-theme="dark"] .hero__overlay {
   font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 700;
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: var(--sp-8);
@@ -697,11 +707,12 @@ body[data-theme="dark"] .hero__overlay {
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
   color: #CBD5E1;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto var(--sp-10);
-  line-height: 1.7;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
   text-shadow: none;
 }
 
@@ -934,7 +945,7 @@ body[data-theme="dark"] .hero__overlay {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   color: #FFFFFF;
   margin-bottom: var(--sp-1);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
@@ -1019,7 +1030,7 @@ body[data-theme="dark"] .hero__overlay {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   margin-bottom: var(--sp-3);
 }
 
@@ -1087,7 +1098,7 @@ body[data-theme="dark"] .hero__overlay {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
 }
 
@@ -1138,7 +1149,7 @@ body[data-theme="dark"] .hero__overlay {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: var(--sp-3);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
 }
 
 .why__item-content p {
@@ -1260,7 +1271,7 @@ body[data-theme="dark"] .hero__overlay {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
 }
 
 .plan__duration {
@@ -1289,7 +1300,7 @@ body[data-theme="dark"] .hero__overlay {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
   transition: opacity var(--duration-sm) var(--ease-out);
 }
