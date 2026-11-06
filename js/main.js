@@ -6,6 +6,27 @@
 (function () {
   'use strict';
 
+  // ─── Reset Scroll to Start on Page Load / Refresh ────
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Clear any existing anchor hash on reload so browser starts fresh at top
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+
+  // Force scroll position to the top of the page immediately
+  window.scrollTo(0, 0);
+
+  window.addEventListener('pageshow', () => {
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+  });
+
   // ─── DOM References ──────────────────────────────────
   const nav           = document.getElementById('nav');
   const navToggle     = document.getElementById('navToggle');
@@ -127,23 +148,69 @@
     link.addEventListener('click', closeMobileNav);
   });
 
-  // ─── Smooth Scroll for Anchors ───────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (href === '#') return;
+  // ─── Bulletproof Smooth Scroll for In-Page Anchors ───
+  function smoothScrollToSection(target, href) {
+    if (!target) return;
 
-      const target = document.querySelector(href);
-      if (!target) return;
+    closeMobileNav();
 
-      e.preventDefault();
-      closeMobileNav();
-
-      const offset = nav.offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-
-      window.scrollTo({ top, behavior: 'smooth' });
+    // Reveal anim-reveal elements inside target so its bounding box is accurate
+    target.querySelectorAll('.anim-reveal').forEach((el) => {
+      el.classList.add('anim-reveal--visible');
     });
+
+    const getNavOffset = () => {
+      const navEl = document.getElementById('nav');
+      return navEl ? navEl.offsetHeight : 70;
+    };
+
+    const getTargetScrollY = () => {
+      const rect = target.getBoundingClientRect();
+      return window.scrollY + rect.top - getNavOffset();
+    };
+
+    // 1. Native smooth scroll directly to target (respects CSS scroll-margin-top)
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // 2. Active multi-pass alignment:
+    // As lazy images, web fonts, or dynamic content above expand the page during the scroll,
+    // re-check the target position and smoothly guide the scroll so it ALWAYS lands exactly at the contact section.
+    const correctionDelays = [250, 600, 1000];
+    correctionDelays.forEach((delay) => {
+      setTimeout(() => {
+        const offset = getNavOffset();
+        const rect = target.getBoundingClientRect();
+        // If target top deviates from nav offset by more than 20px, realign smoothly
+        if (Math.abs(rect.top - offset) > 20) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, delay);
+    });
+
+    // 3. Update URL hash without causing a default jump
+    if (href && window.history && window.history.pushState) {
+      window.history.pushState(null, '', href);
+    }
+  }
+
+  // Delegated event listener so ALL anchor links (present or dynamic) work
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+
+    // Support both #contact and #enquiry or any section ID
+    let target = document.querySelector(href);
+    if (!target && (href === '#enquiry' || href === '#contact')) {
+      target = document.getElementById('contact') || document.getElementById('enquiry');
+    }
+
+    if (!target) return;
+
+    e.preventDefault();
+    smoothScrollToSection(target, href);
   });
 
   // ─── Hero Load Animation ────────────────────────────

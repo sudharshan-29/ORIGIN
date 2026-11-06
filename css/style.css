@@ -167,7 +167,7 @@ button {
 .section {
   padding: var(--sp-10) 0 var(--sp-16) 0;
   position: relative;
-  scroll-margin-top: var(--nav-height);
+  scroll-margin-top: calc(var(--nav-height) + 16px);
 }
 
 .section-label {
@@ -1969,6 +1969,7 @@ body[data-theme="dark"] .hero__overlay {
   background: #0A1128;
   border: 1px solid var(--border);
   box-shadow: var(--card-shadow);
+  aspect-ratio: 4 / 3;
   transition:
     transform var(--duration-sm) var(--ease-out),
     border-color var(--duration-sm) var(--ease-out),
@@ -1996,10 +1997,12 @@ body[data-theme="dark"] .hero__overlay {
 
 .gallery__item--tall {
   grid-row: span 2;
+  aspect-ratio: 3 / 4;
 }
 
 .gallery__item--wide {
   grid-column: span 2;
+  aspect-ratio: 16 / 9;
 }
 
 
@@ -2085,6 +2088,7 @@ body[data-theme="dark"] .hero__overlay {
    ═══════════════════════════════════════════════════════ */
 .contact {
   background: var(--bg-primary);
+  scroll-margin-top: calc(var(--nav-height) + 16px);
 }
 
 .contact__grid {

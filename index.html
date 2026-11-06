@@ -32,6 +32,14 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="shortcut icon" href="assets/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Force scroll to start of page on refresh/reload -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </head>
 
 <body>
@@ -743,7 +751,7 @@
               </svg>
               Watch Reel
             </a>
-            <a href="#contact" class="btn btn--primary">Book Trainer Consultation</a>
+            <a href="#contact" class="btn btn--primary" id="trainerEnquiryBtn" data-scroll="contact">Book Trainer Consultation</a>
           </div>
         </div>
       </div>
@@ -960,7 +968,8 @@
   <!-- ═══════════════════════════════════════════════ -->
   <!-- CONTACT                                         -->
   <!-- ═══════════════════════════════════════════════ -->
-  <section class="section contact" id="contact">
+  <section class="section contact" id="contact" data-section="contact">
+    <div id="enquiry" style="position: absolute; top: 0; left: 0; height: 0; width: 0; visibility: hidden;" aria-hidden="true"></div>
     <div class="container">
       <div class="contact__grid">
 
