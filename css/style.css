@@ -1162,6 +1162,377 @@ body[data-theme="dark"] .hero__overlay {
 
 
 /* ═══════════════════════════════════════════════════════
+   TRAINERS & ACHIEVEMENTS
+   ═══════════════════════════════════════════════════════ */
+.trainers {
+  background: var(--bg-primary);
+}
+
+/* ─── Metric Counter Badges ─── */
+.trainers__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-12);
+}
+
+.trainers__stat-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--duration-sm) var(--ease-out), border-color var(--duration-sm) var(--ease-out), box-shadow var(--duration-sm) var(--ease-out);
+}
+
+.trainers__stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.trainers__stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-3);
+  border: 1px solid var(--accent-border);
+}
+
+.trainers__stat-val {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+  margin-bottom: var(--sp-1);
+  letter-spacing: -0.02em;
+}
+
+.trainers__stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ─── Trainers Grid & Cards ─── */
+.trainers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+  margin-bottom: var(--sp-16);
+}
+
+.trainer-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-md) var(--ease-out), box-shadow var(--duration-md) var(--ease-out), border-color var(--duration-md) var(--ease-out);
+}
+
+.trainer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent);
+}
+
+.trainer-card__photo-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.trainer-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform var(--duration-lg) var(--ease-out);
+}
+
+.trainer-card:hover .trainer-card__img {
+  transform: scale(1.04);
+}
+
+.trainer-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 17, 40, 0) 45%, rgba(10, 17, 40, 0.72) 100%);
+  pointer-events: none;
+}
+
+.trainer-card__badge {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  background: rgba(0, 102, 255, 0.92);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.trainer-card__content {
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  flex-grow: 1;
+}
+
+.trainer-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.trainer-card__role {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.trainer-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.trainer-tag {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+}
+
+.trainer-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.trainer-card__achievements {
+  margin-top: auto;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+.trainer-achievements__title {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+}
+
+.trainer-achievements__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.trainer-achievements__list li {
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  line-height: 1.45;
+}
+
+.achievement-bullet {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── ORIGIN Hall of Laurels (Achievements Showcase) ─── */
+.achievements-showcase {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-10) var(--sp-8);
+  box-shadow: var(--card-shadow);
+}
+
+.achievements-showcase__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--sp-6);
+}
+
+.achievements-showcase__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin-top: var(--sp-1);
+}
+
+.achievements-showcase__subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.achievements-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-8);
+}
+
+.achievement-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--duration-sm) var(--ease-out), border-color var(--duration-sm) var(--ease-out), box-shadow var(--duration-sm) var(--ease-out);
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.achievement-card__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-4);
+  border: 1px solid var(--accent-border);
+}
+
+.achievement-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.achievement-card__year {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.achievement-card__badge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+}
+
+.achievement-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+.achievement-card__desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: auto;
+}
+
+/* ─── Trainers Consultation Banner ─── */
+.trainers__cta-banner {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6) var(--sp-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-6);
+  box-shadow: var(--card-shadow);
+}
+
+.trainers__cta-text h4 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.trainers__cta-text p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.trainers__cta-action {
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════
    MEMBERSHIP
    ═══════════════════════════════════════════════════════ */
 .membership {
@@ -1954,6 +2325,21 @@ body[data-theme="dark"] .hero__overlay {
   }
 }
 
+/* ─── Tablet Only (768px - 1023px) ───────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .trainers__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trainers__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .achievements-showcase__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ─── Desktop (1024px+) ──────────────────────────────── */
 @media (min-width: 1024px) {
   /* Nav */
@@ -2164,7 +2550,7 @@ body[data-theme="dark"] .hero__overlay {
   }
 
   .section-title {
-    font-size: clamp(2rem, 8vw, 2.75rem);
+    font-size: clamp(1.45rem, 6.5vw, 2.25rem);
   }
 
   .section-desc {
@@ -2339,12 +2725,74 @@ body[data-theme="dark"] .hero__overlay {
     gap: var(--sp-8);
     padding-bottom: var(--sp-8);
   }
+
+  /* Trainers & Achievements Mobile */
+  .trainers__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-8);
+  }
+
+  .trainers__stat-card {
+    padding: var(--sp-4) var(--sp-3);
+  }
+
+  .trainers__stat-val {
+    font-size: 1.85rem;
+  }
+
+  .trainers__stat-label {
+    font-size: 0.6875rem;
+  }
+
+  .trainers__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-10);
+  }
+
+  .trainer-card__photo-box {
+    aspect-ratio: 4 / 3.8;
+  }
+
+  .achievements-showcase {
+    padding: var(--sp-6) var(--sp-4);
+  }
+
+  .achievements-showcase__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-6);
+    padding-bottom: var(--sp-4);
+  }
+
+  .achievements-showcase__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .trainers__cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+  }
+
+  .trainers__cta-action,
+  .trainers__cta-action .btn {
+    width: 100%;
+  }
 }
 
 /* ─── Small Mobile (max 480px) ───────────────────────── */
 @media (max-width: 480px) {
   .hero__title {
     font-size: clamp(1.15rem, 5.8vw, 1.65rem);
+  }
+
+  .trainers__stats {
+    grid-template-columns: 1fr;
   }
 
   .membership__grid {
