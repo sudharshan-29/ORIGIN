@@ -1,0 +1,12 @@
+{
+  "name": "origin-strength",
+  "version": "1.0.0",
+  "description": "ORIGIN Strength & Performance — Gym Portfolio Website",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
