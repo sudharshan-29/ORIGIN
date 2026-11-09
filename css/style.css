@@ -732,7 +732,7 @@ body[data-theme="dark"] .hero__overlay {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(3.2rem, 9.2vw, 7.2rem);
+  font-size: clamp(3rem, 8.4vw, 6.8rem);
   font-weight: 700;
   line-height: 0.98;
   letter-spacing: 0.02em;
