@@ -111,7 +111,7 @@
     <div class="hero__bg">
       <img src="assets/images/hero-video-poster.jpg" alt="ORIGIN athlete training in gym" class="hero__bg-img"
         loading="eager" fetchpriority="high">
-      <video class="hero__bg-video" autoplay loop muted playsinline poster="assets/images/hero-video-poster.jpg"
+      <video class="hero__bg-video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/hero-video-poster.jpg"
         aria-hidden="true">
         <source src="assets/videos/clip-hero.mp4" type="video/mp4">
       </video>
@@ -164,7 +164,7 @@
           <a href="https://www.instagram.com/reel/DfSZTyDyZ9I/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ=="
             target="_blank" rel="noopener noreferrer" class="about__img-wrapper"
             aria-label="Watch ORIGIN Gym Reel on Instagram">
-            <video class="about__video" autoplay loop muted playsinline poster="assets/images/video-poster.jpg"
+            <video class="about__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/video-poster.jpg"
               aria-label="ORIGIN training floor in action">
               <source src="assets/videos/clip-pullup.mp4" type="video/mp4">
               <img src="assets/images/about-img.jpg" alt="Athlete training inside the ORIGIN gym" class="about__img">
@@ -266,7 +266,7 @@
           <div class="facility-card__img-wrap">
             <img src="assets/images/facility-strength.jpg" alt="Strength training area with barbells and squat racks"
               class="facility-card__img" loading="lazy">
-            <video class="facility-card__video" autoplay loop muted playsinline
+            <video class="facility-card__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto"
               poster="assets/images/facility-strength.jpg" aria-label="Squat and leg press lifting action">
               <source src="assets/videos/clip-squat.mp4" type="video/mp4">
             </video>
@@ -360,7 +360,7 @@
           <div class="program__img-wrap">
             <img src="assets/images/program-strength.jpg"
               alt="Athlete performing deadlift for strength and conditioning" class="program__img" loading="lazy">
-            <video class="program__video" autoplay loop muted playsinline poster="assets/images/program-strength.jpg"
+            <video class="program__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/program-strength.jpg"
               aria-label="Athletic overhead press training">
               <source src="assets/videos/clip-press.mp4" type="video/mp4">
             </video>
@@ -542,6 +542,7 @@
       </div>
 
       <!-- Trainers Grid -->
+      <p class="mobile-scroll-cue trainers__scroll-cue" aria-hidden="true">Scroll to see trainers <span>→</span></p>
       <div class="trainers__grid">
         <!-- Trainer 1 -->
         <article class="trainer-card anim-reveal">
@@ -705,6 +706,7 @@
             achieved under ORIGIN.</p>
         </div>
 
+        <p class="mobile-scroll-cue achievements__scroll-cue" aria-hidden="true">Scroll to see achievements <span>→</span></p>
         <div class="achievements-showcase__grid">
           <div class="achievement-card">
             <div class="achievement-card__icon-wrap">
@@ -831,6 +833,7 @@
         </button>
       </div>
       <p class="membership__subnote anim-reveal" id="membershipSubnote">Standard individual access to all 3 floors.</p>
+      <p class="mobile-scroll-cue membership__scroll-cue" aria-hidden="true">Scroll to compare plans <span>→</span></p>
 
       <div class="membership__grid">
 

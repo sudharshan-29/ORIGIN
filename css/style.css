@@ -258,6 +258,44 @@ button {
   margin-bottom: var(--sp-12);
 }
 
+/* ─── Mobile Scroll Cue ─────────────────────────────── */
+.mobile-scroll-cue {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-3);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-scroll-cue span {
+  display: inline-block;
+  font-size: 0.875rem;
+  animation: mobileCueSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes mobileCueSlide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.mobile-scroll-cue--dismissed {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-4px) !important;
+}
+
 /* ─── Buttons ────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -3516,6 +3554,10 @@ body[data-theme="dark"] .careers__status--error {
     line-height: 1.25;
   }
 
+  .mobile-scroll-cue {
+    display: inline-flex;
+  }
+
   .membership__grid,
   .trainers__grid,
   .achievements-showcase__grid {
@@ -3537,12 +3579,25 @@ body[data-theme="dark"] .careers__status--error {
     display: none;
   }
 
-  .membership__grid > .plan,
-  .trainers__grid > .trainer-card,
-  .achievements-showcase__grid > .achievement-card {
-    flex: 0 0 88%;
+  .membership__grid > .plan {
+    flex: 0 0 84%;
     min-width: 0;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .trainers__grid > .trainer-card {
+    flex: 0 0 78%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .achievements-showcase__grid > .achievement-card {
+    flex: 0 0 72%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .membership__grid .plan {
@@ -3927,44 +3982,203 @@ body[data-theme="dark"] .careers__status--error {
   .trainers__stats {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-3);
-    margin-bottom: var(--sp-8);
+    margin-bottom: var(--sp-6);
   }
 
   .trainers__stat-card {
-    padding: var(--sp-4) var(--sp-3);
+    padding: var(--sp-3) var(--sp-3);
+  }
+
+  .trainers__stat-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: var(--sp-2);
   }
 
   .trainers__stat-val {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 
   .trainers__stat-label {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
   }
 
   .trainers__grid {
-    margin-bottom: var(--sp-8);
+    margin-bottom: var(--sp-6);
+    gap: var(--sp-3);
+  }
+
+  /* Compact shorter Trainer Card on mobile */
+  .trainer-card {
+    border-radius: var(--radius-md);
   }
 
   .trainer-card__photo-box {
-    aspect-ratio: 4 / 3.8;
+    aspect-ratio: 16 / 9;
+    height: 135px;
+    max-height: 135px;
   }
 
+  .trainer-card__photo-placeholder {
+    width: calc(100% - var(--sp-4));
+    height: calc(100% - var(--sp-4));
+    gap: var(--sp-2);
+  }
+
+  .trainer-card__placeholder-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .trainer-card__placeholder-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .trainer-card__placeholder-text {
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+  }
+
+  .trainer-card__badge {
+    top: var(--sp-2);
+    right: var(--sp-2);
+    font-size: 0.5875rem;
+    padding: 2px 7px;
+  }
+
+  .trainer-card__content {
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+
+  .trainer-card__header {
+    margin-bottom: 2px;
+  }
+
+  .trainer-card__name {
+    font-size: 1.0625rem;
+    margin-bottom: 1px;
+  }
+
+  .trainer-card__role {
+    font-size: 0.75rem;
+  }
+
+  .trainer-card__tags {
+    gap: var(--sp-1);
+    margin-bottom: var(--sp-2);
+  }
+
+  .trainer-tag {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+
+  .trainer-card__desc {
+    font-size: 0.78125rem;
+    line-height: 1.4;
+    margin-bottom: var(--sp-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .trainer-card__achievements {
+    padding-top: var(--sp-2);
+    border-top: 1px solid var(--border);
+  }
+
+  .trainer-achievements__title {
+    font-size: 0.625rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .trainer-achievements__list {
+    gap: 3px;
+  }
+
+  .trainer-achievements__list li {
+    font-size: 0.71875rem;
+    line-height: 1.35;
+  }
+
+  .achievement-bullet {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Compact shorter Achievements Showcase & Cards on mobile */
   .achievements-showcase {
-    padding: var(--sp-5) var(--sp-4);
+    padding: var(--sp-4) var(--sp-3);
   }
 
   .achievements-showcase__header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--sp-2);
-    margin-bottom: var(--sp-6);
-    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-4);
+    padding-bottom: var(--sp-3);
+  }
+
+  .achievements-showcase__title {
+    font-size: 1.35rem;
+  }
+
+  .achievements-showcase__subtitle {
+    font-size: 0.8125rem;
+    line-height: 1.45;
   }
 
   .achievements-showcase__grid {
-    margin-bottom: var(--sp-6);
+    margin-bottom: var(--sp-4);
+    gap: var(--sp-3);
+  }
+
+  .achievement-card {
+    padding: var(--sp-3) var(--sp-3);
+    min-height: 120px;
+  }
+
+  .achievement-card__icon-wrap {
+    width: 32px;
+    height: 32px;
+    margin-bottom: var(--sp-2);
+    border-radius: var(--radius-sm);
+  }
+
+  .achievement-card__icon-wrap svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .achievement-card__meta {
+    margin-bottom: 2px;
+  }
+
+  .achievement-card__year {
+    font-size: 0.5875rem;
+  }
+
+  .achievement-card__badge {
+    font-size: 0.53125rem;
+    padding: 1px 5px;
+  }
+
+  .achievement-card__name {
+    font-size: 0.9375rem;
+    margin-bottom: 2px;
+  }
+
+  .achievement-card__desc {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .trainers__cta-banner {

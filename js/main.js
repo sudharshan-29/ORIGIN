@@ -542,13 +542,115 @@
 
   // ─── Ambient Video Autoplay Guarantee ────────────────
   const ambientVideos = document.querySelectorAll('video[autoplay]');
-  ambientVideos.forEach((vid) => {
+  let hasPausedAmbientVideos = true;
+
+  function playAmbientVideo(vid) {
+    if (!vid) return;
     vid.muted = true;
+    vid.defaultMuted = true;
+    vid.playsInline = true;
+    vid.setAttribute('muted', '');
     vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', '');
+    vid.setAttribute('x5-playsinline', '');
+
     const p = vid.play();
     if (p !== undefined) {
-      p.catch(() => {});
+      p.then(() => {
+        vid.classList.add('video--playing');
+        // Update paused state flag
+        hasPausedAmbientVideos = Array.from(ambientVideos).some((v) => v.paused);
+      }).catch(() => {
+        hasPausedAmbientVideos = true;
+      });
     }
+  }
+
+  function resumeAllPausedAmbientVideos() {
+    let anyPaused = false;
+    ambientVideos.forEach((vid) => {
+      if (vid.paused) {
+        anyPaused = true;
+        playAmbientVideo(vid);
+      }
+    });
+    hasPausedAmbientVideos = anyPaused;
+  }
+
+  // Fallback interaction triggers: touch, scroll, pointer, click, key
+  const ambientUnlockEvents = ['touchstart', 'touchend', 'pointerdown', 'mousedown', 'keydown', 'scroll'];
+  const handleAmbientInteraction = () => {
+    if (hasPausedAmbientVideos) {
+      resumeAllPausedAmbientVideos();
+    }
+  };
+
+  ambientUnlockEvents.forEach((evt) => {
+    window.addEventListener(evt, handleAmbientInteraction, { passive: true });
+    document.addEventListener(evt, handleAmbientInteraction, { passive: true });
+  });
+
+  ambientVideos.forEach((vid) => {
+    // Media lifecycle hooks
+    vid.addEventListener('canplay', () => {
+      if (vid.paused) playAmbientVideo(vid);
+    });
+
+    vid.addEventListener('loadeddata', () => {
+      if (vid.paused) playAmbientVideo(vid);
+    });
+
+    vid.addEventListener('pause', () => {
+      hasPausedAmbientVideos = true;
+    });
+
+    vid.addEventListener('playing', () => {
+      vid.classList.add('video--playing');
+      hasPausedAmbientVideos = Array.from(ambientVideos).some((v) => v.paused);
+    });
+
+    vid.addEventListener('ended', () => {
+      vid.currentTime = 0;
+      playAmbientVideo(vid);
+    });
+
+    // Immediate initial play attempt
+    playAmbientVideo(vid);
+  });
+
+  // IntersectionObserver for ambient videos
+  if ('IntersectionObserver' in window) {
+    const ambientObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const vid = entry.target;
+        if (entry.isIntersecting) {
+          if (vid.paused) playAmbientVideo(vid);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '120px 0px 120px 0px' });
+
+    ambientVideos.forEach((vid) => ambientObserver.observe(vid));
+  }
+
+  // Resume playback on tab return / page show
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      ambientVideos.forEach((vid) => {
+        if (vid.paused) playAmbientVideo(vid);
+      });
+    }
+  });
+
+  window.addEventListener('pageshow', () => {
+    ambientVideos.forEach((vid) => {
+      if (vid.paused) playAmbientVideo(vid);
+    });
+  });
+
+  window.addEventListener('focus', () => {
+    ambientVideos.forEach((vid) => {
+      if (vid.paused) playAmbientVideo(vid);
+    });
   });
 
   // ─── Video Reel Modal ────────────────────────────────
@@ -674,6 +776,21 @@
       btn.style.setProperty('--gx', '50%');
       btn.style.setProperty('--gy', '50%');
     });
+  });
+
+  // ─── Mobile Scroll Rail Cue Dismissal ────────────────
+  const mobileScrollRails = document.querySelectorAll(
+    '.trainers__grid, .achievements-showcase__grid, .membership__grid'
+  );
+
+  mobileScrollRails.forEach((rail) => {
+    rail.addEventListener('scroll', () => {
+      if (rail.scrollLeft < 15) return;
+      const prev = rail.previousElementSibling;
+      if (prev && prev.classList.contains('mobile-scroll-cue')) {
+        prev.classList.add('mobile-scroll-cue--dismissed');
+      }
+    }, { passive: true });
   });
 
 })();
