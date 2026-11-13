@@ -70,7 +70,7 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-pill: 9999px;
-  --btn-radius: 9999px;
+  --btn-radius: 8px;
 
   /* Modern Athletic Blue Gradients */
   --accent-gradient: linear-gradient(135deg, #0A58FF 0%, #0066FF 45%, #00D2FF 100%);
@@ -305,9 +305,9 @@ button {
   font-family: var(--font-heading);
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: var(--btn-radius);
   position: relative;
   isolation: isolate;
@@ -324,7 +324,7 @@ button {
 .btn > *,
 .nav__cta > * {
   position: relative;
-  z-index: 3;
+  z-index: 2;
 }
 
 .btn:hover {
@@ -332,7 +332,7 @@ button {
 }
 
 .btn:active {
-  transform: scale(0.98) translateY(1px);
+  transform: translateY(0);
 }
 
 .btn__arrow {
@@ -343,44 +343,52 @@ button {
   transform: translateX(4px);
 }
 
-/* ─── Modern Primary Pill Buttons (Clean & Professional) ─ */
+/* ─── Athletic Primary Action Buttons (Clean & Human-Crafted) ─ */
 .btn--primary,
 .btn--whatsapp {
   background: var(--accent);
   color: #ffffff;
   font-weight: 600;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.12);
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0, 48, 140, 0.16);
 }
 
 .btn--primary:hover,
 .btn--whatsapp:hover {
   background: var(--accent-dim);
+  border-color: var(--accent-dim);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 48, 140, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 48, 140, 0.24);
   transform: translateY(-2px);
 }
 
 .btn--primary:active,
 .btn--whatsapp:active {
   background: var(--accent-dim);
-  transform: scale(0.98) translateY(1px);
-  box-shadow: 0 1px 4px rgba(0, 48, 140, 0.16);
+  border-color: var(--accent-dim);
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 48, 140, 0.2);
 }
 
 .btn--outline {
-  background: var(--bg-elevated);
+  background: transparent;
   color: var(--text-primary);
-  border: 1.5px solid var(--border-light);
+  border: 1.5px solid var(--border);
   border-radius: var(--btn-radius);
-  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.05);
+  box-shadow: none;
 }
 
 .btn--outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--accent-soft);
-  box-shadow: 0 4px 18px rgba(0, 102, 255, 0.18);
+  background: rgba(0, 102, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn--outline:active {
+  transform: translateY(0);
+  background: rgba(0, 102, 255, 0.08);
 }
 
 .btn--full {
@@ -388,34 +396,40 @@ button {
 }
 
 .btn--instagram {
-  background: var(--bg-elevated);
+  background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.05);
+  border: 1.5px solid var(--border);
+  box-shadow: none;
 }
 
 .btn--instagram:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: rgba(0, 102, 255, 0.05);
-  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .btn--reel {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn--reel:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #FFFFFF;
-  box-shadow: 0 6px 24px var(--accent-glow);
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #0A1128;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
+}
+
+.btn--reel:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .btn__play-icon {
@@ -1017,117 +1031,49 @@ body[data-theme="dark"] .hero__overlay {
 .js-ready .hero--loaded .hero__subtitle { transition-delay: 0.30s; }
 .js-ready .hero--loaded .hero__ctas { transition-delay: 0.38s; }
 
-/* ─── Jitter Interactive Button Glow: Hero Primary CTA ── */
+/* ─── Hero Action Buttons (Refined Athletic Craft) ─────── */
 .hero .btn--primary {
-  background: var(--accent-gradient);
-  position: relative;
-  isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    0 4px 18px rgba(0, 102, 255, 0.35);
-}
-
-/* Ambient Outer Aura */
-.hero .btn--primary::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background: radial-gradient(
-    circle at var(--gx, 50%) var(--gy, 50%),
-    rgba(0, 210, 255, 0.95) 0%,
-    rgba(10, 88, 255, 0.75) 45%,
-    rgba(0, 102, 255, 0) 75%
-  );
-  filter: blur(14px);
-  opacity: 0.7;
-  z-index: -1;
-  pointer-events: none;
-  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
-  animation: jitterAmbientPulse 3.5s ease-in-out infinite alternate;
-}
-
-@keyframes jitterAmbientPulse {
-  0% {
-    filter: blur(12px);
-    opacity: 0.6;
-    transform: scale(0.98);
-  }
-  50% {
-    filter: blur(18px);
-    opacity: 0.92;
-    transform: scale(1.04);
-  }
-  100% {
-    filter: blur(13px);
-    opacity: 0.65;
-    transform: scale(1);
-  }
-}
-
-/* Inner Spotlight Flare (Follows cursor coordinates exactly) */
-.hero .btn--primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    circle 85px at var(--gx, 50%) var(--gy, 50%),
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(186, 242, 255, 0.45) 35%,
-    rgba(0, 102, 255, 0) 72%
-  );
-  opacity: 0.8;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 2;
-  transition: opacity 0.25s ease;
+  background: var(--accent);
+  color: #ffffff;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 3px 10px rgba(0, 48, 140, 0.24);
 }
 
 .hero .btn--primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.7),
-    0 8px 30px rgba(0, 102, 255, 0.5),
-    0 0 35px rgba(0, 210, 255, 0.5);
-  border-color: rgba(255, 255, 255, 0.55);
-}
-
-.hero .btn--primary:hover::before {
-  opacity: 1;
-  filter: blur(20px);
-  transform: scale(1.08);
-}
-
-.hero .btn--primary:hover::after {
-  opacity: 1;
+  background: var(--accent-dim);
+  border-color: var(--accent-dim);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 48, 140, 0.32);
+  transform: translateY(-2px);
 }
 
 .hero .btn--primary:active {
-  transform: translateY(1px) scale(0.97);
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.25),
-    0 2px 10px rgba(0, 102, 255, 0.4),
-    0 0 45px rgba(0, 210, 255, 0.85);
+  background: var(--accent-dim);
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 48, 140, 0.25);
 }
 
 .hero .btn--outline {
   background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: #FFFFFF;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--btn-radius);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .hero .btn--outline:hover {
-  border-color: #00D2FF;
-  color: #FFFFFF;
-  background: rgba(0, 102, 255, 0.18);
-  box-shadow: 0 6px 24px rgba(0, 102, 255, 0.38), 0 0 25px rgba(0, 210, 255, 0.25);
-  transform: translateY(-2px) scale(1.02);
+  background: #FFFFFF;
+  color: #0A1128;
+  border-color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.hero .btn--outline:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .hero__ctas {
@@ -1288,9 +1234,9 @@ body[data-theme="dark"] .hero__overlay {
   bottom: var(--sp-4);
   right: var(--sp-4);
   z-index: 2;
-  background: var(--accent-gradient);
+  background: var(--accent);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid transparent;
   border-radius: var(--btn-radius);
   padding: 10px 18px;
   font-family: var(--font-heading);
@@ -1302,15 +1248,14 @@ body[data-theme="dark"] .hero__overlay {
   display: flex;
   align-items: center;
   gap: 8px;
-  backdrop-filter: blur(8px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 18px rgba(0, 102, 255, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 48, 140, 0.2);
   transition: all var(--duration-sm) var(--ease-out);
 }
 
 .about__video-btn:hover {
-  background: var(--accent-gradient-hover);
+  background: var(--accent-dim);
   transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 6px 24px rgba(0, 102, 255, 0.55);
+  box-shadow: 0 4px 14px rgba(0, 48, 140, 0.28);
 }
 
 .about__img-accent {
@@ -3712,7 +3657,7 @@ body[data-theme="dark"] .careers__status--error {
     min-height: 42px;
     padding: var(--sp-2) var(--sp-4);
     font-size: 0.8125rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--btn-radius);
   }
 
   .mobile-nav {
@@ -4109,7 +4054,7 @@ body[data-theme="dark"] .careers__status--error {
     min-height: 42px;
     padding: 10px 14px;
     font-size: 0.8125rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--btn-radius);
     line-height: 1.35;
   }
 
@@ -4127,7 +4072,7 @@ body[data-theme="dark"] .careers__status--error {
     min-height: 40px;
     font-size: 0.78125rem;
     padding: 8px 14px;
-    border-radius: var(--radius-sm);
+    border-radius: var(--btn-radius);
     line-height: 1.35;
   }
 
@@ -4188,7 +4133,7 @@ body[data-theme="dark"] .careers__status--error {
     font-size: 0.8125rem;
     min-height: 42px;
     line-height: 1.35;
-    border-radius: var(--radius-sm);
+    border-radius: var(--btn-radius);
   }
 
   .careers__note {

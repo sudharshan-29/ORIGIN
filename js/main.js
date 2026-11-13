@@ -760,23 +760,6 @@
     }
   });
 
-  // ─── Jitter Interactive Button Glow (Spotlight Tracker: Hero CTA) ──
-  const interactiveGlowButtons = document.querySelectorAll('.hero .btn--primary');
-
-  interactiveGlowButtons.forEach((btn) => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      btn.style.setProperty('--gx', `${x.toFixed(1)}%`);
-      btn.style.setProperty('--gy', `${y.toFixed(1)}%`);
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      btn.style.setProperty('--gx', '50%');
-      btn.style.setProperty('--gy', '50%');
-    });
-  });
 
   // ─── Mobile Scroll Rail Cue Dismissal ────────────────
   const mobileScrollRails = document.querySelectorAll(
