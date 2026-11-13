@@ -125,21 +125,25 @@ body {
 }
 
 .skip-link {
-  position: fixed;
-  top: -48px;
-  left: var(--sp-4);
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
   z-index: 2000;
   padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--radius-sm);
+  border-radius: var(--btn-radius);
   background: var(--accent);
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: transform var(--duration-sm) var(--ease-out);
+  text-decoration: none;
 }
 
+.skip-link:focus,
 .skip-link:focus-visible {
+  position: fixed;
   top: var(--sp-4);
+  left: var(--sp-4);
+  z-index: 9999;
 }
 
 /* Subtle noise overlay for premium texture */
@@ -3291,7 +3295,7 @@ body[data-theme="dark"] .careers__status--error {
 /* ─── Mobile (up to 767px) ───────────────────────────── */
 @media (max-width: 767px) {
   :root {
-    --container-pad: 20px;
+    --container-pad: 16px;
     --nav-height: 104px;
   }
 
@@ -3332,7 +3336,7 @@ body[data-theme="dark"] .careers__status--error {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: 58px 46px;
-    padding: 0 16px;
+    padding: 0 var(--container-pad);
   }
 
   .nav__logo {
@@ -3559,11 +3563,21 @@ body[data-theme="dark"] .careers__status--error {
     gap: var(--sp-3);
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    padding: var(--sp-2) 0 var(--sp-3);
-    margin: 0;
+    padding: var(--sp-2) var(--container-pad) var(--sp-3);
+    margin: 0 calc(-1 * var(--container-pad));
+    scroll-padding-left: var(--container-pad);
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .membership__grid::after,
+  .trainers__grid::after,
+  .achievements-showcase__grid::after {
+    content: '';
+    flex: 0 0 1px;
+    margin-right: -1px;
+    padding-right: var(--container-pad);
   }
 
   .membership__grid::-webkit-scrollbar,
@@ -3679,7 +3693,7 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .hero__content {
-    padding: calc(var(--nav-height) + var(--sp-4)) var(--sp-4) calc(var(--sp-14) + var(--sp-6));
+    padding: calc(var(--nav-height) + var(--sp-4)) var(--container-pad) calc(var(--sp-14) + var(--sp-6));
     max-width: 100%;
   }
 
@@ -4031,16 +4045,23 @@ body[data-theme="dark"] .careers__status--error {
 
   .contact__detail strong {
     font-size: 0.8125rem;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
     display: block;
+  }
+
+  .contact__detail > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
   }
 
   .contact__detail span,
   .contact__detail a {
     font-size: 0.78125rem;
-    line-height: 1.35;
-    min-height: 24px;
-    display: inline-flex;
+    line-height: 1.4;
+    min-height: 22px;
+    display: flex;
     align-items: center;
   }
 
@@ -4176,19 +4197,24 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .footer {
-    padding-top: var(--sp-12);
-  }
-
-  .footer__grid {
-    gap: var(--sp-8);
+    padding-top: var(--sp-8);
     padding-bottom: var(--sp-8);
   }
 
+  .footer__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-6) var(--sp-4);
+    padding-bottom: var(--sp-6);
+  }
+
   .footer__brand {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: var(--sp-2);
   }
 
   .footer__logo-wrap {
@@ -4197,37 +4223,83 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .footer__logo-img {
-    max-width: 170px;
+    max-width: 140px;
+  }
+
+  .footer__tagline {
+    font-size: 0.8125rem;
+    margin: var(--sp-2) 0 var(--sp-3);
+    text-align: center;
   }
 
   .footer__social {
     justify-content: center;
+    gap: var(--sp-2);
   }
 
-  .footer__links,
-  .footer__contact,
-  .footer__bottom {
-    text-align: center;
+  .footer__links {
+    text-align: left;
+  }
+
+  .footer__heading {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-2);
+    color: var(--text-primary);
   }
 
   .footer__links ul {
-    align-items: center;
-  }
-
-  .footer__contact a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 var(--sp-2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
   }
 
   .footer__links a {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 var(--sp-2);
+    min-height: 32px;
+    padding: 3px 0;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.35;
+  }
+
+  .footer__contact {
+    grid-column: 1 / -1;
+    text-align: left;
+    background: var(--bg-secondary);
+    padding: var(--sp-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+  }
+
+  .footer__contact p {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    margin-bottom: var(--sp-1);
+    color: var(--text-secondary);
+  }
+
+  .footer__contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 2px 0;
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .footer__bottom {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-muted);
   }
 
   /* Trainers & Achievements Mobile */
