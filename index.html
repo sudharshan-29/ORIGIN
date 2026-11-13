@@ -20,7 +20,7 @@
 
   <!-- Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- Stylesheets -->
@@ -39,6 +39,7 @@
 </head>
 
 <body>
+  <a href="#about" class="skip-link">Skip to content</a>
 
   <!-- ═══════════════════════════════════════════════ -->
   <!-- NAVIGATION                                      -->
@@ -120,8 +121,11 @@
     <div class="hero__content">
       <p class="hero__label anim-reveal">ORIGIN STRENGTH &amp; PERFORMANCE</p>
       <h1 class="hero__title anim-reveal">
-        <span class="hero__title-line">BUILT</span>
-        <span class="hero__title-line">FROM <span class="text-accent">MOVEMENT.</span></span>
+        <span class="hero__title-line hero__title-line--built">BUILT</span>
+        <span class="hero__title-line hero__title-line--from">
+          <span class="hero__text-white">FROM</span>
+          <span class="text-accent">MOVEMENT.</span>
+        </span>
       </h1>
       <p class="hero__subtitle anim-reveal">
         Every journey has an origin. Welcome to Ambattur, Chennai's premier 3-floor destination for strength, cardio,
@@ -467,9 +471,9 @@
   <!-- ═══════════════════════════════════════════════ -->
   <!-- BRAND STATEMENT                                 -->
   <!-- ═══════════════════════════════════════════════ -->
-  <section class="brand-statement">
+  <section class="brand-statement" id="taglineReveal">
     <div class="container">
-      <blockquote class="brand-statement__quote anim-reveal">
+      <blockquote class="brand-statement__quote">
         <p>"Every journey has an origin.<br><span class="text-accent">Make yours count.</span>"</p>
       </blockquote>
     </div>
@@ -1151,7 +1155,7 @@
             apply to join our team.</p>
         </div>
 
-        <form class="careers__form anim-reveal" id="careersForm">
+        <form class="careers__form anim-reveal" id="careersForm" novalidate>
           <div class="careers__field">
             <label for="applicantName">Full name</label>
             <input id="applicantName" name="name" type="text" autocomplete="name" required>
@@ -1181,6 +1185,7 @@
               required></textarea>
           </div>
           <button class="btn btn--primary careers__submit" type="submit">Continue to Email Application</button>
+          <p class="careers__status" id="careersStatus" role="status" aria-live="polite" hidden></p>
           <p class="careers__note">Your email app will open with your application ready to send. This site does not
             store your details.</p>
         </form>
@@ -1201,7 +1206,7 @@
             <img src="assets/images/logo.png" alt="ORIGIN Strength and Performance" class="footer__logo-img"
               id="footerLogo">
           </a>
-          <p class="footer__tagline">ORIGIN STRENGTH &amp; PERFORMANCE<br>Every journey has an origin. Make yours count.
+          <p class="footer__tagline"><span class="footer__tagline-brand">ORIGIN STRENGTH &amp; PERFORMANCE</span><br>Every journey has an origin. Make yours count.
           </p>
           <div class="footer__social">
             <a href="https://www.instagram.com/origin_strengthandperformance/" class="footer__social-link"

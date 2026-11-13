@@ -80,9 +80,46 @@
 
     // ─── Coaching Application ────────────────────────────
     const careersForm = document.getElementById('careersForm');
+    const careersStatus = document.getElementById('careersStatus');
 
     careersForm.addEventListener('submit', (event) => {
       event.preventDefault();
+
+      const name = careersForm.querySelector('#applicantName')?.value.trim();
+      const email = careersForm.querySelector('#applicantEmail')?.value.trim();
+      const role = careersForm.querySelector('#applicantRole')?.value;
+      const exp = careersForm.querySelector('#applicantExperience')?.value.trim();
+
+      const showStatus = (msg, isError) => {
+        if (!careersStatus) return;
+        careersStatus.textContent = msg;
+        careersStatus.classList.toggle('careers__status--error', Boolean(isError));
+        careersStatus.hidden = false;
+      };
+
+      if (!name) {
+        showStatus('Please enter your full name.', true);
+        careersForm.querySelector('#applicantName')?.focus();
+        return;
+      }
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showStatus('Please enter a valid email address.', true);
+        careersForm.querySelector('#applicantEmail')?.focus();
+        return;
+      }
+
+      if (!role) {
+        showStatus('Please select a coaching role.', true);
+        careersForm.querySelector('#applicantRole')?.focus();
+        return;
+      }
+
+      if (!exp) {
+        showStatus('Please share a brief summary of your qualifications.', true);
+        careersForm.querySelector('#applicantExperience')?.focus();
+        return;
+      }
 
       const application = new FormData(careersForm);
       const body = [
@@ -94,6 +131,8 @@
         'Qualifications and experience:',
         application.get('experience'),
       ].join('\n');
+
+      showStatus('Application drafted. Opening your email client.', false);
 
       window.location.href =
         `mailto:info@originfitnessclub.com?subject=${encodeURIComponent('ORIGIN Coaching Application')}&body=${encodeURIComponent(body)}`;
@@ -213,12 +252,7 @@
     smoothScrollToSection(target, href);
   });
 
-  // ─── Hero Load Animation ────────────────────────────
-  window.addEventListener('load', () => {
-    hero.classList.add('hero--loaded');
-  });
-
-  // ─── Scroll Reveal Animations ────────────────────────
+  // ─── Scroll Reveal & Hero Load Animations ────────────
   const prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
   ).matches;
@@ -228,6 +262,13 @@
 
     // Add js-ready class so CSS only animates when JS is ready
     document.documentElement.classList.add('js-ready');
+
+    // Trigger hero entrance immediately after first paint
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (hero) hero.classList.add('hero--loaded');
+      });
+    });
 
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -239,24 +280,96 @@
         });
       },
       {
-        threshold: 0,
-        rootMargin: '250px 0px 100px 0px',
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
     revealElements.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 250) {
+      if (rect.top < window.innerHeight + 100) {
         el.classList.add('anim-reveal--visible');
       } else {
         revealObserver.observe(el);
       }
     });
   } else {
-    // If reduced motion, show everything immediately
+    if (hero) hero.classList.add('hero--loaded');
     document.querySelectorAll('.anim-reveal').forEach((el) => {
       el.classList.add('anim-reveal--visible');
     });
+  }
+
+  // ─── Tagline Word-by-Word Scroll Reveal (B11) ────────
+  const taglineSection = document.getElementById('taglineReveal');
+  if (taglineSection) {
+    const quoteParagraph = taglineSection.querySelector('.brand-statement__quote p');
+    if (quoteParagraph) {
+      const words = [];
+      const tokenizeNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const parts = node.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          parts.forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+            } else {
+              const span = document.createElement('span');
+              span.className = 'tagline-word';
+              span.textContent = part;
+              words.push(span);
+              frag.appendChild(span);
+            }
+          });
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.tagName === 'BR') return;
+          Array.from(node.childNodes).forEach(tokenizeNode);
+        }
+      };
+
+      Array.from(quoteParagraph.childNodes).forEach(tokenizeNode);
+
+      if (prefersReducedMotion) {
+        words.forEach((w) => w.classList.add('tagline-word--revealed'));
+      } else {
+        let revealedCount = 0;
+        let rafPending = false;
+
+        const updateTaglineWords = () => {
+          rafPending = false;
+          const rect = taglineSection.getBoundingClientRect();
+          const vh = window.innerHeight;
+          const startY = vh * 0.85;
+          const endY = vh * 0.52;
+          const centerY = rect.top + rect.height * 0.5;
+          const progress = Math.min(1, Math.max(0, (startY - centerY) / (startY - endY)));
+          const targetCount = Math.ceil(progress * words.length);
+
+          if (targetCount > revealedCount) {
+            for (let i = revealedCount; i < targetCount; i++) {
+              words[i].classList.add('tagline-word--revealed');
+            }
+            revealedCount = targetCount;
+          }
+
+          if (revealedCount >= words.length) {
+            window.removeEventListener('scroll', onScrollTagline);
+          }
+        };
+
+        const onScrollTagline = () => {
+          if (!rafPending) {
+            rafPending = true;
+            requestAnimationFrame(updateTaglineWords);
+          }
+        };
+
+        window.addEventListener('scroll', onScrollTagline, { passive: true });
+        requestAnimationFrame(updateTaglineWords);
+      }
+    }
   }
 
   // ─── Gallery Lightbox ────────────────────────────────
@@ -543,6 +656,24 @@
     if (e.key === 'Escape' && videoModal && videoModal.classList.contains('video-modal--active')) {
       closeVideoModal();
     }
+  });
+
+  // ─── Jitter Interactive Button Glow (Spotlight Tracker: Hero CTA) ──
+  const interactiveGlowButtons = document.querySelectorAll('.hero .btn--primary');
+
+  interactiveGlowButtons.forEach((btn) => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      btn.style.setProperty('--gx', `${x.toFixed(1)}%`);
+      btn.style.setProperty('--gy', `${y.toFixed(1)}%`);
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.setProperty('--gx', '50%');
+      btn.style.setProperty('--gy', '50%');
+    });
   });
 
 })();
