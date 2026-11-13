@@ -3519,11 +3519,11 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .section {
-    padding: var(--sp-8) 0 var(--sp-12) 0;
+    padding: var(--sp-8) 0 var(--sp-10) 0;
   }
 
   .section-header {
-    margin-bottom: var(--sp-8);
+    margin-bottom: var(--sp-5);
   }
 
   .section-title {
@@ -3531,7 +3531,8 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .section-desc {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   .membership__tabs {
@@ -3545,8 +3546,8 @@ body[data-theme="dark"] .careers__status--error {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    padding: var(--sp-3) var(--sp-2);
+    min-height: 40px;
+    padding: var(--sp-2) var(--sp-2);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -3563,10 +3564,10 @@ body[data-theme="dark"] .careers__status--error {
   .achievements-showcase__grid {
     display: flex;
     align-items: stretch;
-    gap: var(--sp-4);
+    gap: var(--sp-3);
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    padding: var(--sp-2) 0 var(--sp-4);
+    padding: var(--sp-2) 0 var(--sp-3);
     margin: 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -3580,7 +3581,7 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .membership__grid > .plan {
-    flex: 0 0 84%;
+    flex: 0 0 74%;
     min-width: 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -3600,23 +3601,71 @@ body[data-theme="dark"] .careers__status--error {
     scroll-snap-stop: always;
   }
 
-  .membership__grid .plan {
-    padding-top: var(--sp-5);
-    padding-bottom: var(--sp-5);
+  /* Compact shorter Membership Plan Card on mobile */
+  .membership__grid .plan,
+  .plan {
+    padding: var(--sp-4) var(--sp-4);
+    border-radius: var(--radius-md);
+  }
+
+  .plan__badge {
+    top: var(--sp-2);
+    right: var(--sp-2);
+    font-size: 0.5875rem;
+    padding: 2px 7px;
   }
 
   .membership__grid .plan__header {
-    margin-bottom: var(--sp-3);
+    margin-bottom: var(--sp-2);
+  }
+
+  .plan__name {
+    font-size: 1.125rem;
+    margin-bottom: 2px;
+  }
+
+  .plan__duration {
+    font-size: 0.75rem;
   }
 
   .membership__grid .plan__price {
-    margin-bottom: var(--sp-4);
-    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-3);
+    padding-bottom: var(--sp-3);
+  }
+
+  .plan__amount {
+    font-size: 1.85rem;
+  }
+
+  .plan__currency {
+    font-size: 1.125rem;
+  }
+
+  .plan__period {
+    font-size: 0.75rem;
   }
 
   .membership__grid .plan__features {
-    gap: var(--sp-2);
+    gap: 5px;
     margin-bottom: var(--sp-4);
+  }
+
+  .plan__features li {
+    font-size: 0.78125rem;
+    line-height: 1.35;
+    padding-left: 18px;
+  }
+
+  .plan__features li::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .plan__cta {
+    min-height: 42px;
+    padding: var(--sp-2) var(--sp-4);
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
   }
 
   .mobile-nav {
@@ -3710,7 +3759,7 @@ body[data-theme="dark"] .careers__status--error {
   .why__grid,
   .contact__grid,
   .careers__grid {
-    gap: var(--sp-10);
+    gap: var(--sp-6);
   }
 
   .about__grid > *,
@@ -3722,37 +3771,139 @@ body[data-theme="dark"] .careers__status--error {
 
   .about__img,
   .about__video {
-    aspect-ratio: 4/3;
+    aspect-ratio: 16 / 9;
+    max-height: 180px;
+    object-fit: cover;
   }
 
   .about__img-accent {
-    right: -6px;
-    bottom: -6px;
+    right: -4px;
+    bottom: -4px;
   }
 
   .live-pill {
-    top: var(--sp-3);
-    left: var(--sp-3);
+    top: var(--sp-2);
+    left: var(--sp-2);
+    font-size: 0.625rem;
+    padding: 3px 8px;
   }
 
   .about__video-btn {
-    bottom: var(--sp-3);
-    right: var(--sp-3);
+    bottom: var(--sp-2);
+    right: var(--sp-2);
+    font-size: 0.625rem;
+    padding: 3px 8px;
+  }
+
+  .about__text p {
+    font-size: 0.84375rem;
+    line-height: 1.5;
+    margin-bottom: var(--sp-2);
+  }
+
+  .about__values {
+    gap: var(--sp-2);
+    margin-top: var(--sp-3);
+  }
+
+  .about__value {
+    gap: var(--sp-3);
+    padding: var(--sp-2) 0;
+  }
+
+  .about__value-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .about__value-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .about__value strong {
+    font-size: 0.8125rem;
+    margin-bottom: 1px;
+    display: block;
+  }
+
+  .about__value span {
+    font-size: 0.71875rem;
+    line-height: 1.3;
   }
 
   .about__value > div {
     min-width: 0;
   }
 
+  /* Facilities Grid Mobile: Compact 2-column with wide featured card */
+  .facilities__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-3);
+  }
+
+  .facility-card {
+    min-height: 135px;
+    border-radius: var(--radius-md);
+  }
+
+  .facility-card--large {
+    grid-column: 1 / -1;
+    min-height: 175px;
+  }
+
+  .facility-card--wide,
+  .facility-card--recovery {
+    grid-column: span 1;
+    min-height: 135px;
+  }
+
+  .facility-card__content {
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .facility-card__title {
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+  }
+
+  .facility-card__desc {
+    font-size: 0.71875rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .facility-card__video-badge {
+    top: var(--sp-2);
+    right: var(--sp-2);
+    font-size: 0.5875rem;
+    padding: 2px 7px;
+  }
+
+  /* Programs Mobile: Compact streamlined cards */
+  .programs__list {
+    gap: var(--sp-3);
+  }
+
+  .program {
+    border-radius: var(--radius-md);
+  }
+
   .program__img-wrap {
     position: relative;
-    aspect-ratio: 16/9;
+    aspect-ratio: 21 / 9;
+    max-height: 115px;
   }
 
   .program__img,
   .program__video {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   .program__video {
@@ -3763,26 +3914,53 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .program__video-badge {
-    top: var(--sp-3);
-    right: var(--sp-3);
+    top: var(--sp-2);
+    right: var(--sp-2);
+    font-size: 0.5625rem;
+    padding: 2px 6px;
   }
 
   .program__content {
-    padding: var(--sp-5);
+    padding: var(--sp-3) var(--sp-3);
+  }
+
+  .program__number {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+
+  .program__title {
+    font-size: 1.0625rem;
+    margin-bottom: 3px;
+  }
+
+  .program__desc {
+    font-size: 0.78125rem;
+    line-height: 1.35;
+    margin-bottom: var(--sp-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .program__link {
-    min-height: 44px;
+    min-height: 32px;
+    font-size: 0.78125rem;
     display: inline-flex;
     align-items: center;
+    gap: 4px;
   }
 
   .program__link svg {
+    width: 14px;
+    height: 14px;
     flex-shrink: 0;
   }
 
   .brand-statement {
-    padding: var(--sp-10) 0;
+    padding: var(--sp-8) 0;
     contain: paint;
   }
 
@@ -3797,69 +3975,113 @@ body[data-theme="dark"] .careers__status--error {
   }
 
   .why__grid {
-    gap: var(--sp-8);
+    gap: var(--sp-5);
   }
 
   .why__right {
-    gap: var(--sp-6);
+    gap: var(--sp-3);
   }
 
   .why__item {
-    gap: var(--sp-4);
-    padding-bottom: var(--sp-6);
-    align-items: baseline;
+    gap: var(--sp-3);
+    padding-bottom: var(--sp-3);
+    align-items: flex-start;
   }
 
   .why__item-num {
-    padding-top: 0;
-    line-height: 1.3;
-    min-width: 24px;
+    padding-top: 1px;
+    line-height: 1.2;
+    min-width: 20px;
+    font-size: 0.75rem;
   }
 
   .why__item-content h3 {
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     line-height: 1.3;
-    margin-bottom: var(--sp-2);
+    margin-bottom: 2px;
   }
 
-  .plan {
-    padding: var(--sp-8) var(--sp-6);
+  .why__item-content p {
+    font-size: 0.78125rem;
+    line-height: 1.4;
+  }
+
+  .contact__grid {
+    gap: var(--sp-5);
+  }
+
+  .contact__intro {
+    font-size: 0.84375rem;
+    line-height: 1.5;
+    margin-bottom: var(--sp-3);
+  }
+
+  .contact__details {
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-4);
   }
 
   .contact__detail {
     gap: var(--sp-3);
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-sm);
   }
 
   .contact__detail > div {
     min-width: 0;
   }
 
+  .contact__detail svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact__detail strong {
+    font-size: 0.8125rem;
+    margin-bottom: 1px;
+    display: block;
+  }
+
+  .contact__detail span,
   .contact__detail a {
+    font-size: 0.78125rem;
+    line-height: 1.35;
+    min-height: 24px;
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
   }
 
   .contact__ctas {
     flex-direction: column;
-    gap: var(--sp-3);
+    gap: var(--sp-2);
   }
 
-  .contact__ctas .btn,
-  .btn--map {
+  .contact__ctas .btn {
     width: 100%;
-    min-height: 52px;
-    padding: var(--sp-3) var(--sp-6);
-    border-radius: var(--btn-radius);
-    white-space: normal;
-    text-align: center;
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
     line-height: 1.35;
   }
 
+  .contact__map-wrapper {
+    height: 175px;
+    border-radius: var(--radius-md);
+  }
+
+  .contact__map-action {
+    margin-top: var(--sp-2);
+  }
+
   .btn--map {
-    font-size: 0.8125rem;
-    padding: var(--sp-3) var(--sp-6);
-    border-radius: var(--btn-radius);
+    width: 100%;
+    min-height: 40px;
+    font-size: 0.78125rem;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    line-height: 1.35;
   }
 
   .contact__ctas .btn--primary,
@@ -3872,22 +4094,60 @@ body[data-theme="dark"] .careers__status--error {
     flex-shrink: 0;
   }
 
+  .careers__grid {
+    gap: var(--sp-5);
+  }
+
+  .careers__intro .section-desc {
+    font-size: 0.84375rem;
+    line-height: 1.5;
+  }
+
   .careers__form {
-    padding: var(--sp-5);
+    padding: var(--sp-4) var(--sp-3);
+    border-radius: var(--radius-md);
+    gap: var(--sp-3);
+  }
+
+  .careers__field {
+    margin-bottom: var(--sp-2);
+  }
+
+  .careers__field label {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+    font-weight: 600;
   }
 
   .careers__field input,
-  .careers__field select,
+  .careers__field select {
+    font-size: 0.8125rem;
+    min-height: 38px;
+    height: 38px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+  }
+
   .careers__field textarea {
-    font-size: 1rem;
-    min-height: 50px;
+    font-size: 0.8125rem;
+    min-height: 72px;
+    height: 72px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
   }
 
   .careers__submit {
-    padding: var(--sp-4) var(--sp-4);
+    padding: 10px 14px;
     font-size: 0.8125rem;
-    min-height: 52px;
+    min-height: 42px;
     line-height: 1.35;
+    border-radius: var(--radius-sm);
+  }
+
+  .careers__note {
+    font-size: 0.6875rem;
+    line-height: 1.35;
+    margin-top: 4px;
   }
 
   .lightbox__content {
