@@ -1,1342 +1,2839 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="ORIGIN Strength & Performance — Ambattur, Chennai's premier 3-floor training destination. Cardio, Strength & Functional Training zones with world-class facilities and expert coaching.">
-  <meta name="keywords"
-    content="ORIGIN gym, Origin Strength and Performance, Ambattur gym, Chennai gym, strength training Chennai, functional fitness Ambattur, gym membership Chennai">
-  <meta name="theme-color" content="#EDF3FA">
-  <title>ORIGIN Strength & Performance — Built From Movement</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ORIGIN — Strength & Performance Gym | Ambattur, Chennai</title>
+<meta name="description" content="Origin Strength & Performance Gym - 3 floors of Cardio, Strength & Functional Training. 110A Trios Tower, Menambedu, Ambattur, Chennai 600053. Phone: 96420 76707.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { overflow-x:hidden; scroll-behavior:smooth; }
+body {
+  background:#F4F7FC;
+  color:#0B192C;
+  font-family:'Inter', sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom);
+}
 
-  <!-- Preload local brand font -->
-  <link rel="preload" href="assets/fonts/ForegaSportDEMO-Regular.ttf" as="font" type="font/ttf" crossorigin>
+/* ── Tokens: Blue & White Gym Theme ── */
+:root {
+  --bg:#F4F7FC;
+  --bg-card:#FFFFFF;
+  --bg-card-hover:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface2:#EBF2FC;
+  --border:rgba(11,25,44,.10);
+  --border-hover:rgba(37,99,235,.45);
+  --ink:#0B192C;
+  --ink80:rgba(11,25,44,.82);
+  --ink60:rgba(11,25,44,.64);
+  --ink40:rgba(11,25,44,.40);
+  --white:#FFFFFF;
+  --blue:#2563EB;
+  --blue-dark:#1D4ED8;
+  --blue-deep:#0F2A66;
+  --blue-glow:rgba(37,99,235,.24);
+  --blue-light:#EFF6FF;
+  --blue-soft:#DBEAFE;
+  --display:'Oswald', sans-serif;
+  --body:'Inter', sans-serif;
+  --radius:16px;
+}
 
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+/* ── Grain overlay ── */
+.grain {
+  position:fixed; inset:0; z-index:9999;
+  pointer-events:none;
+  mix-blend-mode:multiply;
+  opacity:.12;
+}
 
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+/* ── Typography & Headers ── */
+.label {
+  font-family:var(--body);
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+.display {
+  font-family:var(--display);
+  font-weight:700;
+  text-transform:uppercase;
+  color:var(--ink);
+  line-height:.92;
+  letter-spacing:.02em;
+}
+.section-header {
+  text-align:center;
+  margin-bottom:52px;
+}
+.section-header .label { margin-bottom:12px; }
+.section-header h2 {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(32px, 5.5vw, 64px);
+  text-transform:uppercase;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:14px;
+  letter-spacing:.02em;
+}
+.section-header h2 .letter {
+  display:inline-block;
+  opacity:0;
+  transform:translateY(.55em) rotate(4deg);
+}
+.section-header p {
+  font-size:15px;
+  color:var(--ink60);
+  max-width:580px;
+  margin:0 auto;
+  line-height:1.7;
+}
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
+/* ════════════════════════════════
+   HEADER & NAVIGATION — PERFECT ALIGNMENT
+   ════════════════════════════════ */
+.nav {
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  background:transparent;
+  border-bottom:none;
+  box-shadow:none;
+  padding:20px 48px;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:background .3s ease, padding .3s ease, box-shadow .3s ease, border-color .3s ease, transform .3s ease;
+}
+.nav.scrolled {
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(11,25,44,.08);
+  box-shadow:0 4px 20px rgba(11,25,44,.05);
+  padding:14px 48px;
+}
+.nav-inner {
+  position:relative;
+  max-width:1360px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+.nav-logo {
+  display:inline-flex;
+  align-items:center;
+  text-decoration:none;
+  line-height:1;
+}
+.nav-logo-img {
+  height:30px;
+  width:auto;
+  display:block;
+  object-fit:contain;
+  transition:height .25s ease;
+}
+.nav.scrolled .nav-logo-img { height:26px; }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+.nav-menu {
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:clamp(12px, 1.8vw, 26px);
+  list-style:none;
+  margin:0; padding:0;
+  white-space:nowrap;
+}
+.nav-link {
+  font-family:var(--body);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);
+  padding:6px 0;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  transition:color .2s ease;
+}
+.nav-link:hover {
+  color:var(--blue);
+}
 
-  <!-- Force scroll to start of page on refresh/reload -->
-  <script>
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    window.scrollTo(0, 0);
-  </script>
+.nav-right {
+  justify-self:end;
+  display:flex;
+  align-items:center;
+}
+.menu-toggle {
+  display:none;
+  background:none;
+  border:none;
+  color:var(--ink);
+  cursor:pointer;
+  padding:8px 0;
+  font-family:var(--body);
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  transition:color .2s;
+  align-items:center;
+}
+.menu-toggle:hover {
+  color:var(--blue);
+}
+.menu-toggle svg {
+  width:20px; height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  margin-left:6px;
+}
+
+/* ── Mobile Navigation Drawer ── */
+.drawer-backdrop {
+  position:fixed; inset:0;
+  background:rgba(11,25,44,.55);
+  backdrop-filter:blur(5px);
+  z-index:200;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+.drawer-backdrop.active { opacity:1; pointer-events:auto; }
+.nav-drawer {
+  position:fixed;
+  top:0; left:0; bottom:0;
+  width:min(86vw, 360px);
+  background:var(--white);
+  z-index:201;
+  transform:translateX(-100%);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+  padding:36px 28px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:20px 0 60px rgba(11,25,44,.15);
+}
+.drawer-backdrop.active .nav-drawer { transform:translateX(0); }
+.drawer-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:28px;
+}
+.drawer-logo {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+}
+.drawer-logo img { height:34px; width:auto; }
+.drawer-close {
+  background:none; border:none;
+  font-size:28px; color:var(--ink60);
+  cursor:pointer; padding:4px 8px; border-radius:6px;
+  transition:color .2s;
+}
+.drawer-close:hover { color:var(--blue); }
+.drawer-links {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.drawer-links a {
+  font-family:var(--display);
+  font-size:22px;
+  text-decoration:none;
+  color:var(--ink);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  transition:color .2s, transform .2s;
+  display:inline-block;
+}
+.drawer-links a:hover { color:var(--blue); transform:translateX(4px); }
+.drawer-footer {
+  margin-top:auto;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.drawer-footer a {
+  display:flex; align-items:center; gap:10px;
+  font-size:12.5px; color:var(--ink60);
+  text-decoration:none; font-weight:600;
+  transition:color .2s;
+}
+.drawer-footer a:hover { color:var(--blue); }
+
+/* ════════════════════════════════
+   SECTION 1 — HERO
+   ════════════════════════════════ */
+.hero-wrap {
+  position:relative;
+  width:100%; height:100svh;
+  overflow:hidden;
+  background:#F4F7FC;
+}
+.hero-overlay {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 65% 35% at 50% 25%, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 100%),
+    linear-gradient(to bottom,
+      rgba(255,255,255,.45) 0%,
+      rgba(255,255,255,.15) 30%,
+      rgba(11,25,44,.15) 65%,
+      rgba(244,247,252,.75) 88%,
+      #F4F7FC 100%);
+  z-index:1;
+  pointer-events:none;
+}
+.hero-picture {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  display:block;
+}
+.hero-photo {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 65%;
+  transform:scale(1.04);
+  will-change:transform;
+  filter:saturate(1.05) contrast(1.02);
+}
+.hero-content {
+  position:absolute;
+  top:10.5%; left:50%; transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  z-index:2;
+  width:92%; max-width:920px;
+}
+.hero-eyebrow {
+  font-size:11.5px;
+  opacity:0; transform:translateY(8px);
+  margin-bottom:12px;
+  color:var(--blue);
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(8px);
+  display:inline-block;
+  padding:5px 16px;
+  border-radius:999px;
+  box-shadow:0 4px 14px rgba(37,99,235,.12);
+  border:1px solid rgba(37,99,235,.2);
+}
+.hero-title {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(52px, 11vw, 130px);
+  line-height:.88;
+  text-transform:uppercase;
+  color:var(--ink);
+  letter-spacing:.03em;
+  text-shadow:0 4px 20px rgba(255,255,255,.8);
+}
+.hero-title .letter {
+  display:inline-block; opacity:0;
+  transform:translateY(.18em); filter:blur(10px);
+}
+.hero-tagline {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:var(--body);
+  font-size:clamp(12.5px, 1.5vw, 15.5px);
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:8px 24px;
+  border-radius:999px;
+  border:1.5px solid rgba(37,99,235,.22);
+  box-shadow:0 4px 20px rgba(11,25,44,.08), 0 1px 4px rgba(37,99,235,.12);
+  margin-top:16px;
+  margin-bottom:4px;
+  opacity:0;
+  transform:translateY(8px);
+}
+.hero-tagline .quote-mark {
+  color:var(--blue);
+  font-size:1.2em;
+  line-height:1;
+  font-weight:900;
+}
+.hero-highlights {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:12px;
+  opacity:0;
+  transform:translateY(8px);
+}
+.hero-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  padding:5px 14px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  color:var(--ink);
+  border:1px solid rgba(37,99,235,.25);
+  box-shadow:0 4px 14px rgba(37,99,235,.10);
+}
+.hero-pill span { color:var(--blue); font-weight:800; }
+.hero-actions {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(14px);
+}
+.hero-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border-radius:999px;
+  padding:14px 28px;
+  font-family:var(--body);
+  font-weight:700;
+  font-size:11.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+}
+.hero-btn.primary {
+  background:var(--blue);
+  color:#fff;
+  border:1.5px solid var(--blue);
+  box-shadow:0 8px 26px var(--blue-glow);
+}
+.hero-btn.primary:hover {
+  background:var(--blue-dark);
+  border-color:var(--blue-dark);
+  box-shadow:0 12px 34px rgba(37,99,235,.45);
+  transform:translateY(-2px);
+}
+.hero-btn.primary svg {
+  width:13px; height:13px; fill:none; stroke:#fff;
+  stroke-width:2.4; stroke-linecap:round;
+}
+.hero-btn.secondary {
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  color:var(--ink);
+  border:1.5px solid rgba(37,99,235,.35);
+  box-shadow:0 6px 20px rgba(37,99,235,.10);
+}
+.hero-btn.secondary:hover {
+  background:#fff;
+  border-color:var(--blue);
+  color:var(--blue);
+  box-shadow:0 10px 28px rgba(37,99,235,.20);
+  transform:translateY(-2px);
+}
+.hero-btn.secondary svg {
+  width:13px; height:13px; fill:none; stroke:currentColor;
+  stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
+  transition:transform .25s ease;
+}
+.hero-btn.secondary:hover svg {
+  transform:translateY(2px);
+}
+
+/* ════════════════════════════════
+   SECTION 2 — FACILITIES (3 FLOORS)
+   ════════════════════════════════ */
+.facilities-section {
+  position:relative; width:100%;
+  padding:100px 24px;
+  z-index:6; background:var(--bg);
+}
+.facilities-inner { max-width:1160px; margin:0 auto; }
+.facilities-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:22px;
+}
+.facility-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:border-color .3s, transform .3s, box-shadow .3s;
+  opacity:0; transform:translateY(20px);
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 8px 24px rgba(11,25,44,.04);
+}
+.facility-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-4px) !important;
+  box-shadow:0 14px 40px rgba(37,99,235,.12);
+}
+.facility-card-media {
+  position:relative;
+  width:100%;
+  height:190px;
+  overflow:hidden;
+}
+.facility-card-img {
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.facility-card:hover .facility-card-img {
+  transform:scale(1.06);
+}
+.facility-badge {
+  position:absolute;
+  top:12px; left:12px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  color:var(--blue);
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:6px;
+  border:1px solid rgba(37,99,235,.25);
+  box-shadow:0 4px 12px rgba(11,25,44,.08);
+}
+.facility-card-body {
+  padding:24px 22px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.facility-card h3 {
+  font-family:var(--display);
+  font-size:21px; font-weight:600;
+  text-transform:uppercase; color:var(--ink);
+  margin-bottom:8px; letter-spacing:.04em;
+}
+.facility-card p {
+  font-size:13.5px; color:var(--ink60); line-height:1.6;
+}
+
+/* ════════════════════════════════
+   SECTION 3 — TRAINERS (1, 2, 3)
+   ════════════════════════════════ */
+.trainers-section {
+  position:relative; width:100%;
+  padding:100px 24px;
+  z-index:6; background:var(--white);
+}
+.trainers-inner { max-width:1160px; margin:0 auto; }
+
+/* Trainer Switcher Tabs */
+.trainer-tabs {
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; margin-bottom:44px; flex-wrap:wrap;
+}
+.trainer-tab {
+  display:flex; align-items:center; gap:12px;
+  background:var(--white); border:1.5px solid var(--border);
+  color:var(--ink60);
+  padding:10px 22px 10px 10px;
+  border-radius:999px;
+  font-family:var(--body); font-weight:700; font-size:12px;
+  letter-spacing:.1em; text-transform:uppercase;
+  cursor:pointer; transition:all .25s ease;
+  box-shadow:0 4px 14px rgba(11,25,44,.03);
+}
+.trainer-tab:hover {
+  border-color:var(--blue); color:var(--blue);
+  background:var(--blue-light);
+}
+.trainer-tab.active {
+  background:var(--blue); border-color:var(--blue); color:#fff;
+  box-shadow:0 6px 20px var(--blue-glow);
+}
+.trainer-tab-avatar {
+  width:36px; height:36px; border-radius:50%;
+  object-fit:cover; border:2px solid var(--border);
+}
+.trainer-tab.active .trainer-tab-avatar {
+  border-color:rgba(255,255,255,.6);
+}
+
+/* Trainer Panel */
+.trainer-panel {
+  display:none;
+  animation:fadeGroup .4s ease forwards;
+}
+.trainer-panel.active { display:block; }
+@keyframes fadeGroup {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.trainer-card {
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:44px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 16px 44px rgba(11,25,44,.06);
+}
+.trainer-photo-wrap {
+  position:relative; overflow:hidden;
+  min-height:460px;
+  background:var(--surface2);
+}
+.trainer-photo {
+  width:100%; height:100%; min-height:460px;
+  object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.trainer-card:hover .trainer-photo {
+  transform:scale(1.03);
+}
+.trainer-photo-badge {
+  position:absolute;
+  bottom:16px; left:16px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  padding:6px 14px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--blue);
+  border:1px solid rgba(37,99,235,.25);
+  box-shadow:0 4px 14px rgba(11,25,44,.08);
+}
+.trainer-info {
+  padding:40px 40px 40px 0;
+  display:flex; flex-direction:column;
+}
+.trainer-name {
+  font-family:var(--display);
+  font-size:clamp(30px, 4vw, 44px);
+  font-weight:700; text-transform:uppercase;
+  color:var(--ink); letter-spacing:.02em;
+  margin-bottom:6px;
+}
+.trainer-role {
+  font-size:13.5px; color:var(--blue);
+  font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; margin-bottom:18px;
+}
+.trainer-bio {
+  font-size:14.5px; color:var(--ink80);
+  line-height:1.7; margin-bottom:26px;
+}
+
+.trainer-empty-note {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--blue-light);
+  color:var(--blue);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:4px 12px;
+  border-radius:999px;
+  margin-bottom:14px;
+  align-self:flex-start;
+  border:1px solid rgba(37,99,235,.2);
+}
+
+.detail-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:8px;
+}
+.detail-item {
+  background:var(--surface2);
+  border-radius:12px;
+  padding:14px 18px;
+  border:1px solid rgba(37,99,235,.10);
+  transition:border-color .2s;
+}
+.detail-item:hover {
+  border-color:var(--blue);
+}
+.detail-item .detail-label {
+  font-size:9.5px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:4px;
+}
+.detail-item .detail-value {
+  font-size:14px; color:var(--ink); font-weight:600;
+}
+.detail-item .detail-value.placeholder {
+  color:var(--ink40);
+  font-style:italic;
+  font-weight:500;
+}
+
+/* ════════════════════════════════
+   SECTION 4 — GYM ACHIEVEMENTS
+   ════════════════════════════════ */
+.achievements-section {
+  position:relative; width:100%;
+  padding:100px 24px;
+  z-index:6; background:var(--bg);
+}
+.achievements-inner { max-width:1160px; margin:0 auto; }
+.achievements-grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:22px;
+}
+.achievement-card {
+  background:var(--white);
+  border:1.5px dashed rgba(37,99,235,.35);
+  border-radius:20px;
+  padding:32px 26px;
+  transition:all .3s ease;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 8px 24px rgba(11,25,44,.03);
+  opacity:0;
+  transform:translateY(20px);
+  position:relative;
+}
+.achievement-card:hover {
+  border-color:var(--blue);
+  border-style:solid;
+  transform:translateY(-4px) !important;
+  box-shadow:0 14px 40px rgba(37,99,235,.12);
+}
+.achievement-card-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+.achievement-card-icon {
+  width:46px; height:46px;
+  border-radius:12px;
+  background:var(--blue-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  box-shadow:0 4px 12px rgba(37,99,235,.08);
+}
+.achievement-card-badge {
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--blue);
+  background:var(--blue-light);
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid rgba(37,99,235,.2);
+}
+.achievement-card h3 {
+  font-family:var(--display);
+  font-size:21px;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.02em;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.achievement-card p {
+  font-size:13.5px;
+  color:var(--ink60);
+  line-height:1.65;
+  flex:1;
+}
+.achievement-card-footer {
+  margin-top:20px;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.trainer-book-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:26px;
+  padding:12px 24px;
+  background:var(--blue-light);
+  border:1.5px solid var(--blue);
+  color:var(--blue);
+  border-radius:999px;
+  font-family:var(--body);
+  font-weight:700;
+  font-size:11.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:all .2s;
+  align-self:flex-start;
+}
+.trainer-book-btn:hover {
+  background:var(--blue);
+  color:#fff;
+  box-shadow:0 6px 20px var(--blue-glow);
+}
+
+/* ════════════════════════════════
+   SECTION 4 — STATEMENT (PHILOSOPHY)
+   ════════════════════════════════ */
+.statement-section {
+  position:relative; width:100%;
+  min-height:68svh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:80px 24px; z-index:6;
+  background:var(--bg); overflow:hidden;
+}
+.statement-section::before {
+  content:'';
+  position:absolute;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(37,99,235,.08) 0%, transparent 70%);
+  top:50%; left:50%; transform:translate(-50%, -50%);
+  pointer-events:none;
+}
+.statement-text {
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(34px, 7vw, 110px);
+  line-height:1.05; text-transform:uppercase;
+  color:var(--ink); text-align:center;
+  max-width:1000px; position:relative;
+}
+.statement-text .letter {
+  display:inline-block; opacity:0;
+  transform:translateY(.55em) rotate(4deg);
+}
+.statement-text .word { white-space:nowrap; }
+.statement-text .space { display:inline-block; width:.28em; }
+.inline-pill {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:0.82em; height:0.82em;
+  border-radius:999px; overflow:hidden;
+  vertical-align:middle; position:relative; top:-.02em;
+  opacity:0; transform:scale(0);
+  border:2.5px solid var(--blue);
+}
+.inline-pill img {
+  width:100%; height:100%; object-fit:cover;
+  transform:scale(1.5);
+  transition:transform .8s cubic-bezier(.22,1,.36,1);
+}
+.inline-pill.revealed img { transform:scale(1); }
+.emblem-wrap {
+  margin-top:40px; opacity:0;
+  transform:rotate(-90deg) scale(.6);
+}
+.emblem-wrap svg { width:68px; height:68px; color:var(--blue); }
+
+/* ════════════════════════════════
+   SECTION 5 — GALLERY (12 PHOTOS)
+   ════════════════════════════════ */
+.gallery-section {
+  position:relative; width:100%;
+  padding:100px 24px;
+  z-index:6; background:var(--white);
+}
+.gallery-inner { max-width:1200px; margin:0 auto; }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+}
+.gallery-item {
+  border-radius:12px; overflow:hidden;
+  aspect-ratio:1/1;
+  opacity:0; transform:translateY(16px);
+  transition:transform .3s ease, box-shadow .3s ease;
+  background:var(--surface2);
+  border:1px solid rgba(11,25,44,.06);
+}
+.gallery-item:hover {
+  transform:translateY(-3px) !important;
+  box-shadow:0 12px 30px rgba(11,25,44,.12);
+  border-color:var(--blue);
+}
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(7) {
+  grid-column:span 2; grid-row:span 2;
+  aspect-ratio:auto;
+}
+.gallery-item img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.gallery-item:hover img { transform:scale(1.06); }
+
+/* ════════════════════════════════
+   SECTION 6 — PRICING (ALL PLANS)
+   ════════════════════════════════ */
+.pricing-section {
+  position:relative; width:100%;
+  padding:100px 24px 130px;
+  z-index:6; background:var(--bg);
+}
+.pricing-inner { max-width:1200px; margin:0 auto; }
+
+.plan-tabs {
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; margin-bottom:48px; flex-wrap:wrap;
+}
+.tab-btn {
+  background:var(--white); border:1.5px solid var(--border);
+  color:var(--ink60);
+  padding:12px 24px; border-radius:999px;
+  font-family:var(--body); font-weight:700; font-size:12px;
+  letter-spacing:.12em; text-transform:uppercase;
+  cursor:pointer; transition:all .25s ease;
+  display:flex; align-items:center; gap:8px;
+  box-shadow:0 4px 14px rgba(11,25,44,.03);
+}
+.tab-btn:hover {
+  border-color:var(--blue); color:var(--blue);
+  background:var(--blue-light);
+}
+.tab-btn.active {
+  background:var(--blue); border-color:var(--blue); color:#fff;
+  box-shadow:0 6px 20px var(--blue-glow);
+}
+.tab-badge {
+  font-size:9.5px; background:rgba(255,255,255,.25);
+  padding:2px 8px; border-radius:12px; letter-spacing:.05em;
+}
+.tab-btn:not(.active) .tab-badge {
+  background:var(--blue-light); color:var(--blue);
+}
+
+.pricing-group { display:none; }
+.pricing-group.active {
+  display:block; animation:fadeGroup .4s ease forwards;
+}
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:20px;
+}
+.pricing-card {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:20px; padding:36px 24px 28px;
+  text-align:center; opacity:0; transform:translateY(24px);
+  transition:box-shadow .3s, transform .3s, border-color .3s;
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow:0 8px 24px rgba(11,25,44,.04);
+}
+.pricing-card:hover {
+  box-shadow:0 14px 44px rgba(37,99,235,.15);
+  transform:translateY(-5px) !important;
+  border-color:var(--blue);
+}
+.pricing-card.featured {
+  border-color:var(--blue);
+  box-shadow:0 10px 34px rgba(37,99,235,.18);
+}
+.pricing-card.featured::before {
+  content:'MOST POPULAR';
+  position:absolute;
+  top:32px;
+  right:-32px;
+  width:140px;
+  height:22px;
+  line-height:22px;
+  text-align:center;
+  background:var(--blue);
+  color:#fff;
+  font-family:var(--body);
+  font-weight:800;
+  font-size:7.5px;
+  letter-spacing:.12em;
+  transform:rotate(45deg);
+  box-shadow:0 2px 8px rgba(37,99,235,.25);
+  pointer-events:none;
+  z-index:2;
+}
+.pricing-card .plan-name {
+  font-family:var(--body); font-weight:700; font-size:11.5px;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink60); margin-bottom:14px;
+}
+.pricing-card .price {
+  font-family:var(--display); font-weight:700;
+  font-size:42px; color:var(--ink); line-height:1;
+}
+.pricing-card .price .currency {
+  font-size:22px; vertical-align:super;
+  margin-right:2px; color:var(--blue);
+}
+.pricing-card .period {
+  font-size:12.5px; color:var(--ink40);
+  margin-top:6px; margin-bottom:24px;
+}
+.pricing-card .features {
+  list-style:none; text-align:left;
+  margin-bottom:28px; flex-grow:1;
+}
+.pricing-card .features li {
+  font-size:13px; color:var(--ink80);
+  padding:8px 0; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.pricing-card .features li:last-child { border-bottom:none; }
+.pricing-card .features li svg {
+  width:15px; height:15px; stroke:var(--blue);
+  fill:none; stroke-width:2.4; flex-shrink:0;
+}
+.pricing-card .join-btn {
+  display:block; width:100%; padding:14px 16px;
+  border-radius:999px; border:1.5px solid var(--blue);
+  background:var(--blue-light);
+  font-family:var(--body); font-weight:700; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--blue); cursor:pointer;
+  transition:all .2s; margin-top:auto;
+}
+.pricing-card .join-btn:hover {
+  background:var(--blue); color:#fff;
+  box-shadow:0 6px 18px var(--blue-glow);
+}
+.pricing-card.featured .join-btn {
+  background:var(--blue); color:#fff;
+}
+.pricing-card.featured .join-btn:hover {
+  background:var(--blue-dark);
+}
+
+/* ════════════════════════════════
+   SECTION 7 — INFO, LOCATION & CONTACT
+   ════════════════════════════════ */
+.info-section {
+  position:relative; width:100%;
+  padding:100px 24px 130px;
+  z-index:6; background:var(--white);
+}
+.info-inner { max-width:1160px; margin:0 auto; }
+
+/* Motivational Quote Banner */
+.quote-banner {
+  background:linear-gradient(135deg, var(--blue-light) 0%, #FFFFFF 100%);
+  border:1.5px solid var(--blue-soft);
+  border-radius:20px;
+  padding:28px 32px;
+  margin-bottom:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(16px);
+  box-shadow:0 8px 30px rgba(37,99,235,.08);
+}
+.quote-banner-text {
+  font-family:var(--display);
+  font-size:clamp(20px, 3vw, 28px);
+  color:var(--ink);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.quote-banner-text strong { color:var(--blue); }
+.quote-banner-tags {
+  font-size:12px;
+  color:var(--blue);
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+/* 2-Column Side-by-Side: Contacts Left, Map Right */
+.info-layout {
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:22px;
+}
+.info-cards-grid {
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+  height:100%;
+}
+.info-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:22px 20px;
+  opacity:0; transform:translateY(16px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:border-color .2s, transform .2s, box-shadow .2s;
+  box-shadow:0 6px 20px rgba(11,25,44,.03);
+}
+.info-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(37,99,235,.10);
+}
+.info-card-header {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+.info-card-icon {
+  width:34px; height:34px;
+  border-radius:10px;
+  background:var(--blue-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.info-card-icon svg {
+  width:17px; height:17px;
+  stroke:var(--blue);
+  fill:none;
+  stroke-width:2.2;
+}
+.info-card-label {
+  font-weight:700; font-size:10.5px;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--blue);
+}
+.info-card-body {
+  font-size:13px;
+  line-height:1.6;
+  color:var(--ink80);
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.info-card-title {
+  font-size:15px;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.info-card-text {
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--ink80);
+}
+.info-sub-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:var(--blue-light);
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  width:fit-content;
+}
+.info-sub-pill.status-open {
+  background:rgba(16, 185, 129, 0.1);
+  color:#059669;
+}
+.info-sub-pill .status-dot {
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#10B981;
+  box-shadow:0 0 8px rgba(16,185,129,0.6);
+  display:inline-block;
+}
+.info-timing-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:5px 0;
+  font-size:12px;
+  border-bottom:1px dashed rgba(11,25,44,0.08);
+}
+.info-timing-row:last-of-type { border-bottom:none; }
+.info-timing-day { font-weight:700; color:var(--ink); }
+.info-timing-time { color:var(--ink80); font-variant-numeric:tabular-nums; font-weight:600; }
+
+/* Phone & Connect Action Items inside Boxes */
+.info-action-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 12px;
+  border-radius:10px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  text-decoration:none;
+  color:var(--ink);
+  font-size:12px;
+  transition:all .2s;
+  gap:8px;
+}
+.info-action-row:hover {
+  background:var(--blue-light);
+  border-color:var(--blue);
+  color:var(--blue);
+  transform:translateX(2px);
+}
+.info-action-left {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+.info-action-left svg {
+  width:16px; height:16px;
+  stroke:var(--blue);
+  fill:none;
+  stroke-width:2;
+  flex-shrink:0;
+}
+.info-action-name { font-weight:700; font-size:12px; white-space:nowrap; }
+.info-action-desc { font-size:10.5px; color:var(--ink60); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.info-action-badge {
+  font-size:9.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--blue);
+  background:var(--white);
+  padding:3px 9px;
+  border-radius:999px;
+  border:1px solid rgba(37,99,235,0.2);
+  flex-shrink:0;
+}
+.info-card-footer {
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:11px;
+}
+.info-card-footer a {
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:gap .2s;
+}
+.info-card-footer a:hover {
+  gap:7px;
+}
+
+/* Map Card — Positioned on the Right */
+.info-map-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin-bottom:0;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  opacity:0; transform:translateY(16px);
+  box-shadow:0 8px 30px rgba(11,25,44,.05);
+}
+.map-frame {
+  width:100%; flex:1; min-height:240px;
+  border:none;
+  background:var(--surface2);
+}
+.map-frame iframe {
+  width:100%; height:100%; border:none; display:block;
+}
+.map-bar {
+  padding:14px 20px;
+  background:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-top:1px solid var(--border);
+  gap:12px;
+}
+.map-bar-text {
+  font-size:12px;
+  line-height:1.45;
+  color:var(--ink80);
+}
+.map-bar-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 16px; border-radius:999px;
+  background:var(--blue); color:#fff;
+  text-decoration:none; font-size:10.5px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  transition:background .2s;
+  white-space:nowrap;
+  flex-shrink:0;
+  box-shadow:0 4px 14px var(--blue-glow);
+}
+.map-bar-btn:hover { background:var(--blue-dark); }
+.map-bar-btn svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; }
+
+/* Social Links Grid */
+.social-row {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+}
+.social-link {
+  display:flex; align-items:center; gap:14px;
+  padding:16px 22px;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:14px; text-decoration:none;
+  color:var(--ink); font-weight:700; font-size:11.5px;
+  letter-spacing:.1em; text-transform:uppercase;
+  transition:all .2s;
+  opacity:0; transform:translateY(16px);
+  box-shadow:0 4px 14px rgba(11,25,44,.03);
+}
+.social-link:hover {
+  border-color:var(--blue); background:var(--blue-light);
+  color:var(--blue);
+  transform:translateY(-2px) !important;
+  box-shadow:0 8px 24px rgba(37,99,235,.12);
+}
+.social-link svg { width:22px; height:22px; fill:var(--blue); flex-shrink:0; }
+.social-link .badge-sub {
+  margin-left:auto; font-size:9.5px;
+  color:var(--blue); letter-spacing:.06em; font-weight:700;
+}
+
+/* ════════════════════════════════
+   MODAL (JOIN / CONFIRMATION)
+   ════════════════════════════════ */
+.modal-backdrop {
+  position:fixed; inset:0;
+  background:rgba(11,25,44,.55); backdrop-filter:blur(6px);
+  z-index:300; opacity:0; pointer-events:none;
+  transition:opacity .25s ease;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+}
+.modal-backdrop.active { opacity:1; pointer-events:auto; }
+.modal-content {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:24px; width:min(92vw, 440px);
+  padding:36px 30px;
+  box-shadow:0 24px 60px rgba(11,25,44,.2);
+  transform:scale(.92) translateY(10px);
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+  position:relative;
+}
+.modal-backdrop.active .modal-content { transform:scale(1) translateY(0); }
+.modal-close {
+  position:absolute; top:20px; right:20px;
+  background:none; border:none; font-size:24px;
+  color:var(--ink60); cursor:pointer; padding:6px;
+}
+.modal-title {
+  font-family:var(--display); font-size:26px;
+  color:var(--ink); text-transform:uppercase; margin-bottom:8px;
+}
+.modal-plan-tag {
+  display:inline-block;
+  background:var(--blue-light); color:var(--blue);
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  padding:5px 14px; border-radius:999px; margin-bottom:18px;
+  text-transform:uppercase;
+}
+.modal-actions { display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+.modal-btn {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:14px; border-radius:999px; text-decoration:none;
+  font-family:var(--body); font-weight:700; font-size:11.5px;
+  letter-spacing:.12em; text-transform:uppercase;
+  cursor:pointer; transition:all .2s;
+}
+.modal-btn-wa { background:#25D366; color:#fff; border:none; }
+.modal-btn-wa:hover { background:#1EBE5D; }
+.modal-btn-call { background:var(--blue); color:#fff; border:none; }
+.modal-btn-call:hover { background:var(--blue-dark); }
+
+/* ════════════════════════════════
+   MOBILE FLOATING BAR
+   ════════════════════════════════ */
+.mobile-action-bar {
+  display:none; position:fixed;
+  bottom:max(16px, env(safe-area-inset-bottom, 16px));
+  left:50%; transform:translateX(-50%);
+  width:calc(100% - 28px); max-width:390px; z-index:90;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(11,25,44,.12); border-radius:999px;
+  padding:5px 6px;
+  box-shadow:0 12px 34px rgba(11,25,44,.14), 0 2px 8px rgba(37,99,235,.08);
+}
+.mobile-action-bar .bar-inner {
+  display:grid; grid-template-columns:1fr 1.25fr 1.25fr;
+  align-items:center; gap:4px; width:100%;
+}
+.bar-action {
+  display:flex; align-items:center; justify-content:center;
+  gap:6px; padding:10px 4px;
+  font-size:11px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; text-decoration:none;
+  border-radius:999px; color:var(--ink);
+  transition:all .2s; white-space:nowrap;
+}
+.bar-action:hover { background:rgba(11,25,44,.04); }
+.bar-action.primary {
+  background:var(--blue); color:#fff;
+  padding:10px 14px; box-shadow:0 4px 14px var(--blue-glow);
+}
+.bar-action.primary:hover { background:var(--blue-dark); }
+.bar-action svg { flex-shrink:0; }
+.bar-icon-call { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.bar-icon-wa { width:16px; height:16px; fill:#25D366; stroke:none; }
+.bar-icon-arrow { width:13px; height:13px; stroke:#fff; fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ════════════════════════════════
+   FOOTER (RICH NAVY BLUE CONTRAST)
+   ════════════════════════════════ */
+.footer {
+  background:#0B192C; color:rgba(255,255,255,.6);
+  padding:64px 24px 72px; text-align:center;
+  font-size:12.5px; letter-spacing:.08em;
+  position:relative; z-index:6;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-logo {
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; margin-bottom:18px;
+}
+.footer-logo img { height:46px; width:auto; }
+.footer-brand {
+  font-family:var(--display); font-size:24px; font-weight:700;
+  color:#fff; letter-spacing:.06em;
+}
+.footer p { margin-top:8px; line-height:1.7; }
+.footer a { color:#fff; text-decoration:none; font-weight:600; }
+.footer a:hover { color:var(--blue); }
+
+/* ════════════════════════════════
+   RESPONSIVE (MOBILE & TABLET)
+   ════════════════════════════════ */
+@media (max-width:960px) {
+  .nav { padding:14px 24px; }
+  .nav.scrolled { padding:10px 24px; }
+  .nav-inner { display:flex; justify-content:space-between; }
+  .nav-menu { display:none; }
+  .nav-right { display:flex; }
+  .menu-toggle { display:inline-flex; align-items:center; justify-content:center; }
+  .nav-logo-img { height:28px; }
+}
+
+@media (max-width:760px) {
+  .nav { padding:10px 16px; }
+  .nav.scrolled { padding:8px 16px; }
+  .nav-logo-img { height:26px; }
+  
+  .hero-photo { object-position:center top; }
+  .hero-content { top:clamp(80px, 14%, 130px); bottom:auto; width:94%; }
+  .hero-title { font-size:clamp(44px, 14vw, 76px); }
+  .hero-tagline { font-size:11px; padding:6px 18px; letter-spacing:.12em; margin-top:10px; }
+  .hero-highlights { gap:6px; margin-top:8px; }
+  .hero-pill { font-size:9.5px; padding:3px 8px; }
+  .hero-actions { gap:8px; margin-top:12px; }
+  .hero-btn { padding:11px 18px; font-size:10px; letter-spacing:.1em; }
+  
+  .facilities-grid { grid-template-columns:1fr; max-width:440px; margin:0 auto; gap:16px; }
+  
+  .trainer-card { grid-template-columns:1fr; max-width:420px; margin:0 auto; border-radius:18px; }
+  .trainer-photo-wrap { min-height:200px; height:210px; }
+  .trainer-photo { min-height:200px; object-position:center 20%; }
+  .trainer-photo-badge { bottom:12px; left:12px; padding:4px 10px; font-size:9px; }
+  .trainer-info { padding:18px 16px; }
+  .trainer-empty-note { font-size:9px; padding:3px 10px; margin-bottom:8px; }
+  .trainer-name { font-size:22px; margin-bottom:2px; }
+  .trainer-role { font-size:11px; margin-bottom:8px; letter-spacing:.1em; }
+  .trainer-bio { font-size:12.5px; line-height:1.55; margin-bottom:12px; }
+  .detail-grid { grid-template-columns:repeat(2, 1fr); gap:8px 10px; margin-bottom:12px; }
+  .detail-item { padding:8px 10px; border-radius:10px; }
+  .detail-label { font-size:9px; margin-bottom:2px; }
+  .detail-value { font-size:11px; }
+  .trainer-book-btn { padding:11px 16px; font-size:11px; }
+  .trainer-tabs { gap:8px; }
+  .trainer-tab { padding:8px 14px 8px 8px; font-size:10.5px; }
+  
+  .gallery-grid { grid-template-columns:repeat(2, 1fr); gap:10px; }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(7) { grid-column:span 2; }
+  
+  /* Achievements: Horizontal swipe / scroll right (centered on mobile) */
+  .achievements-grid {
+    --card-w:clamp(280px, 80vw, 310px);
+    display:flex;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px;
+    margin:0 -16px;
+    padding:8px calc((100vw - var(--card-w)) / 2) 22px;
+    scroll-padding:0 calc((100vw - var(--card-w)) / 2);
+    max-width:none;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(37,99,235,.25) transparent;
+  }
+  .achievements-grid::-webkit-scrollbar { height:4px; }
+  .achievements-grid::-webkit-scrollbar-track { background:transparent; }
+  .achievements-grid::-webkit-scrollbar-thumb { background:rgba(37,99,235,.25); border-radius:999px; }
+  .achievement-card {
+    flex:0 0 var(--card-w);
+    width:var(--card-w);
+    max-width:var(--card-w);
+    scroll-snap-align:center;
+    padding:24px 20px;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  
+  /* Membership Plans: Horizontal swipe / scroll right (centered on mobile) */
+  .pricing-grid {
+    --card-w:clamp(280px, 80vw, 310px);
+    display:flex;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:14px;
+    margin:0 -16px;
+    padding:8px calc((100vw - var(--card-w)) / 2) 24px;
+    scroll-padding:0 calc((100vw - var(--card-w)) / 2);
+    max-width:none;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(37,99,235,.25) transparent;
+  }
+  .pricing-grid::-webkit-scrollbar { height:4px; }
+  .pricing-grid::-webkit-scrollbar-track { background:transparent; }
+  .pricing-grid::-webkit-scrollbar-thumb { background:rgba(37,99,235,.25); border-radius:999px; }
+  .pricing-card {
+    flex:0 0 var(--card-w);
+    width:var(--card-w);
+    max-width:var(--card-w);
+    scroll-snap-align:center;
+    padding:30px 20px 24px;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  .plan-tabs { gap:8px; }
+  .tab-btn { padding:10px 18px; font-size:11px; }
+  
+  /* Location & Contact: Map first, followed by everything */
+  .info-layout {
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .info-map-card {
+    order:1;
+  }
+  .info-cards-grid {
+    order:2;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .map-frame { min-height:260px; }
+  .map-bar { flex-direction:column; align-items:flex-start; }
+  .map-bar-btn { width:100%; justify-content:center; }
+  .social-row { grid-template-columns:1fr; gap:10px; }
+  
+  /* ── Compact Section Spacing (Phone View Only) ── */
+  .facilities-section,
+  .trainers-section,
+  .achievements-section,
+  .gallery-section,
+  .pricing-section,
+  .info-section {
+    padding:38px 16px 28px;
+  }
+  .statement-section {
+    min-height:auto;
+    padding:44px 18px 36px;
+  }
+  .emblem-wrap { margin-top:22px; }
+  .section-header { margin-bottom:24px; }
+  .section-header .label { margin-bottom:8px; }
+  .section-header h2 { font-size:clamp(28px, 8.5vw, 42px); margin-bottom:8px; }
+  .section-header p { font-size:13px; line-height:1.55; }
+  .trainer-tabs { margin-bottom:22px; }
+  .plan-tabs { margin-bottom:22px; }
+  
+  .mobile-action-bar { display:block; }
+  .footer { padding:44px 18px 108px; }
+}
+
+@media (min-width:761px) and (max-width:1080px) {
+  .facilities-grid { grid-template-columns:repeat(2, 1fr); }
+  .achievements-grid { grid-template-columns:repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns:repeat(2, 1fr); }
+  .trainer-card { grid-template-columns:300px 1fr; }
+}
+
+@media (min-width:761px) and (max-width:880px) {
+  .info-layout { grid-template-columns:1fr; gap:20px; }
+  .info-cards-grid { grid-template-columns:repeat(2, 1fr); }
+  .map-frame { min-height:280px; }
+}
+
+/* ── Revealed states ── */
+.letter.revealed { opacity:1 !important; transform:translateY(0) rotate(0deg) !important; filter:blur(0) !important; }
+.hero-eyebrow.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.hero-tagline.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.hero-highlights.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.nav.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.hero-actions.revealed, .hero-cta.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.inline-pill.revealed { opacity:1 !important; transform:scale(1) !important; }
+.emblem-wrap.revealed { opacity:1 !important; transform:rotate(0) scale(1) !important; }
+.pricing-card.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.facility-card.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.achievement-card.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.info-card.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.info-map-card.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.social-link.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.gallery-item.revealed { opacity:1 !important; transform:translateY(0) !important; }
+.quote-banner.revealed { opacity:1 !important; transform:translateY(0) !important; }
+</style>
 </head>
-
 <body>
-  <a href="#about" class="skip-link">Skip to content</a>
 
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- NAVIGATION                                      -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#hero" class="nav__logo" aria-label="ORIGIN — Home">
-        <img src="assets/images/logo-emblem.png" alt="ORIGIN emblem" class="nav__logo-img">
-        <span class="nav__logo-text">ORIGIN</span>
-      </a>
+<!-- ══ Grain ══ -->
+<svg class="grain" width="100%" height="100%">
+  <filter id="gf"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#gf)"/>
+</svg>
 
-      <nav class="nav__menu" id="navMenu" aria-label="Main navigation">
-        <ul class="nav__list">
-          <li><a href="#about" class="nav__link">About Us</a></li>
-          <li><a href="#facilities" class="nav__link">Facilities</a></li>
-          <li><a href="#programs" class="nav__link">Programs</a></li>
-          <li><a href="#trainers" class="nav__link">Trainers</a></li>
-          <li><a href="#membership" class="nav__link">Membership</a></li>
-          <li><a href="#gallery" class="nav__link">Gallery</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav__actions">
-        <a href="#membership" class="nav__cta">Join Now</a>
-        <button class="nav__theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
-          <svg class="nav__theme-icon nav__theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path
-              d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42">
-            </path>
-          </svg>
-          <svg class="nav__theme-icon nav__theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>
-          </svg>
-        </button>
-        <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span class="nav__toggle-line"></span>
-          <span class="nav__toggle-line"></span>
-          <span class="nav__toggle-line"></span>
-        </button>
+<!-- ══ Mobile Drawer ══ -->
+<div class="drawer-backdrop" id="drawerBackdrop">
+  <div class="nav-drawer">
+    <div class="drawer-header">
+      <div class="drawer-logo">
+        <img src="images/logo-dark.png?v=7" alt="Origin Logo" style="height:32px; width:auto;">
       </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
     </div>
-  </header>
-
-  <!-- Mobile Navigation Overlay -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <ul class="mobile-nav__list">
-      <li><a href="#about" class="mobile-nav__link">About</a></li>
-      <li><a href="#facilities" class="mobile-nav__link">Facilities</a></li>
-      <li><a href="#programs" class="mobile-nav__link">Programs</a></li>
-      <li><a href="#trainers" class="mobile-nav__link">Trainers</a></li>
-      <li><a href="#membership" class="mobile-nav__link">Membership</a></li>
-      <li><a href="#gallery" class="mobile-nav__link">Gallery</a></li>
-      <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="drawer-nav-item">Home</a></li>
+      <li><a href="#facilities" class="drawer-nav-item">3 Floors Facility</a></li>
+      <li><a href="#trainers" class="drawer-nav-item">Our Trainers</a></li>
+      <li><a href="#achievements" class="drawer-nav-item">Gym Achievements</a></li>
+      <li><a href="#gallery" class="drawer-nav-item">Gym Gallery</a></li>
+      <li><a href="#pricing" class="drawer-nav-item">Memberships</a></li>
+      <li><a href="#info" class="drawer-nav-item">Location &amp; Hours</a></li>
     </ul>
-    <div class="mobile-nav__footer">
-      <a href="#membership" class="btn btn--primary btn--full">Join Now</a>
+    <div class="drawer-footer">
+      <a href="tel:9642076707">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        96420 76707 / 93443 76707
+      </a>
+      <a href="https://www.instagram.com/origin_strengthandperformance/" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+        @origin_strengthandperformance
+      </a>
+      <a href="#pricing" class="drawer-nav-item" style="color:var(--blue); font-weight:700; margin-top:8px;">
+        View Membership Rates &rarr;
+      </a>
     </div>
   </div>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- HERO                                            -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero__bg">
-      <img src="assets/images/hero-video-poster.jpg" alt="ORIGIN athlete training in gym" class="hero__bg-img"
-        loading="eager" fetchpriority="high">
-      <video class="hero__bg-video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/hero-video-poster.jpg"
-        aria-hidden="true">
-        <source src="assets/videos/clip-hero.mp4" type="video/mp4">
-      </video>
-      <div class="hero__overlay"></div>
-    </div>
-
-    <div class="hero__content">
-      <p class="hero__label anim-reveal">ORIGIN STRENGTH &amp; PERFORMANCE</p>
-      <h1 class="hero__title anim-reveal">
-        <span class="hero__title-line hero__title-line--built">BUILT</span>
-        <span class="hero__title-line hero__title-line--from">
-          <span class="hero__text-white">FROM</span>
-          <span class="text-accent">MOVEMENT.</span>
-        </span>
-      </h1>
-      <p class="hero__subtitle anim-reveal">
-        Every journey has an origin. Welcome to Ambattur, Chennai's premier 3-floor destination for strength, cardio,
-        and functional training. Where ambition meets iron.
-      </p>
-      <div class="hero__ctas anim-reveal">
-        <a href="#membership" class="btn btn--primary">
-          Explore Memberships
-          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </a>
-        <a href="#about" class="btn btn--outline">
-          Discover Our Gym
-        </a>
-      </div>
-    </div>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <span class="hero__scroll-text">Scroll</span>
-      <span class="hero__scroll-line"></span>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- ABOUT                                           -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section about" id="about">
-    <div class="container">
-
-      <div class="about__grid">
-        <div class="about__visual anim-reveal">
-          <a href="https://www.instagram.com/reel/DfSZTyDyZ9I/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ=="
-            target="_blank" rel="noopener noreferrer" class="about__img-wrapper"
-            aria-label="Watch ORIGIN Gym Reel on Instagram">
-            <video class="about__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/video-poster.jpg"
-              aria-label="ORIGIN training floor in action">
-              <source src="assets/videos/clip-pullup.mp4" type="video/mp4">
-              <img src="assets/images/about-img.jpg" alt="Athlete training inside the ORIGIN gym" class="about__img">
-            </video>
-            <div class="live-pill">
-              <span class="live-dot"></span>
-              <span>Floor In Motion</span>
-            </div>
-            <span class="about__video-btn" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>Watch Reel</span>
-            </span>
-          </a>
-          <div class="about__img-accent"></div>
-        </div>
-
-        <div class="about__content">
-          <span class="section-label anim-reveal">About ORIGIN</span>
-          <h2 class="section-title anim-reveal">Where Every<br>Rep <span class="text-accent">Matters.</span></h2>
-          <div class="about__text anim-reveal">
-            <p>
-              ORIGIN isn't just a gym — it's a dedicated 3-floor training destination located at Trios Tower, Ambattur,
-              Chennai. Built for lifters, athletes, and anyone committed to achieving true strength and conditioning.
-            </p>
-            <p>
-              Our philosophy is simple: provide a no-compromise environment across 3 specialised levels featuring
-              dedicated zones for Cardio, Strength &amp; Free Weights, and Functional Movement. No gimmicks. No
-              shortcuts. Just results.
-            </p>
-            <p>
-              From competition-grade barbells and squat racks to turf sleds and high-end cardio machines, every detail
-              at ORIGIN is engineered for real, measurable progress.
-            </p>
-          </div>
-          <div class="about__values anim-reveal">
-            <div class="about__value">
-              <span class="about__value-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              </span>
-              <div>
-                <strong>3 Dedicated Floors</strong>
-                <span>Specialised Cardio, Strength, and Functional training zones</span>
-              </div>
-            </div>
-            <div class="about__value">
-              <span class="about__value-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </span>
-              <div>
-                <strong>Discipline &amp; Consistency</strong>
-                <span>A focused training culture built on showing up, every single day</span>
-              </div>
-            </div>
-            <div class="about__value">
-              <span class="about__value-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                  <path d="M16 3.13a4 4 0 010 7.75" />
-                </svg>
-              </span>
-              <div>
-                <strong>Ambattur's Training Community</strong>
-                <span>Train alongside focused individuals who respect the work</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- FACILITIES                                      -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section facilities" id="facilities">
-    <div class="container">
-      <div class="section-header anim-reveal">
-        <span class="section-label">Our Space</span>
-        <h2 class="section-title">3 Floors of World-Class <span class="text-accent">Facilities.</span></h2>
-        <p class="section-desc">Spread across 3 dedicated training levels at Trios Tower, Ambattur — purpose-built zones
-          for Strength, Cardio, and Functional conditioning.</p>
-      </div>
-
-      <div class="facilities__grid">
-        <article class="facility-card facility-card--large anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-strength.jpg" alt="Strength training area with barbells and squat racks"
-              class="facility-card__img" loading="lazy">
-            <video class="facility-card__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto"
-              poster="assets/images/facility-strength.jpg" aria-label="Squat and leg press lifting action">
-              <source src="assets/videos/clip-squat.mp4" type="video/mp4">
-            </video>
-            <span class="facility-card__video-badge">
-              <span class="live-dot"></span> Live Floor
-            </span>
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">Strength Training</h3>
-            <p class="facility-card__desc">Competition-grade racks, platforms, and free weights. Built for serious
-              lifters.</p>
-          </div>
-        </article>
-
-        <article class="facility-card anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-cardio.jpg" alt="Cardio zone with modern machines"
-              class="facility-card__img" loading="lazy">
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">Cardio Zone</h3>
-            <p class="facility-card__desc">State-of-the-art treadmills, rowers, and bikes for endurance work.</p>
-          </div>
-        </article>
-
-        <article class="facility-card anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-functional.jpg"
-              alt="Functional training area with battle ropes and kettlebells" class="facility-card__img"
-              loading="lazy">
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">Functional Training</h3>
-            <p class="facility-card__desc">Open floor space with turf, sleds, ropes, and movement tools.</p>
-          </div>
-        </article>
-
-        <article class="facility-card facility-card--wide anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-freeweights.jpg" alt="Free weights area with dumbbells and benches"
-              class="facility-card__img" loading="lazy">
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">Free Weights</h3>
-            <p class="facility-card__desc">A dedicated zone with a full dumbbell range, Olympic bars, and plate-loaded
-              machines.</p>
-          </div>
-        </article>
-
-        <article class="facility-card anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-pt.jpg" alt="Personal training session in progress"
-              class="facility-card__img" loading="lazy">
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">PT Studio</h3>
-            <p class="facility-card__desc">Private training space for focused one-on-one coaching sessions.</p>
-          </div>
-        </article>
-
-        <article class="facility-card facility-card--recovery anim-reveal">
-          <div class="facility-card__img-wrap">
-            <img src="assets/images/facility-recovery.jpg" alt="Dedicated recovery and functional conditioning space"
-              class="facility-card__img" loading="lazy">
-          </div>
-          <div class="facility-card__content">
-            <h3 class="facility-card__title">Recovery &amp; Mobility</h3>
-            <p class="facility-card__desc">Dedicated turf for warmups, active recovery, mobility drills, and movement
-              prep.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- PROGRAMS                                        -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section programs" id="programs">
-    <div class="container">
-      <div class="section-header anim-reveal">
-        <span class="section-label">Training Programs</span>
-        <h2 class="section-title">Find Your <span class="text-accent">Path.</span></h2>
-        <p class="section-desc">Structured programs designed for real progress, guided by experienced coaches.</p>
-      </div>
-
-      <div class="programs__list">
-
-        <article class="program anim-reveal">
-          <div class="program__img-wrap">
-            <img src="assets/images/program-strength.jpg"
-              alt="Athlete performing deadlift for strength and conditioning" class="program__img" loading="lazy">
-            <video class="program__video" autoplay loop muted defaultmuted playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/images/program-strength.jpg"
-              aria-label="Athletic overhead press training">
-              <source src="assets/videos/clip-press.mp4" type="video/mp4">
-            </video>
-            <span class="program__video-badge">
-              <span class="live-dot"></span> Live Clip
-            </span>
-          </div>
-          <div class="program__content">
-            <span class="program__number">01</span>
-            <h3 class="program__title">Strength & Conditioning</h3>
-            <p class="program__desc">Build raw strength and functional power through progressive overload, compound
-              lifts, and periodised programming.</p>
-            <a href="#contact" class="program__link">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="program anim-reveal">
-          <div class="program__img-wrap">
-            <img src="assets/images/program-hypertrophy.jpg" alt="Person training for muscle building"
-              class="program__img" loading="lazy">
-          </div>
-          <div class="program__content">
-            <span class="program__number">02</span>
-            <h3 class="program__title">Muscle Building</h3>
-            <p class="program__desc">Hypertrophy-focused training designed to maximise muscle growth through volume,
-              intensity, and smart programming.</p>
-            <a href="#contact" class="program__link">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="program anim-reveal">
-          <div class="program__img-wrap">
-            <img src="assets/images/program-fatloss.jpg" alt="Person doing cardio exercise for fat loss"
-              class="program__img" loading="lazy">
-          </div>
-          <div class="program__content">
-            <span class="program__number">03</span>
-            <h3 class="program__title">Weight Loss</h3>
-            <p class="program__desc">Sustainable fat loss through a structured combination of resistance training,
-              cardio, and expert nutritional guidance.</p>
-            <a href="#contact" class="program__link">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="program anim-reveal">
-          <div class="program__img-wrap">
-            <img src="assets/images/program-pt.jpg" alt="Personal trainer guiding a client" class="program__img"
-              loading="lazy">
-          </div>
-          <div class="program__content">
-            <span class="program__number">04</span>
-            <h3 class="program__title">Personal Training</h3>
-            <p class="program__desc">One-on-one coaching tailored to your specific goals, schedule, and ability level.
-              Maximum accountability, maximum results.</p>
-            <a href="#contact" class="program__link">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="program anim-reveal">
-          <div class="program__img-wrap">
-            <img src="assets/images/program-functional.jpg" alt="Athlete performing functional fitness exercises"
-              class="program__img" loading="lazy">
-          </div>
-          <div class="program__content">
-            <span class="program__number">05</span>
-            <h3 class="program__title">Functional Fitness</h3>
-            <p class="program__desc">Train movement patterns that translate to real-world performance. Improve mobility,
-              stability, and athletic capacity.</p>
-            <a href="#contact" class="program__link">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- BRAND STATEMENT                                 -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="brand-statement" id="taglineReveal">
-    <div class="container">
-      <blockquote class="brand-statement__quote">
-        <p>"Every journey has an origin.<br><span class="text-accent">Make yours count.</span>"</p>
-      </blockquote>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- WHY CHOOSE US                                   -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section why" id="why">
-    <div class="container">
-      <div class="why__grid">
-        <div class="why__left anim-reveal">
-          <span class="section-label">Why ORIGIN</span>
-          <h2 class="section-title">Training,<br><span class="text-accent">Elevated.</span></h2>
-        </div>
-        <div class="why__right">
-          <div class="why__item anim-reveal">
-            <div class="why__item-num">01</div>
-            <div class="why__item-content">
-              <h3>No-Compromise Equipment</h3>
-              <p>We invest in competition-standard equipment from leading manufacturers. Every barbell, rack, and
-                machine is chosen for performance and durability.</p>
-            </div>
-          </div>
-          <div class="why__item anim-reveal">
-            <div class="why__item-num">02</div>
-            <div class="why__item-content">
-              <h3>Expert Coaching</h3>
-              <p>Our trainers are experienced professionals — not salespeople in polo shirts. They coach, they
-                programme, and they hold you accountable.</p>
-            </div>
-          </div>
-          <div class="why__item anim-reveal">
-            <div class="why__item-num">03</div>
-            <div class="why__item-content">
-              <h3>Training Culture</h3>
-              <p>ORIGIN attracts people who take their training seriously. The atmosphere is focused, respectful, and
-                driven — exactly how a gym should be.</p>
-            </div>
-          </div>
-          <div class="why__item anim-reveal">
-            <div class="why__item-num">04</div>
-            <div class="why__item-content">
-              <h3>Thoughtful Design</h3>
-              <p>From floor layout to lighting, every detail is designed to enhance your training experience. No
-                overcrowding, no dead zones, no afterthoughts.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- TRAINERS & ACHIEVEMENTS                          -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section trainers" id="trainers">
-    <div class="container">
-      <div class="section-header anim-reveal">
-        <span class="section-label">Team &amp; Accolades</span>
-        <h2 class="section-title">Trainers &amp;<br><span class="text-accent">Achievements.</span></h2>
-        <p class="section-desc">Meet our dedicated coaching staff and view athletic milestones at ORIGIN Strength &amp;
-          Performance.</p>
-      </div>
-
-      <!-- Trainers Grid -->
-      <p class="mobile-scroll-cue trainers__scroll-cue" aria-hidden="true">Scroll to see trainers <span>→</span></p>
-      <div class="trainers__grid">
-        <!-- Trainer 1 -->
-        <article class="trainer-card anim-reveal">
-          <div class="trainer-card__photo-box">
-            <div class="trainer-card__photo-placeholder">
-              <div class="trainer-card__placeholder-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
-              <span class="trainer-card__placeholder-text">Trainer 1 Photo</span>
-            </div>
-            <span class="trainer-card__badge">Trainer 1</span>
-          </div>
-          <div class="trainer-card__content">
-            <div class="trainer-card__header">
-              <h3 class="trainer-card__name">Trainer 1</h3>
-              <p class="trainer-card__role">Specialization / Role</p>
-            </div>
-            <div class="trainer-card__tags">
-              <span class="trainer-tag">Specialization</span>
-              <span class="trainer-tag">Certification</span>
-            </div>
-            <p class="trainer-card__desc">Coaching profile, specialization, and athlete training background to be added.
-            </p>
-            <div class="trainer-card__achievements">
-              <h4 class="trainer-achievements__title">Achievements &amp; Certifications</h4>
-              <ul class="trainer-achievements__list">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 1
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 2
-                </li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <!-- Trainer 2 -->
-        <article class="trainer-card anim-reveal">
-          <div class="trainer-card__photo-box">
-            <div class="trainer-card__photo-placeholder">
-              <div class="trainer-card__placeholder-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
-              <span class="trainer-card__placeholder-text">Trainer 2 Photo</span>
-            </div>
-            <span class="trainer-card__badge">Trainer 2</span>
-          </div>
-          <div class="trainer-card__content">
-            <div class="trainer-card__header">
-              <h3 class="trainer-card__name">Trainer 2</h3>
-              <p class="trainer-card__role">Specialization / Role</p>
-            </div>
-            <div class="trainer-card__tags">
-              <span class="trainer-tag">Specialization</span>
-              <span class="trainer-tag">Certification</span>
-            </div>
-            <p class="trainer-card__desc">Coaching profile, specialization, and athlete training background to be added.
-            </p>
-            <div class="trainer-card__achievements">
-              <h4 class="trainer-achievements__title">Achievements &amp; Certifications</h4>
-              <ul class="trainer-achievements__list">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 1
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 2
-                </li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <!-- Trainer 3 -->
-        <article class="trainer-card anim-reveal">
-          <div class="trainer-card__photo-box">
-            <div class="trainer-card__photo-placeholder">
-              <div class="trainer-card__placeholder-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
-              <span class="trainer-card__placeholder-text">Trainer 3 Photo</span>
-            </div>
-            <span class="trainer-card__badge">Trainer 3</span>
-          </div>
-          <div class="trainer-card__content">
-            <div class="trainer-card__header">
-              <h3 class="trainer-card__name">Trainer 3</h3>
-              <p class="trainer-card__role">Specialization / Role</p>
-            </div>
-            <div class="trainer-card__tags">
-              <span class="trainer-tag">Specialization</span>
-              <span class="trainer-tag">Certification</span>
-            </div>
-            <p class="trainer-card__desc">Coaching profile, specialization, and athlete training background to be added.
-            </p>
-            <div class="trainer-card__achievements">
-              <h4 class="trainer-achievements__title">Achievements &amp; Certifications</h4>
-              <ul class="trainer-achievements__list">
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 1
-                </li>
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="achievement-bullet">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                  Achievement 2
-                </li>
-              </ul>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- ORIGIN Hall of Laurels / Facility Achievements Showcase -->
-      <div class="achievements-showcase anim-reveal">
-        <div class="achievements-showcase__header">
-          <div>
-            <span class="section-label">Wall of Recognition</span>
-            <h3 class="achievements-showcase__title">ORIGIN <span class="text-accent">Achievements.</span></h3>
-          </div>
-          <p class="achievements-showcase__subtitle">Recognizing competitive titles, certifications, and milestones
-            achieved under ORIGIN.</p>
-        </div>
-
-        <p class="mobile-scroll-cue achievements__scroll-cue" aria-hidden="true">Scroll to see achievements <span>→</span></p>
-        <div class="achievements-showcase__grid">
-          <div class="achievement-card">
-            <div class="achievement-card__icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                <path d="M4 22h16"></path>
-                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-              </svg>
-            </div>
-            <div class="achievement-card__meta">
-              <span class="achievement-card__year">Year</span>
-              <span class="achievement-card__badge">Category</span>
-            </div>
-            <h4 class="achievement-card__name">Achievement 1</h4>
-            <p class="achievement-card__desc">Accolade, competition placement, or athletic milestone to be displayed
-              here.</p>
-          </div>
-
-          <div class="achievement-card">
-            <div class="achievement-card__icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="6"></circle>
-                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
-              </svg>
-            </div>
-            <div class="achievement-card__meta">
-              <span class="achievement-card__year">Year</span>
-              <span class="achievement-card__badge">Category</span>
-            </div>
-            <h4 class="achievement-card__name">Achievement 2</h4>
-            <p class="achievement-card__desc">Accolade, competition placement, or athletic milestone to be displayed
-              here.</p>
-          </div>
-
-          <div class="achievement-card">
-            <div class="achievement-card__icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                </polygon>
-              </svg>
-            </div>
-            <div class="achievement-card__meta">
-              <span class="achievement-card__year">Year</span>
-              <span class="achievement-card__badge">Category</span>
-            </div>
-            <h4 class="achievement-card__name">Achievement 3</h4>
-            <p class="achievement-card__desc">Accolade, competition placement, or athletic milestone to be displayed
-              here.</p>
-          </div>
-
-          <div class="achievement-card">
-            <div class="achievement-card__icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <polyline points="9 12 11 14 15 10"></polyline>
-              </svg>
-            </div>
-            <div class="achievement-card__meta">
-              <span class="achievement-card__year">Year</span>
-              <span class="achievement-card__badge">Category</span>
-            </div>
-            <h4 class="achievement-card__name">Achievement 4</h4>
-            <p class="achievement-card__desc">Accolade, competition placement, or athletic milestone to be displayed
-              here.</p>
-          </div>
-        </div>
-
-        <!-- Banner CTA -->
-        <div class="trainers__cta-banner">
-          <div class="trainers__cta-text">
-            <h4>Ready to train with Chennai’s most dedicated coaches?</h4>
-            <p>Book your 1-on-1 movement and strength assessment on our gym floor.</p>
-          </div>
-          <div class="trainers__cta-action">
-            <a href="https://www.instagram.com/reel/DfSZTyDyZ9I/?utm_source=ig_web_copy_link&obrf=NTc4MTIwNjQ2YQ=="
-              target="_blank" rel="noopener noreferrer" class="btn btn--outline"
-              aria-label="Watch ORIGIN gym reel on Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="6 3 20 12 6 21 6 3"></polygon>
-              </svg>
-              Watch Reel
-            </a>
-            <a href="#contact" class="btn btn--primary" id="trainerEnquiryBtn" data-scroll="contact">Book Trainer
-              Consultation</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- MEMBERSHIP                                      -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section membership" id="membership">
-    <div class="container">
-      <div class="section-header anim-reveal">
-        <span class="section-label">Memberships &amp; Pricing</span>
-        <h2 class="section-title">Start Your <span class="text-accent">Journey.</span></h2>
-        <p class="section-desc">Every membership includes complete access to all 3 floors across Cardio, Strength &amp;
-          Functional Training zones.</p>
-      </div>
-
-      <!-- Plan Category Tabs -->
-      <div class="membership__tabs anim-reveal" role="tablist" aria-label="Membership Categories">
-        <button class="membership__tab membership__tab--active" role="tab" aria-selected="true"
-          data-category="individual">
-          Basic Access
-        </button>
-        <button class="membership__tab" role="tab" aria-selected="false" data-category="couple">
-          Couple Offer
-        </button>
-        <button class="membership__tab" role="tab" aria-selected="false" data-category="buddy">
-          Buddy Offer
-        </button>
-      </div>
-      <p class="membership__subnote anim-reveal" id="membershipSubnote">Standard individual access to all 3 floors.</p>
-      <p class="mobile-scroll-cue membership__scroll-cue" aria-hidden="true">Scroll to compare plans <span>→</span></p>
-
-      <div class="membership__grid">
-
-        <!-- Plan 1: Monthly -->
-        <article class="plan anim-reveal" data-plan="monthly">
-          <div class="plan__header">
-            <h3 class="plan__name">Monthly</h3>
-            <p class="plan__duration">1 Month Access</p>
-          </div>
-          <div class="plan__price">
-            <span class="plan__currency">₹</span>
-            <span class="plan__amount" data-price>2,997</span>
-            <span class="plan__period">/month</span>
-          </div>
-          <ul class="plan__features">
-            <li>Access to all 3 floors</li>
-            <li>Cardio, Strength &amp; Functional zones</li>
-            <li>Locker &amp; changing room amenities</li>
-            <li>Flexible monthly renewal</li>
-          </ul>
-          <a href="https://wa.me/919642076707?text=Hi%20ORIGIN%2C%20I%27d%20like%20to%20enquire%20about%20the%20Monthly%20Membership%20(Basic%20Access)%20plan."
-            class="btn btn--outline btn--full plan__cta" target="_blank" rel="noopener noreferrer">Enquire Now</a>
-        </article>
-
-        <!-- Plan 2: Quarterly -->
-        <article class="plan anim-reveal" data-plan="quarterly">
-          <div class="plan__header">
-            <h3 class="plan__name">Quarterly</h3>
-            <p class="plan__duration">3 Months Access</p>
-          </div>
-          <div class="plan__price">
-            <span class="plan__currency">₹</span>
-            <span class="plan__amount" data-price>7,997</span>
-            <span class="plan__period">/3 months</span>
-          </div>
-          <ul class="plan__features">
-            <li>Access to all 3 floors</li>
-            <li>Cardio, Strength &amp; Functional zones</li>
-            <li>Locker &amp; changing room amenities</li>
-            <li>Structured progress routine</li>
-          </ul>
-          <a href="https://wa.me/919642076707?text=Hi%20ORIGIN%2C%20I%27d%20like%20to%20enquire%20about%20the%20Quarterly%20Membership%20(Basic%20Access)%20plan."
-            class="btn btn--outline btn--full plan__cta" target="_blank" rel="noopener noreferrer">Enquire Now</a>
-        </article>
-
-        <!-- Plan 3: Half Yearly -->
-        <article class="plan anim-reveal" data-plan="halfyearly">
-          <div class="plan__header">
-            <h3 class="plan__name">Half Yearly</h3>
-            <p class="plan__duration">6 Months Access</p>
-          </div>
-          <div class="plan__price">
-            <span class="plan__currency">₹</span>
-            <span class="plan__amount" data-price>9,997</span>
-            <span class="plan__period">/6 months</span>
-          </div>
-          <ul class="plan__features">
-            <li>Access to all 3 floors</li>
-            <li>Cardio, Strength &amp; Functional zones</li>
-            <li>Locker &amp; changing room amenities</li>
-            <li>Form evaluation &amp; progress tracking</li>
-          </ul>
-          <a href="https://wa.me/919642076707?text=Hi%20ORIGIN%2C%20I%27d%20like%20to%20enquire%20about%20the%20Half%20Yearly%20Membership%20(Basic%20Access)%20plan."
-            class="btn btn--outline btn--full plan__cta" target="_blank" rel="noopener noreferrer">Enquire Now</a>
-        </article>
-
-        <!-- Plan 4: Yearly (Featured) -->
-        <article class="plan plan--featured anim-reveal" data-plan="yearly">
-          <div class="plan__badge">Best Value</div>
-          <div class="plan__header">
-            <h3 class="plan__name">Yearly</h3>
-            <p class="plan__duration">12 Months Access</p>
-          </div>
-          <div class="plan__price">
-            <span class="plan__currency">₹</span>
-            <span class="plan__amount" data-price>12,997</span>
-            <span class="plan__period">/year</span>
-          </div>
-          <ul class="plan__features">
-            <li>Access to all 3 floors</li>
-            <li>Cardio, Strength &amp; Functional zones</li>
-            <li>Locker &amp; changing room amenities</li>
-            <li>Long-term commitment to discipline</li>
-            <li>Lowest effective monthly rate (₹1,083/mo)</li>
-          </ul>
-          <a href="https://wa.me/919642076707?text=Hi%20ORIGIN%2C%20I%27d%20like%20to%20enquire%20about%20the%20Yearly%20Membership%20(Basic%20Access)%20plan."
-            class="btn btn--primary btn--full plan__cta" target="_blank" rel="noopener noreferrer">Enquire Now</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- GALLERY                                         -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section gallery" id="gallery">
-    <div class="container">
-      <div class="section-header anim-reveal">
-        <span class="section-label">Gallery</span>
-        <h2 class="section-title">Inside <span class="text-accent">ORIGIN.</span></h2>
-        <p class="section-desc">A look at the space, the equipment, and the atmosphere.</p>
-      </div>
-
-      <div class="gallery__grid">
-        <!-- Row 1: 2 + 1 + 1 = 4 cols -->
-        <figure class="gallery__item gallery__item--wide anim-reveal" role="button" tabindex="0"
-          aria-label="View full image">
-          <img src="assets/images/gallery-1.jpg" alt="Main gym floor and Olympic lifting platforms" class="gallery__img"
-            loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/facility-freeweights.jpg" alt="Precision dumbbells and free weights arena"
-            class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-3.jpg" alt="Athlete working out with cable machine" class="gallery__img"
-            loading="lazy">
-        </figure>
-
-        <!-- Row 2: 1 + 1 + 2 = 4 cols -->
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-4.jpg" alt="Gym interior with natural lighting" class="gallery__img"
-            loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-5.jpg" alt="Training session in progress" class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item gallery__item--wide anim-reveal" role="button" tabindex="0"
-          aria-label="View full image">
-          <img src="assets/images/facility-strength.jpg" alt="Heavy barbell and squat rack arena" class="gallery__img"
-            loading="lazy">
-        </figure>
-
-        <!-- Row 3: 1 + 2 + 1 = 4 cols -->
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-7.jpg" alt="Modern cardio equipment area" class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item gallery__item--wide anim-reveal" role="button" tabindex="0"
-          aria-label="View full image">
-          <img src="assets/images/facility-functional.jpg" alt="Sprint turf, sleds and plyometrics zone"
-            class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-9.jpg" alt="Power rack and deadlift lifting platform" class="gallery__img"
-            loading="lazy">
-        </figure>
-
-        <!-- Row 4: 2 + 1 + 1 = 4 cols -->
-        <figure class="gallery__item gallery__item--wide anim-reveal" role="button" tabindex="0"
-          aria-label="View full image">
-          <img src="assets/images/gallery-2.jpg" alt="Heavy dumbbells lined up on storage rack" class="gallery__img"
-            loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-6.jpg" alt="Barbell loaded with competition plates" class="gallery__img"
-            loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-8.jpg" alt="Kettlebells arranged on storage rack" class="gallery__img"
-            loading="lazy">
-        </figure>
-
-        <!-- Row 5: 1 + 1 + 1 + 1 = 4 cols -->
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-10.jpg" alt="Functional turf training with battle ropes" class="gallery__img"
-            loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-11.jpg" alt="Strength training machines and plate loaded equipment"
-            class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/facility-cardio.jpg" alt="Elite treadmills and cardio training deck"
-            class="gallery__img" loading="lazy">
-        </figure>
-        <figure class="gallery__item anim-reveal" role="button" tabindex="0" aria-label="View full image">
-          <img src="assets/images/gallery-12.jpg" alt="Athlete performing conditioning exercise" class="gallery__img"
-            loading="lazy">
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
-    <button class="lightbox__close" aria-label="Close image viewer">&times;</button>
-    <button class="lightbox__prev" aria-label="Previous image">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5" />
-        <path d="m12 19-7-7 7-7" />
-      </svg>
-    </button>
-    <button class="lightbox__next" aria-label="Next image">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14" />
-        <path d="m12 5 7 7-7 7" />
-      </svg>
-    </button>
-    <div class="lightbox__content">
-      <img class="lightbox__img" src="" alt="">
-    </div>
-  </div>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- CONTACT                                         -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section contact" id="contact" data-section="contact">
-    <div id="enquiry" style="position: absolute; top: 0; left: 0; height: 0; width: 0; visibility: hidden;"
-      aria-hidden="true"></div>
-    <div class="container">
-      <div class="contact__grid">
-
-        <div class="contact__info anim-reveal">
-          <span class="section-label">Get in Touch</span>
-          <h2 class="section-title">Ready to <span class="text-accent">Begin?</span></h2>
-          <p class="contact__intro">Walk into our 3-floor facility in Ambattur, give us a call, or send a WhatsApp
-            message. We're here to help you get started.</p>
-
-          <div class="contact__details">
-            <div class="contact__detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <div>
-                <strong>Address</strong>
-                <span>110A Trios Tower, Menambedu, Ambattur, Chennai 600053</span>
-              </div>
-            </div>
-            <div class="contact__detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path
-                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              <div>
-                <strong>Phone Numbers</strong>
-                <span><a href="tel:+919642076707">+91 96420 76707</a></span>
-                <span><a href="tel:+919344376707">+91 93443 76707</a></span>
-              </div>
-            </div>
-            <div class="contact__detail">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-              <div>
-                <strong>Operating Hours</strong>
-                <span>Mon – Sat: 5:30 AM – 10:00 PM</span>
-                <span>Sunday: 5:30 AM – 2:00 PM</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact__ctas">
-            <a href="https://wa.me/919642076707?text=Hi%20ORIGIN%2C%20I%27d%20like%20to%20enquire%20about%20membership%20at%20Ambattur."
-              class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              WhatsApp Us
-            </a>
-            <a href="tel:+919642076707" class="btn btn--outline">
-              Call Us
-            </a>
-            <a href="https://www.instagram.com/origin_strengthandperformance/" class="btn btn--outline" target="_blank"
-              rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-                <circle cx="12" cy="12" r="4"></circle>
-                <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"></circle>
-              </svg>
-              Follow on Instagram
-            </a>
-          </div>
-        </div>
-
-        <div class="contact__map anim-reveal">
-          <div class="contact__map-wrapper">
-            <iframe
-              src="https://maps.google.com/maps?q=ORIGIN+STRENGTH+AND+PERFORMANCE,+110A+TRIOS+TOWER,+MENAMBEDU,+AMBATTUR,+CHENNAI+600053&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="ORIGIN Strength & Performance Location - Ambattur"></iframe>
-          </div>
-          <div class="contact__map-action">
-            <a href="https://www.google.com/maps/place/ORIGIN+STRENGTH+AND+PERFORMANCE/data=!4m2!3m1!1s0x0:0xf36a12b26823df0f"
-              target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--map">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span>Get Directions on Google Maps</span>
-              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- WORK WITH US                                    -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <section class="section careers" id="work-with-us">
-    <div class="container">
-      <div class="careers__grid">
-        <div class="careers__intro anim-reveal">
-          <span class="section-label">Join the ORIGIN team</span>
-          <h2 class="section-title">Work <span class="text-accent">With Us.</span></h2>
-          <p class="section-desc">Are you a coach or trainer who helps people get stronger? Tell us about yourself and
-            apply to join our team.</p>
-        </div>
-
-        <form class="careers__form anim-reveal" id="careersForm" novalidate>
-          <div class="careers__field">
-            <label for="applicantName">Full name</label>
-            <input id="applicantName" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="careers__field">
-            <label for="applicantEmail">Email address</label>
-            <input id="applicantEmail" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="careers__field">
-            <label for="applicantPhone">Phone number <span>(optional)</span></label>
-            <input id="applicantPhone" name="phone" type="tel" autocomplete="tel">
-          </div>
-          <div class="careers__field">
-            <label for="applicantRole">I'm interested in</label>
-            <select id="applicantRole" name="role" required>
-              <option value="" selected disabled>Choose a coaching role</option>
-              <option>Personal training</option>
-              <option>Strength and conditioning coaching</option>
-              <option>Group fitness instruction</option>
-              <option>Other coaching role</option>
-            </select>
-          </div>
-          <div class="careers__field careers__field--full">
-            <label for="applicantExperience">Qualifications and experience</label>
-            <textarea id="applicantExperience" name="experience" rows="5" maxlength="2000"
-              placeholder="Share your coaching experience, qualifications, and what you'd bring to ORIGIN."
-              required></textarea>
-          </div>
-          <button class="btn btn--primary careers__submit" type="submit">Continue to Email Application</button>
-          <p class="careers__status" id="careersStatus" role="status" aria-live="polite" hidden></p>
-          <p class="careers__note">Your email app will open with your application ready to send. This site does not
-            store your details.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- FOOTER                                          -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-
-        <div class="footer__brand">
-          <a href="#hero" class="footer__logo-wrap" aria-label="ORIGIN Home">
-            <img src="assets/images/logo.png" alt="ORIGIN Strength and Performance" class="footer__logo-img"
-              id="footerLogo">
-          </a>
-          <p class="footer__tagline"><span class="footer__tagline-brand">ORIGIN STRENGTH &amp; PERFORMANCE</span><br>Every journey has an origin. Make yours count.
-          </p>
-          <div class="footer__social">
-            <a href="https://www.instagram.com/origin_strengthandperformance/" class="footer__social-link"
-              aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="5" />
-                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@OriginStrengthandPerformance" class="footer__social-link"
-              aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z" />
-                <polygon points="9.75,15.02 15.5,11.75 9.75,8.48" />
-              </svg>
-            </a>
-            <a href="https://wa.me/919642076707" class="footer__social-link" aria-label="WhatsApp" target="_blank"
-              rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer__links">
-          <h4 class="footer__heading">Quick Links</h4>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#facilities">Facilities</a></li>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#trainers">Trainers</a></li>
-            <li><a href="#membership">Membership</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#work-with-us">Work With Us</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__links">
-          <h4 class="footer__heading">3 Training Floors</h4>
-          <ul>
-            <li><a href="#facilities">Strength &amp; Conditioning</a></li>
-            <li><a href="#facilities">Cardio Zone</a></li>
-            <li><a href="#facilities">Functional Training Zone</a></li>
-            <li><a href="#facilities">Free Weights Floor</a></li>
-            <li><a href="#facilities">Personal Coaching</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__contact">
-          <h4 class="footer__heading">Location</h4>
-          <p>110A Trios Tower, Menambedu, Ambattur, Chennai 600053</p>
-          <p><a href="tel:+919642076707">+91 96420 76707</a></p>
-          <p><a href="tel:+919344376707">+91 93443 76707</a></p>
-          <p class="text-accent" style="font-size: 0.8125rem; margin-top: var(--sp-2);">Open Mon–Sat: 5:30 AM – 10
-            PM<br>Sun: 5:30 AM – 2 PM</p>
-        </div>
-
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; <span id="currentYear"></span> ORIGIN STRENGTH &amp; PERFORMANCE. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- ═══════════════════════════════════════════════ -->
-  <!-- VIDEO REEL MODAL                                -->
-  <!-- ═══════════════════════════════════════════════ -->
-  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="ORIGIN Gym Reel"
-    aria-hidden="true">
-    <div class="video-modal__backdrop" id="videoModalBackdrop"></div>
-    <div class="video-modal__container">
-      <button class="video-modal__close" id="videoModalClose" type="button" aria-label="Close video modal">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+</div>
+
+<!-- ══ Nav ══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero" aria-label="Origin Home">
+      <img src="images/logo-dark.png?v=7" alt="Origin Strength &amp; Performance" class="nav-logo-img">
+    </a>
+
+    <!-- Top Navigation Menu Links -->
+    <ul class="nav-menu">
+      <li><a href="#hero" class="nav-link">Home</a></li>
+      <li><a href="#facilities" class="nav-link">Facilities</a></li>
+      <li><a href="#trainers" class="nav-link">Trainers</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#pricing" class="nav-link">Memberships</a></li>
+      <li><a href="#info" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Toggle (Words alone on mobile) -->
+    <div class="nav-right">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span>Menu</span>
+        <svg viewBox="0 0 22 22"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="14" x2="19" y2="14"/></svg>
       </button>
+    </div>
+  </div>
+</nav>
 
-      <div class="video-modal__player-wrap">
-        <video class="video-modal__player" id="modalVideoPlayer" playsinline loop preload="metadata"
-          poster="assets/images/video-poster.jpg">
-          <source src="assets/videos/origin-reel.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
+<!-- ════════════════════════════════
+     SECTION 1 — HERO
+     ════════════════════════════════ -->
+<section class="hero-wrap" id="hero">
+  <picture class="hero-picture">
+    <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg?v=2">
+    <img class="hero-photo" id="heroPhoto" src="images/hero-custom.jpg?v=2" alt="Origin Gym Strength & Performance">
+  </picture>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="label hero-eyebrow" id="eyebrow">AMBATTUR, CHENNAI</div>
+    <div class="hero-title display" id="mainTitle"></div>
+    <div class="hero-tagline" id="heroTagline"><span class="quote-mark">“</span>BUILT FROM MOVEMENT<span class="quote-mark">”</span></div>
+    <div class="hero-actions" id="heroCta">
+      <a class="hero-btn primary" href="#pricing">
+        <svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>
+        EXPLORE MEMBERSHIPS
+      </a>
+      <a class="hero-btn secondary" href="#facilities">
+        <svg viewBox="0 0 14 14"><path d="M7 2v10M2 7l5 5 5-5"/></svg>
+        DISCOVER GYM
+      </a>
+    </div>
+  </div>
+</section>
 
-        <div class="video-modal__controls">
-          <button class="video-modal__ctrl-btn" id="videoPlayToggle" type="button" aria-label="Play or Pause">
-            <svg class="icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="6" y="4" width="4" height="16"></rect>
-              <rect x="14" y="4" width="4" height="16"></rect>
-            </svg>
-            <svg class="icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </button>
-
-          <span class="video-modal__badge">ORIGIN &bull; Built From Movement</span>
-
-          <button class="video-modal__ctrl-btn" id="videoSoundToggle" type="button" aria-label="Mute or Unmute">
-            <svg class="icon-sound-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-            <svg class="icon-sound-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <line x1="23" y1="9" x2="17" y2="15"></line>
-              <line x1="17" y1="9" x2="23" y2="15"></line>
-            </svg>
-          </button>
+<!-- ════════════════════════════════
+     SECTION 2 — FACILITIES
+     ════════════════════════════════ -->
+<section class="facilities-section" id="facilities">
+  <div class="facilities-inner">
+    <div class="section-header">
+      <div class="label">3 FLOORS OF PURE POWER</div>
+      <h2 id="facilitiesTitle"></h2>
+      <p>Every membership unlocks unlimited access to all three specialized floors, engineered for cardio endurance, heavy lifting, and athletic performance.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Floor 1</span>
+          <img class="facility-card-img" src="images/facility-cardio.jpg" alt="Cardio Zone"
+               srcset="images/responsive/facility-cardio-480.jpg 480w, images/responsive/facility-cardio-800.jpg 800w, images/facility-cardio.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Cardio Zone</h3>
+          <p>Treadmills, curved runners, rowing machines, and air bikes to build conditioning and burn fat efficiently.</p>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Floor 2</span>
+          <img class="facility-card-img" src="images/facility-strength.jpg" alt="Heavy Strength Training"
+               srcset="images/responsive/facility-strength-480.jpg 480w, images/responsive/facility-strength-800.jpg 800w, images/facility-strength.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Heavy Strength Training</h3>
+          <p>Olympic barbells, power racks, platforms, and calibrated plates built for serious lifters chasing PRs.</p>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Floor 3</span>
+          <img class="facility-card-img" src="images/facility-functional.jpg" alt="Functional Training Zone"
+               srcset="images/responsive/facility-functional-480.jpg 480w, images/responsive/facility-functional-800.jpg 800w, images/facility-functional.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Functional Training Zone</h3>
+          <p>Turf tracks, sleds, battle ropes, plyo boxes, and kettlebells — train movements that translate into raw power.</p>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Free Weights</span>
+          <img class="facility-card-img" src="images/facility-freeweights.jpg" alt="Dumbbell & Barbell Section"
+               srcset="images/responsive/facility-freeweights-480.jpg 480w, images/responsive/facility-freeweights-800.jpg 800w, images/facility-freeweights.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Free Weights Area</h3>
+          <p>Extensive dumbbell rack (2.5kg to 50kg+), adjustable benches, and EZ curl bars for precision hypertrophy.</p>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Coaching</span>
+          <img class="facility-card-img" src="images/facility-pt.jpg" alt="Personal Coaching Zone"
+               srcset="images/responsive/facility-pt-480.jpg 480w, images/responsive/facility-pt-800.jpg 800w, images/facility-pt.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Personal Coaching Zone</h3>
+          <p>Dedicated 1-on-1 coaching spaces with form-check mirrors, movement screens, and tailored workout sessions.</p>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-card-media">
+          <span class="facility-badge">Recovery</span>
+          <img class="facility-card-img" src="images/facility-recovery.jpg" alt="Recovery & Mobility Zone"
+               srcset="images/responsive/facility-recovery-480.jpg 480w, images/responsive/facility-recovery-800.jpg 800w, images/facility-recovery.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 33vw" loading="lazy">
+        </div>
+        <div class="facility-card-body">
+          <h3>Mobility &amp; Recovery Zone</h3>
+          <p>Foam rollers, resistance bands, yoga mats, and stretching cages for active recovery and injury prevention.</p>
         </div>
       </div>
     </div>
   </div>
+</section>
 
+<!-- ════════════════════════════════
+     SECTION 3 — TRAINERS (1, 2, 3)
+     ════════════════════════════════ -->
+<section class="trainers-section" id="trainers">
+  <div class="trainers-inner">
+    <div class="section-header">
+      <div class="label">COACHING STAFF</div>
+      <h2 id="trainersTitle"></h2>
+      <p>Origin's dedicated coaching staff. Consult directly with our certified trainers for personalized training regimens and form coaching.</p>
+    </div>
 
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
+    <!-- Trainer Switcher Tabs -->
+    <div class="trainer-tabs">
+      <button class="trainer-tab active" data-trainer="trainer-1">
+        <img src="images/trainer-1.jpg" alt="Trainer 1" class="trainer-tab-avatar">
+        Trainer 1
+      </button>
+      <button class="trainer-tab" data-trainer="trainer-2">
+        <img src="images/trainer-2.jpg" alt="Trainer 2" class="trainer-tab-avatar">
+        Trainer 2
+      </button>
+      <button class="trainer-tab" data-trainer="trainer-3">
+        <img src="images/trainer-3.jpg" alt="Trainer 3" class="trainer-tab-avatar">
+        Trainer 3
+      </button>
+    </div>
+
+    <!-- Trainer 1 Panel (Empty Info Template) -->
+    <div class="trainer-panel active" id="trainer-1">
+      <div class="trainer-card">
+        <div class="trainer-photo-wrap">
+          <img src="images/trainer-1.jpg" alt="Trainer 1" class="trainer-photo"
+               srcset="images/responsive/trainer-1-480.jpg 480w, images/responsive/trainer-1-800.jpg 800w, images/trainer-1.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 360px">
+          <span class="trainer-photo-badge">Trainer 1</span>
+        </div>
+        <div class="trainer-info">
+          <span class="trainer-empty-note">Trainer Profile</span>
+          <div class="trainer-name">Trainer 1</div>
+          <div class="trainer-role">[Specialization / Designation]</div>
+          <p class="trainer-bio">[Trainer 1 bio, training background, coaching philosophy, and client transformation experience will be placed here.]</p>
+          
+          <div class="detail-grid">
+            <div class="detail-item">
+              <div class="detail-label">Specialization</div>
+              <div class="detail-value placeholder">[Add Specialization]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Experience</div>
+              <div class="detail-value placeholder">[Add Experience]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Certifications</div>
+              <div class="detail-value placeholder">[Add Certifications]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Assigned Floor</div>
+              <div class="detail-value placeholder">[Add Floor / Zone]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Training Focus</div>
+              <div class="detail-value placeholder">[Add Training Focus]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Availability / Shift</div>
+              <div class="detail-value placeholder">[Add Working Hours]</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20consult%20with%20Trainer%201." target="_blank" class="trainer-book-btn">
+            Book Consultation with Trainer 1 &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer 2 Panel (Empty Info Template) -->
+    <div class="trainer-panel" id="trainer-2">
+      <div class="trainer-card">
+        <div class="trainer-photo-wrap">
+          <img src="images/trainer-2.jpg" alt="Trainer 2" class="trainer-photo"
+               srcset="images/responsive/trainer-2-480.jpg 480w, images/responsive/trainer-2-800.jpg 800w, images/trainer-2.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 360px">
+          <span class="trainer-photo-badge">Trainer 2</span>
+        </div>
+        <div class="trainer-info">
+          <span class="trainer-empty-note">Trainer Profile</span>
+          <div class="trainer-name">Trainer 2</div>
+          <div class="trainer-role">[Specialization / Designation]</div>
+          <p class="trainer-bio">[Trainer 2 bio, training background, coaching philosophy, and client transformation experience will be placed here.]</p>
+          
+          <div class="detail-grid">
+            <div class="detail-item">
+              <div class="detail-label">Specialization</div>
+              <div class="detail-value placeholder">[Add Specialization]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Experience</div>
+              <div class="detail-value placeholder">[Add Experience]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Certifications</div>
+              <div class="detail-value placeholder">[Add Certifications]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Assigned Floor</div>
+              <div class="detail-value placeholder">[Add Floor / Zone]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Training Focus</div>
+              <div class="detail-value placeholder">[Add Training Focus]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Availability / Shift</div>
+              <div class="detail-value placeholder">[Add Working Hours]</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20consult%20with%20Trainer%202." target="_blank" class="trainer-book-btn">
+            Book Consultation with Trainer 2 &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer 3 Panel (Empty Info Template) -->
+    <div class="trainer-panel" id="trainer-3">
+      <div class="trainer-card">
+        <div class="trainer-photo-wrap">
+          <img src="images/trainer-3.jpg" alt="Trainer 3" class="trainer-photo"
+               srcset="images/responsive/trainer-3-480.jpg 480w, images/trainer-3.jpg 1200w"
+               sizes="(max-width:760px) 100vw, 360px">
+          <span class="trainer-photo-badge">Trainer 3</span>
+        </div>
+        <div class="trainer-info">
+          <span class="trainer-empty-note">Trainer Profile</span>
+          <div class="trainer-name">Trainer 3</div>
+          <div class="trainer-role">[Specialization / Designation]</div>
+          <p class="trainer-bio">[Trainer 3 bio, training background, coaching philosophy, and client transformation experience will be placed here.]</p>
+          
+          <div class="detail-grid">
+            <div class="detail-item">
+              <div class="detail-label">Specialization</div>
+              <div class="detail-value placeholder">[Add Specialization]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Experience</div>
+              <div class="detail-value placeholder">[Add Experience]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Certifications</div>
+              <div class="detail-value placeholder">[Add Certifications]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Assigned Floor</div>
+              <div class="detail-value placeholder">[Add Floor / Zone]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Training Focus</div>
+              <div class="detail-value placeholder">[Add Training Focus]</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Availability / Shift</div>
+              <div class="detail-value placeholder">[Add Working Hours]</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20consult%20with%20Trainer%203." target="_blank" class="trainer-book-btn">
+            Book Consultation with Trainer 3 &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SECTION 4 — GYM ACHIEVEMENTS
+     ════════════════════════════════ -->
+<section class="achievements-section" id="achievements">
+  <div class="achievements-inner">
+    <div class="section-header">
+      <div class="label">ORIGIN PRIDE &amp; MILESTONES</div>
+      <h2 id="achievementsTitle"></h2>
+      <p>Recognitions, competition milestones, and championship honors earned by Origin Strength &amp; Performance.</p>
+    </div>
+
+    <div class="achievements-grid">
+      <!-- Gym Achievement 1 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">🏆</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 1]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+
+      <!-- Gym Achievement 2 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">🥇</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 2]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+
+      <!-- Gym Achievement 3 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">🥊</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 3]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+
+      <!-- Gym Achievement 4 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">⭐</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 4]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+
+      <!-- Gym Achievement 5 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">🛡️</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 5]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+
+      <!-- Gym Achievement 6 -->
+      <div class="achievement-card">
+        <div class="achievement-card-top">
+          <div class="achievement-card-icon">🎯</div>
+          <span class="achievement-card-badge">[Milestone / Year]</span>
+        </div>
+        <h3>[Gym Achievement 6]</h3>
+        <p>[Details about this gym achievement, championship title, award, or milestone will be placed here.]</p>
+        <div class="achievement-card-footer">
+          <span>Origin Honor</span>
+          <span>Verified ★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SECTION 4 — STATEMENT (PHILOSOPHY)
+     ════════════════════════════════ -->
+<section class="statement-section" id="statement">
+  <div class="label" style="margin-bottom:32px; position:relative;">THE ORIGIN QUOTE</div>
+  <div class="statement-text display" id="statementText"></div>
+  <div class="emblem-wrap" id="emblem">
+    <svg viewBox="0 0 66 66">
+      <circle cx="33" cy="33" r="30" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="33" cy="33" r="25" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <g transform="translate(33,33) scale(.65)" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="-18" y1="0" x2="18" y2="0"/>
+        <rect x="-22" y="-7" width="8" height="14" rx="2.5"/>
+        <rect x="14" y="-7" width="8" height="14" rx="2.5"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SECTION 5 — GALLERY (14 PHOTOS)
+     ════════════════════════════════ -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-header">
+      <div class="label">INSIDE ORIGIN</div>
+      <h2 id="galleryTitle"></h2>
+      <p>Take a tour of Chennai's premier strength hub — clean iron, high ceilings, calibrated plates, and an unmatched training atmosphere.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Origin Gym" srcset="images/responsive/gallery-1-480.jpg 480w, images/responsive/gallery-1-800.jpg 800w, images/gallery-1.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Origin Gym" srcset="images/responsive/gallery-2-480.jpg 480w, images/gallery-2.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Origin Gym" srcset="images/responsive/gallery-3-480.jpg 480w, images/gallery-3.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Origin Gym" srcset="images/responsive/gallery-4-480.jpg 480w, images/responsive/gallery-4-800.jpg 800w, images/gallery-4.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Origin Gym" srcset="images/responsive/gallery-5-480.jpg 480w, images/gallery-5.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Origin Gym" srcset="images/responsive/gallery-6-480.jpg 480w, images/responsive/gallery-6-800.jpg 800w, images/gallery-6.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-7.jpg" alt="Origin Gym" srcset="images/responsive/gallery-7-480.jpg 480w, images/gallery-7.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-8.jpg" alt="Origin Gym" srcset="images/responsive/gallery-8-480.jpg 480w, images/gallery-8.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-9.jpg" alt="Origin Gym" srcset="images/responsive/gallery-9-480.jpg 480w, images/responsive/gallery-9-800.jpg 800w, images/gallery-9.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-10.jpg" alt="Origin Gym" srcset="images/responsive/gallery-10-480.jpg 480w, images/gallery-10.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-11.jpg" alt="Origin Gym" srcset="images/responsive/gallery-11-480.jpg 480w, images/responsive/gallery-11-800.jpg 800w, images/gallery-11.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-12.jpg" alt="Origin Gym" srcset="images/responsive/gallery-12-480.jpg 480w, images/gallery-12.jpg 800w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-13.jpg" alt="Origin Gym Heavy Barbell Curl" srcset="images/responsive/gallery-13-480.jpg 480w, images/responsive/gallery-13-800.jpg 800w, images/gallery-13.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-14.jpg" alt="Origin Gym Functional Kettlebell Training" srcset="images/responsive/gallery-14-480.jpg 480w, images/responsive/gallery-14-800.jpg 800w, images/gallery-14.jpg 1200w" sizes="(max-width:760px) 50vw, 25vw" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SECTION 6 — PRICING (ALL DETAILS)
+     ════════════════════════════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-header">
+      <div class="label">TRANSPARENT MEMBERSHIPS</div>
+      <h2 id="pricingTitle"></h2>
+      <p>Straightforward rates with zero hidden charges. Every single tier gives you full access to all 3 floors: Cardio, Heavy Strength, and Functional Training.</p>
+    </div>
+
+    <!-- Switcher -->
+    <div class="plan-tabs">
+      <button class="tab-btn active" data-tab="tab-individual">
+        Individual Plans
+        <span class="tab-badge">Basic Access</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-couple">
+        Couple Offer
+        <span class="tab-badge">Save ₹600+</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-buddy">
+        Buddy Offer
+        <span class="tab-badge">Best Value</span>
+      </button>
+    </div>
+
+    <!-- Tab 1: Individual Plans (Basic Access) -->
+    <div class="pricing-group active" id="tab-individual">
+      <div class="pricing-grid">
+        <div class="pricing-card" data-plan="Individual Monthly" data-price="₹2,997">
+          <div class="plan-name">Monthly</div>
+          <div class="price"><span class="currency">₹</span>2,997</div>
+          <div class="period">per month</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Strength &amp; Free weights</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Individual Quarterly" data-price="₹7,997">
+          <div class="plan-name">Quarterly</div>
+          <div class="price"><span class="currency">₹</span>7,997</div>
+          <div class="period">per 3 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Strength &amp; Free weights</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card featured" data-plan="Individual Half Yearly" data-price="₹9,997">
+          <div class="plan-name">Half Yearly</div>
+          <div class="price"><span class="currency">₹</span>9,997</div>
+          <div class="period">per 6 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Strength &amp; Free weights</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Individual Yearly" data-price="₹12,997">
+          <div class="plan-name">Yearly</div>
+          <div class="price"><span class="currency">₹</span>12,997</div>
+          <div class="period">per year</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Strength &amp; Free weights</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Couple Offer -->
+    <div class="pricing-group" id="tab-couple">
+      <div class="pricing-grid">
+        <div class="pricing-card" data-plan="Couple Monthly" data-price="₹2,697">
+          <div class="plan-name">Couple Monthly</div>
+          <div class="price"><span class="currency">₹</span>2,697</div>
+          <div class="period">per person / month</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Couple package rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Couple Quarterly" data-price="₹7,197">
+          <div class="plan-name">Couple Quarterly</div>
+          <div class="price"><span class="currency">₹</span>7,197</div>
+          <div class="period">per person / 3 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Couple package rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card featured" data-plan="Couple Half Yearly" data-price="₹8,997">
+          <div class="plan-name">Couple Half Yearly</div>
+          <div class="price"><span class="currency">₹</span>8,997</div>
+          <div class="period">per person / 6 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Best value couple rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Couple Yearly" data-price="₹11,697">
+          <div class="plan-name">Couple Yearly</div>
+          <div class="price"><span class="currency">₹</span>11,697</div>
+          <div class="period">per person / year</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Maximum annual savings</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Buddy Offer -->
+    <div class="pricing-group" id="tab-buddy">
+      <div class="pricing-grid">
+        <div class="pricing-card" data-plan="Buddy Monthly" data-price="₹2,697">
+          <div class="plan-name">Buddy Monthly</div>
+          <div class="price"><span class="currency">₹</span>2,697</div>
+          <div class="period">per person / month</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Buddy discount rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Buddy Quarterly" data-price="₹7,197">
+          <div class="plan-name">Buddy Quarterly</div>
+          <div class="price"><span class="currency">₹</span>7,197</div>
+          <div class="period">per person / 3 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Buddy discount rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card featured" data-plan="Buddy Half Yearly" data-price="₹8,497">
+          <div class="plan-name">Buddy Half Yearly</div>
+          <div class="price"><span class="currency">₹</span>8,497</div>
+          <div class="period">per person / 6 months</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Exclusive buddy special</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+        <div class="pricing-card" data-plan="Buddy Yearly" data-price="₹11,047">
+          <div class="plan-name">Buddy Yearly</div>
+          <div class="price"><span class="currency">₹</span>11,047</div>
+          <div class="period">per person / year</div>
+          <ul class="features">
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Access to all 3 floors</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Cardio, Strength &amp; Turf</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Functional training zone</li>
+            <li><svg viewBox="0 0 14 14"><path d="M2 7l3 3 7-7"/></svg>Best value yearly rate</li>
+          </ul>
+          <button class="join-btn">CHOOSE PLAN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     SECTION 7 — INFO, LOCATION & CONTACT
+     ════════════════════════════════ -->
+<section class="info-section" id="info">
+  <div class="info-inner">
+    <div class="section-header">
+      <div class="label">LOCATION &amp; CONTACT</div>
+      <h2 id="infoTitle"></h2>
+      <p>Conveniently located at Trios Tower in Menambedu, Ambattur. Step in today for a free floor tour and consult with our coaches.</p>
+    </div>
+
+    <!-- Side-by-Side: Contacts on Left, Map on Right -->
+    <div class="info-layout">
+      <!-- Left: 4 Contact Cards Grid (2x2) -->
+      <div class="info-cards-grid">
+        <!-- Card 1: Gym Address -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-card-label">Gym Address</div>
+          </div>
+          <div class="info-card-body">
+            <div class="info-card-title">110A TRIOS TOWER</div>
+            <div class="info-card-text">
+              Menambedu, Ambattur<br>
+              Chennai, Tamil Nadu 600053
+            </div>
+            <div class="info-sub-pill">
+              <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/></svg>
+              Near OT Bus Terminus
+            </div>
+          </div>
+          <div class="info-card-footer">
+            <a href="https://maps.google.com/?q=ORIGIN+STRENGTH+AND+PERFORMANCE+110A+TRIOS+TOWER+MENAMBEDU+AMBATTUR+CHENNAI+600053" target="_blank">
+              Get Directions ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Operating Timings -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="info-card-label">Gym Timings</div>
+          </div>
+          <div class="info-card-body">
+            <div class="info-timing-row">
+              <span class="info-timing-day">Monday — Saturday</span>
+              <span class="info-timing-time">5:30 AM — 10:00 PM</span>
+            </div>
+            <div class="info-timing-row">
+              <span class="info-timing-day">Sunday</span>
+              <span class="info-timing-time">5:30 AM — 2:00 PM</span>
+            </div>
+            <div class="info-sub-pill status-open">
+              <span class="status-dot"></span> Open 7 Days a Week
+            </div>
+          </div>
+          <div class="info-card-footer">
+            <a href="#pricing">
+              Floor Tours &amp; Trials &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Phone Numbers -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="info-card-label">Phone Numbers</div>
+          </div>
+          <div class="info-card-body">
+            <a class="info-action-row" href="tel:9642076707">
+              <div class="info-action-left">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <div class="info-action-name">96420 76707</div>
+                  <div class="info-action-desc">Front Desk &amp; Admissions</div>
+                </div>
+              </div>
+              <span class="info-action-badge">Call</span>
+            </a>
+            <a class="info-action-row" href="tel:9344376707">
+              <div class="info-action-left">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <div class="info-action-name">93443 76707</div>
+                  <div class="info-action-desc">Coaching &amp; Support</div>
+                </div>
+              </div>
+              <span class="info-action-badge">Call</span>
+            </a>
+          </div>
+          <div class="info-card-footer">
+            <a href="tel:9642076707">Call Front Desk &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Card 4: Quick Connect -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 2H7C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5z"/><circle cx="12" cy="12" r="3.2"/></svg>
+            </div>
+            <div class="info-card-label">Quick Connect</div>
+          </div>
+          <div class="info-card-body">
+            <a class="info-action-row" href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20enquire%20about%20gym%20membership." target="_blank">
+              <div class="info-action-left">
+                <svg viewBox="0 0 24 24" style="stroke:none; fill:var(--blue);"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.101-.477-.15-.678.15-.201.301-.78.98-.956 1.18-.175.201-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.897-.798-1.503-1.785-1.68-2.086-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.101-.201.05-.376-.025-.527-.075-.15-.678-1.633-.93-2.235-.245-.586-.494-.506-.678-.515-.175-.008-.376-.01-.577-.01s-.527.075-.803.376c-.276.301-1.054 1.03-1.054 2.511 0 1.482 1.079 2.912 1.23 3.113.15.201 2.124 3.243 5.145 4.549.719.311 1.28.497 1.718.636.722.23 1.378.197 1.897.12.579-.086 1.78-.727 2.031-1.429.251-.702.251-1.305.176-1.429-.075-.124-.276-.2-.577-.35z"/></svg>
+                <div>
+                  <div class="info-action-name">WhatsApp Chat</div>
+                  <div class="info-action-desc">Instant replies &amp; fee details</div>
+                </div>
+              </div>
+              <span class="info-action-badge">Chat</span>
+            </a>
+            <a class="info-action-row" href="https://www.instagram.com/origin_strengthandperformance/" target="_blank">
+              <div class="info-action-left">
+                <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                <div>
+                  <div class="info-action-name">Instagram</div>
+                  <div class="info-action-desc">@origin_strengthandperformance</div>
+                </div>
+              </div>
+              <span class="info-action-badge">Follow</span>
+            </a>
+          </div>
+          <div class="info-card-footer">
+            <a href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20enquire%20about%20gym%20membership." target="_blank">Chat on WhatsApp &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Location Map Card -->
+      <div class="info-map-card" id="infoMapCard">
+        <div class="map-frame">
+          <iframe src="https://maps.google.com/maps?q=110A%20TRIOS%20TOWER%20MENAMBEDU%20AMBATTUR%20CHENNAI%20600053&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" title="Origin Gym Location Map"></iframe>
+        </div>
+        <div class="map-bar">
+          <div class="map-bar-text">
+            📍 <strong>ORIGIN STRENGTH &amp; PERFORMANCE</strong><br>
+            <span style="font-size:12px; color:var(--ink60);">110A Trios Tower, Menambedu, Ambattur, Chennai 600053</span>
+          </div>
+          <a class="map-bar-btn" href="https://maps.google.com/?q=ORIGIN+STRENGTH+AND+PERFORMANCE+110A+TRIOS+TOWER+MENAMBEDU+AMBATTUR+CHENNAI+600053" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Mobile Sticky Bottom Bar ══ -->
+<div class="mobile-action-bar">
+  <div class="bar-inner">
+    <a href="tel:9642076707" class="bar-action">
+      <svg class="bar-icon-call" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/919642076707?text=Hi%20Origin%20Gym%2C%20I%20would%20like%20to%20enquire%20about%20gym%20membership." target="_blank" class="bar-action">
+      <svg class="bar-icon-wa" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.17 8.17 0 0 1 2.41 5.83c.01 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.77-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#pricing" class="bar-action primary">
+      <span>Plans</span>
+      <svg class="bar-icon-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ══ Join Modal ══ -->
+<div class="modal-backdrop" id="joinModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-title">Get Started</div>
+    <div class="modal-plan-tag" id="modalPlanName">Selected Plan</div>
+    <p style="font-size:13.5px; color:var(--ink80); line-height:1.6;">Connect directly with the trainers at Origin Gym to lock in this membership rate.</p>
+    <div class="modal-actions">
+      <a class="modal-btn modal-btn-wa" id="modalWaBtn" href="#" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.101-.477-.15-.678.15-.201.301-.78.98-.956 1.18-.175.201-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.496-.897-.798-1.503-1.785-1.68-2.086-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.101-.201.05-.376-.025-.527-.075-.15-.678-1.633-.93-2.235-.245-.586-.494-.506-.678-.515-.175-.008-.376-.01-.577-.01s-.527.075-.803.376c-.276.301-1.054 1.03-1.054 2.511 0 1.482 1.079 2.912 1.23 3.113.15.201 2.124 3.243 5.145 4.549.719.311 1.28.497 1.718.636.722.23 1.378.197 1.897.12.579-.086 1.78-.727 2.031-1.429.251-.702.251-1.305.176-1.429-.075-.124-.276-.2-.577-.35z"/></svg>
+        Confirm on WhatsApp
+      </a>
+      <a class="modal-btn modal-btn-call" href="tel:9642076707">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.13.91.36 1.8.7 2.81a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1 .34 1.9.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 96420 76707
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Footer (Rich Midnight Navy Contrast) ══ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="images/logo-light.png?v=7" alt="Origin Strength &amp; Performance" style="height:48px; width:auto;">
+  </div>
+  <p style="font-size:11px; letter-spacing:.2em; color:var(--blue); font-weight:700;">“BUILT FROM MOVEMENT” · STRENGTH &amp; PERFORMANCE GYM</p>
+  <p>110A Trios Tower, Menambedu · Ambattur, Chennai 600053</p>
+  <p><a href="tel:9642076707">96420 76707</a> · <a href="tel:9344376707">93443 76707</a></p>
+  <p style="margin-top:24px; font-size:11px; opacity:.5;">© 2026 Origin Strength &amp; Performance Gym. All Rights Reserved.</p>
+</footer>
+
+<script>
+/* ═══ UTILITIES ═══ */
+function splitLetters(el, text) {
+  if (!el) return [];
+  el.innerHTML = '';
+  for (const ch of text) {
+    if (ch === ' ') {
+      const sp = document.createElement('span');
+      sp.className = 'space';
+      sp.style.display = 'inline-block';
+      sp.style.width = '.28em';
+      el.appendChild(sp);
+    } else {
+      const s = document.createElement('span');
+      s.className = 'letter';
+      s.textContent = ch;
+      el.appendChild(s);
+    }
+  }
+  return el.querySelectorAll('.letter');
+}
+
+/* ═══ Titles ═══ */
+const heroLetters = splitLetters(document.getElementById('mainTitle'), 'ORIGIN');
+const facilitiesLetters = splitLetters(document.getElementById('facilitiesTitle'), 'OUR FACILITIES');
+const trainersLetters = splitLetters(document.getElementById('trainersTitle'), 'OUR TRAINERS');
+const achievementsLetters = splitLetters(document.getElementById('achievementsTitle'), 'GYM ACHIEVEMENTS');
+const galleryLetters = splitLetters(document.getElementById('galleryTitle'), 'INSIDE ORIGIN');
+const pricingLetters = splitLetters(document.getElementById('pricingTitle'), 'MEMBERSHIP PLANS');
+const infoLetters = splitLetters(document.getElementById('infoTitle'), 'TRAIN AT ORIGIN');
+
+/* ═══ STATEMENT TEXT SETUP ═══ */
+const stmtDef = [
+  {type:'word',text:'BUILT'},{type:'space'},{type:'pill',src:'images/pill-1.jpg'},{type:'space'},{type:'word',text:'FROM'},{type:'br'},
+  {type:'pill',src:'images/pill-2.jpg'},{type:'space'},{type:'word',text:'MOVEMENT'}
+];
+const stmtEl = document.getElementById('statementText');
+const stmtLetters = [];
+let li = 0;
+if (stmtEl) {
+  stmtDef.forEach(item => {
+    if (item.type==='word') {
+      const w = document.createElement('span'); w.className='word';
+      for (const ch of item.text) {
+        const s = document.createElement('span'); s.className='letter';
+        s.textContent = ch; s.dataset.idx = li++;
+        w.appendChild(s); stmtLetters.push(s);
+      }
+      stmtEl.appendChild(w);
+    } else if (item.type==='space') {
+      const sp = document.createElement('span'); sp.className='space'; stmtEl.appendChild(sp);
+    } else if (item.type==='pill') {
+      const p = document.createElement('span'); p.className='inline-pill'; p.dataset.idx = li++;
+      const img = document.createElement('img'); img.src = item.src; img.alt = '';
+      p.appendChild(img); stmtEl.appendChild(p); stmtLetters.push(p);
+    } else if (item.type==='br') {
+      stmtEl.appendChild(document.createElement('br'));
+    }
+  });
+}
+
+/* ═══ PRICING TABS SWITCHER ═══ */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tid = btn.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pricing-group').forEach(g => g.classList.remove('active'));
+    btn.classList.add('active');
+    const tg = document.getElementById(tid);
+    if (tg) {
+      tg.classList.add('active');
+      tg.querySelectorAll('.pricing-card').forEach(c => c.classList.add('revealed'));
+    }
+  });
+});
+
+/* ═══ TRAINER TABS SWITCHER (1, 2, 3) ═══ */
+document.querySelectorAll('.trainer-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tid = btn.getAttribute('data-trainer');
+    document.querySelectorAll('.trainer-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.trainer-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const tp = document.getElementById(tid);
+    if (tp) tp.classList.add('active');
+  });
+});
+
+/* ═══ JOIN MODAL LOGIC ═══ */
+const joinModal = document.getElementById('joinModal');
+const modalPlanName = document.getElementById('modalPlanName');
+const modalWaBtn = document.getElementById('modalWaBtn');
+document.querySelectorAll('.join-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const card = e.target.closest('.pricing-card');
+    const pn = card ? card.getAttribute('data-plan') : 'Membership Plan';
+    const pp = card ? card.getAttribute('data-price') : '';
+    modalPlanName.textContent = `${pn} (${pp})`;
+    modalWaBtn.href = `https://wa.me/919642076707?text=${encodeURIComponent(`Hi Origin Gym, I am interested in joining the ${pn} (${pp}). Please share details.`)}`;
+    joinModal.classList.add('active');
+  });
+});
+document.getElementById('modalClose').addEventListener('click', () => joinModal.classList.remove('active'));
+joinModal.addEventListener('click', e => { if (e.target===joinModal) joinModal.classList.remove('active'); });
+
+/* ═══ DRAWER NAVIGATION ═══ */
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+document.getElementById('menuToggle').addEventListener('click', () => drawerBackdrop.classList.add('active'));
+document.getElementById('drawerClose').addEventListener('click', () => drawerBackdrop.classList.remove('active'));
+drawerBackdrop.addEventListener('click', e => { if (e.target===drawerBackdrop) drawerBackdrop.classList.remove('active'); });
+document.querySelectorAll('.drawer-nav-item').forEach(i => i.addEventListener('click', () => drawerBackdrop.classList.remove('active')));
+
+/* ═══ REVEAL ANIMATIONS ═══ */
+function revealLetters(letters, base) {
+  letters.forEach((l,i) => {
+    l.style.transition = `opacity .5s cubic-bezier(.22,1,.36,1) ${base+i*22}ms, transform .5s cubic-bezier(.22,1,.36,1) ${base+i*22}ms, filter .5s cubic-bezier(.22,1,.36,1) ${base+i*22}ms`;
+    l.classList.add('revealed');
+  });
+}
+function revealCards(selector, base, delay) {
+  document.querySelectorAll(selector).forEach((c,i) => {
+    c.style.transition = `opacity .6s ease ${base+i*(delay||70)}ms, transform .6s ease ${base+i*(delay||70)}ms, box-shadow .3s, border-color .3s`;
+    c.classList.add('revealed');
+  });
+}
+
+function runLoadAnimation(base) {
+  base = base||0;
+  const p = document.getElementById('heroPhoto');
+  if (p) {
+    p.style.transition = `transform 2.2s cubic-bezier(.22,1,.36,1) ${base}ms`;
+    p.style.transform = 'scale(1)';
+  }
+  const ey = document.getElementById('eyebrow');
+  if (ey) {
+    ey.style.transition = `opacity .8s ease ${base+200}ms, transform .8s ease ${base+200}ms`;
+    ey.classList.add('revealed');
+  }
+  const nav = document.getElementById('nav');
+  if (nav) {
+    nav.style.transition = `opacity .8s ease ${base+300}ms, transform .8s ease ${base+300}ms`;
+    nav.classList.add('revealed');
+  }
+  heroLetters.forEach((l,i) => {
+    l.style.transition = `opacity .6s cubic-bezier(.22,1,.36,1) ${base+400+i*95}ms, transform .6s cubic-bezier(.22,1,.36,1) ${base+400+i*95}ms, filter .6s cubic-bezier(.22,1,.36,1) ${base+400+i*95}ms`;
+    l.classList.add('revealed');
+  });
+  const tl = document.getElementById('heroTagline');
+  if (tl) {
+    tl.style.transition = `opacity .6s ease ${base+950}ms, transform .6s ease ${base+950}ms`;
+    tl.classList.add('revealed');
+  }
+  const hl = document.getElementById('heroHighlights');
+  if (hl) {
+    hl.style.transition = `opacity .6s ease ${base+1050}ms, transform .6s ease ${base+1050}ms`;
+    hl.classList.add('revealed');
+  }
+  const cta = document.getElementById('heroCta');
+  if (cta) {
+    cta.style.transition = `opacity .6s cubic-bezier(.22,1,.36,1) ${base+1150}ms, transform .6s cubic-bezier(.22,1,.36,1) ${base+1150}ms`;
+    cta.classList.add('revealed');
+  }
+}
+
+let facDone=false, traDone=false, achDone=false, stmtDone=false, galDone=false, priceDone=false, infoDone=false;
+
+function revealFac(b) {
+  if(facDone)return; facDone=true;
+  revealLetters(facilitiesLetters,b||0);
+  revealCards('.facility-card',200,90);
+}
+function revealTra(b) {
+  if(traDone)return; traDone=true;
+  revealLetters(trainersLetters,b||0);
+}
+function revealAch(b) {
+  if(achDone)return; achDone=true;
+  revealLetters(achievementsLetters,b||0);
+  revealCards('.achievement-card',200,70);
+}
+function revealStmt(b) {
+  if(stmtDone)return; stmtDone=true; b=b||0;
+  stmtLetters.forEach((el,i) => {
+    const ease = el.classList.contains('inline-pill') ? 'cubic-bezier(.34,1.56,.64,1)' : 'cubic-bezier(.22,1,.36,1)';
+    el.style.transition = `opacity .5s ${ease} ${b+i*26}ms, transform .5s ${ease} ${b+i*26}ms`;
+    el.classList.add('revealed');
+  });
+  const emb = document.getElementById('emblem');
+  if (emb) {
+    emb.style.transition = `opacity .8s cubic-bezier(.22,1,.36,1) ${b+stmtLetters.length*26+100}ms, transform .8s cubic-bezier(.22,1,.36,1) ${b+stmtLetters.length*26+100}ms`;
+    emb.classList.add('revealed');
+  }
+}
+function revealGal(b) {
+  if(galDone)return; galDone=true;
+  revealLetters(galleryLetters,b||0);
+  revealCards('.gallery-item',200,45);
+}
+function revealPrice(b) {
+  if(priceDone)return; priceDone=true;
+  revealLetters(pricingLetters,b||0);
+  revealCards('.pricing-card',200,60);
+}
+function revealInfo(b) {
+  if(infoDone)return; infoDone=true; b=b||0;
+  revealLetters(infoLetters, b);
+  revealCards('.info-card', b+150, 70);
+  const mc = document.getElementById('infoMapCard');
+  if (mc) { mc.style.transition = `opacity .6s ease ${b+450}ms, transform .6s ease ${b+450}ms`; mc.classList.add('revealed'); }
+}
+
+/* ═══ SCROLL & INTERSECTION OBSERVER ═══ */
+function applyScroll(sy) {
+  const vh = window.innerHeight;
+  const nav = document.getElementById('nav');
+  if (nav) nav.classList.toggle('scrolled', sy > 60);
+  
+  const check = (id, fn) => {
+    const el = document.getElementById(id);
+    if(el && el.getBoundingClientRect().top < vh * .8) fn(0);
+  };
+  check('facilities', revealFac);
+  check('trainers', revealTra);
+  check('achievements', revealAch);
+  check('statement', revealStmt);
+  check('gallery', revealGal);
+  check('pricing', revealPrice);
+  check('info', revealInfo);
+}
+
+// Fallback Intersection Observer for reliable triggers on all viewports
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        if (id === 'facilities') revealFac(0);
+        else if (id === 'trainers') revealTra(0);
+        else if (id === 'achievements') revealAch(0);
+        else if (id === 'statement') revealStmt(0);
+        else if (id === 'gallery') revealGal(0);
+        else if (id === 'pricing') revealPrice(0);
+        else if (id === 'info') revealInfo(0);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  ['facilities', 'trainers', 'achievements', 'statement', 'gallery', 'pricing', 'info'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
+
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => {
+    runLoadAnimation(0);
+    applyScroll(window.scrollY || 0);
+  });
+});
+if (document.readyState === 'complete') {
+  requestAnimationFrame(() => {
+    runLoadAnimation(0);
+    applyScroll(window.scrollY || 0);
+  });
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      applyScroll(window.scrollY);
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+</script>
 </body>
-
 </html>

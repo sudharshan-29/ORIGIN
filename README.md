@@ -1,52 +1,35 @@
-# ORIGIN Strength & Performance — Gym Portfolio
+# Origin — Strength & Performance Gym
 
-A modern, high-performance gym portfolio website designed for **ORIGIN Strength & Performance** located at Trios Tower, Ambattur, Chennai. Built with zero dependencies, clean typography, responsive layouts, and smooth micro-interactions.
+An editorial, mobile-friendly landing page for **Origin Strength & Performance** built in vanilla HTML, CSS, and modern JavaScript.
 
-## 🚀 Live Preview / Running Locally
+## Directory Files
 
-No build tools or installation required. Open `index.html` directly in your browser or run a simple local web server:
+- `index.html` — The main landing page code with custom scroll animations, tabbed pricing, mobile drawer, and modal interactions.
+- `hero.jpg` — Home screen hero athletic montage image.
+- `portrait.jpg` — Training portrait photograph.
+- `pill-1.jpg` — Savanna training inline pill photograph.
+- `pill-2.jpg` — Sunset silhouette inline pill photograph.
+- `hero-elephant.jpg` — Original safari hero image asset.
+- `elephant-cutout.webp` — Original elephant cutout asset.
+- `gym_details.pdf` — Source gym pricing, contact info, and timing details document.
+
+## Running Locally
+
+To run the local development server:
 
 ```bash
-# Using Python 3
-python3 -m http.server 8000
-
-# Or using Node.js
-npx serve .
+cd "/Users/blue/Desktop/origin 2"
+python3 -m http.server 8847
 ```
 
-Visit `http://localhost:8000` in your browser.
+Then visit [http://localhost:8847](http://localhost:8847).
 
-## 🛠 Tech Stack
+## Gym Details
 
-- **HTML5:** Semantic architecture, accessible landmarks, SEO metadata
-- **CSS3:** Custom properties (design tokens), CSS Grid & Flexbox, responsive clamp typography, noise overlay texture
-- **JavaScript (ES6+):** Vanilla JavaScript, `IntersectionObserver` scroll reveals, interactive pricing tab switcher, interactive lightbox, mobile navigation
-- **Typography:** Space Grotesk & Inter via Google Fonts
-- **Assets:** Inline SVGs, SVG Favicon, Unsplash CDN photography
-
-## 📁 Project Structure
-
-```
-origin/
-├── index.html          # Main HTML structure with updated client details
-├── css/
-│   └── style.css       # Complete design system and styling
-├── js/
-│   └── main.js         # Navigation, animations, tabs, and lightbox logic
-├── assets/
-│   ├── favicon.svg     # Brand favicon
-│   └── images/
-│       └── logo.png    # Brand logo asset
-└── README.md
-```
-
-## 📍 Client Information
-
-- **Brand:** ORIGIN Strength & Performance
-- **Address:** 110A Trios Tower, Menambedu, Ambattur, Chennai 600053
-- **Contact:** +91 96420 76707 / +91 93443 76707
-- **Operating Hours:**
-  - Mon – Sat: 5:30 AM – 10:00 PM
+- **Location:** 110A Trios Tower, Menambedu, Ambattur, Chennai 600053
+- **Phones:** 96420 76707 / 93443 76707
+- **Timings:**
+  - Monday – Saturday: 5:30 AM – 10:00 PM
   - Sunday: 5:30 AM – 2:00 PM
 - **Instagram:** [@origin_strengthandperformance](https://www.instagram.com/origin_strengthandperformance/)
-- **YouTube:** [@OriginStrengthandPerformance](https://www.youtube.com/@OriginStrengthandPerformance)
+

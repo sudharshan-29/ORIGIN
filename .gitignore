@@ -6,3 +6,5 @@ Thumbs.db
 *.mov
 
 
+.agents/
+graphify-out/
