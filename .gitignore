@@ -1,14 +1,15 @@
+# Operating System
 .DS_Store
 Thumbs.db
+
+# Logs & Editors
 *.log
 .vscode/
 .idea/
-*.mov
 
+# Raw / Source Media Archive (not deployed to production)
+source-media/
+
+# Agent & Config artifacts
 .agents/
 graphify-out/
-ORIGIN photos/
-selected/
-origin_loop_frames/
-images/backup_pre_replace/
-selected change/
