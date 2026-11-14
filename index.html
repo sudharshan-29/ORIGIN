@@ -1513,7 +1513,11 @@ body {
   .trainer-tabs { gap:8px; }
   .trainer-tab { padding:8px 14px 8px 8px; font-size:10.5px; }
   
-  .gallery-grid { grid-template-columns:repeat(2, 1fr); gap:10px; }
+  .gallery-grid {
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-flow:dense;
+    gap:10px;
+  }
   .gallery-item:nth-child(1),
   .gallery-item:nth-child(7) { grid-column:span 2; }
   
