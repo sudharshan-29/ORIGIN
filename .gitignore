@@ -5,6 +5,8 @@ Thumbs.db
 .idea/
 *.mov
 
-
 .agents/
 graphify-out/
+ORIGIN photos/
+selected/
+images/backup_pre_replace/
